@@ -24,9 +24,10 @@ public class BeatObject : MonoBehaviour
 
     void Update()
     {
-        
         if(LevelManager.hasLevelStarted)
-            MoveBeat(-noteSpeed*Time.deltaTime, 0);
+            MoveBeat(-noteSpeed*Time.unscaledDeltaTime, 0);
+
+        hittable = determinateHittability();
             
         if(hittable && (Input.GetKeyDown(hit.keyToPress) || Input.GetKeyDown(hit.keyToPress2)))
         {
@@ -41,16 +42,30 @@ public class BeatObject : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D other) {
-        hittable = true;
-        //id+=1;
-        Debug.Log(id);
+    bool determinateHittability()
+    {
+        Vector3 beatPosition = transform.position;
+        Vector3 hitPosition  = hit.transform.position;
+
+        float distanceDifference = Mathf.Abs(beatPosition.x - hitPosition.x);
+
+        if(distanceDifference <= 1)
+            return true;
+        else
+            return false;
     }
 
 
-    void OnTriggerExit2D(Collider2D other) {
-        hittable = false;
-        musicPlayer.PlayNoteMissSfx();
-    }
+    // void OnTriggerEnter2D(Collider2D other) {
+    //     hittable = true;
+    //     //id+=1;
+    //     Debug.Log(id);
+    // }
+
+
+    // void OnTriggerExit2D(Collider2D other) {
+    //     hittable = false;
+    //     musicPlayer.PlayNoteMissSfx();
+    // }
 
 }

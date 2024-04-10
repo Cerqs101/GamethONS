@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 {
     
     [SerializeField] private float musicStartDelay = 0f;         // in seconds
-    public static double timeSinceStarted = 0;              // in seconds
+    public static double timeSinceStarted = 0;                   // in seconds
     public static bool hasLevelStarted = false;
 
     public static bool isEncounterHappening = false;
@@ -20,12 +20,12 @@ public class LevelManager : MonoBehaviour
 
 
     public float bpm = 60f;
-    [SerializeField] private int beatsPerMeasure = 4; // time signature
-    [SerializeField] private int measuresPerEncounter = 2; 
+    [SerializeField] private float beatsPerMeasure = 4f; // time signature
+    [SerializeField] private float measuresPerEncounter = 2f; 
     private double measureDuration;                             // in seconds
 
-    [SerializeField] private int[] measuresForEncounters = new int[] {0,4,8}; // temporário enquanto encontro ainda não ocorre no metroidvania
-    private int encounterIndex = 0;                                           // temporário enquanto encontro ainda não ocorre no metroidvania
+    // [SerializeField] private int[] measuresForEncounters = new int[] {0,4,8}; // temporário enquanto encontro ainda não ocorre no metroidvania
+    // private int encounterIndex = 0;                                           // temporário enquanto encontro ainda não ocorre no metroidvania
 
     public static LevelManager Instance;
     public static MidiFile midiFile;
@@ -56,16 +56,21 @@ public class LevelManager : MonoBehaviour
         return array;
     }
 
-    public void startEncounter()
+    public IEnumerator StartEncounter(float durationInMeasures=0f)
     {
         Debug.Log("Started Encounter");
+        if(durationInMeasures == 0f)
+            durationInMeasures = beatsPerMeasure;
+        Time.timeScale = 0;
         isEncounterHappening = true;
+        yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures)-musicStartDelay);
+        StopEncounter();
     }
 
-    public void stopEncounter()
+    public void StopEncounter()
     {
         Debug.Log("Stopped Encounter");
-        // FindObjectOfType<SoundManager>().music.Stop();
+        Time.timeScale = 1;
         isEncounterHappening = false;
     }
 
@@ -73,7 +78,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if(hasLevelStarted)
-            timeSinceStarted += Time.deltaTime;
+            timeSinceStarted += Time.unscaledDeltaTime;
 
             
         if(!hasLevelStarted)
@@ -84,14 +89,14 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        if(encounterIndex < measuresForEncounters.Length){
-            if(!isEncounterHappening && timeSinceStarted >= measureDuration*measuresForEncounters[encounterIndex])
-                startEncounter();
-            if(isEncounterHappening && timeSinceStarted >= measureDuration*(measuresForEncounters[encounterIndex]+measuresPerEncounter))
-            {
-                stopEncounter();        
-                encounterIndex++;
-            }
-        }
+        // if(encounterIndex < measuresForEncounters.Length){
+        //     if(!isEncounterHappening && timeSinceStarted >= measureDuration*measuresForEncounters[encounterIndex])
+        //         startEncounter();
+        //     if(isEncounterHappening && timeSinceStarted >= measureDuration*(measuresForEncounters[encounterIndex]+measuresPerEncounter))
+        //     {
+        //         stopEncounter();        
+        //         encounterIndex++;
+        //     }
+        // }
     }
 }
