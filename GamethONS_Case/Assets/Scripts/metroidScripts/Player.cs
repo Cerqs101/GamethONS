@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded() && Time.timeScale>0)
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         else if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {

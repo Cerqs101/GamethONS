@@ -8,7 +8,7 @@ public class BeatObject : MonoBehaviour
 {
     public float noteSpeed;
     private bool hittable = false;
-    private int id = 0;
+    // private int id = 0;
 
     private HitController hit;
     private SoundManager musicPlayer;

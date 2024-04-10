@@ -38,6 +38,7 @@ public class ScriptGalinha : MonoBehaviour
         }
     }
     private void OnCollisionExit2D(Collision2D other) {
+        Debug.Log("Colisao GALINHA");
         StartCoroutine(LevelManager.Instance.StartEncounter());
     }
 }

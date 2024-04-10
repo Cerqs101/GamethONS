@@ -24,9 +24,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float measuresPerEncounter = 2f; 
     private double measureDuration;                             // in seconds
 
-    // [SerializeField] private int[] measuresForEncounters = new int[] {0,4,8}; // temporário enquanto encontro ainda não ocorre no metroidvania
-    // private int encounterIndex = 0;                                           // temporário enquanto encontro ainda não ocorre no metroidvania
-
     public static LevelManager Instance;
     public static MidiFile midiFile;
 
@@ -34,10 +31,14 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         Instance = this;
+
         // bea = midiFile.GetTempoMap().GetTempoAtTime(???); // <-- para tentar fazer no futuro futuro
         musicStartDelay = LaneObject.spawnX / (bpm * 4 / 60f);
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
         midiFile = ReadFromMidiFileDisc();
+        
+        // FindObjectOfType<SoundManager>().Invoke("PlayMusic", musicStartDelay);
+        // hasLevelStarted = true;
     }
 
 
@@ -58,20 +59,25 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator StartEncounter(float durationInMeasures=0f)
     {
-        Debug.Log("Started Encounter");
         if(durationInMeasures == 0f)
             durationInMeasures = measuresPerEncounter;
-        Time.timeScale = 0;
+
         isEncounterHappening = true;
-        yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures)-musicStartDelay);
-        StopEncounter();
+        Debug.Log("Started Encounter");
+
+        Time.timeScale = 0;
+
+        yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
+        StartCoroutine(StopEncounter());
     }
 
-    public void StopEncounter()
+    public IEnumerator StopEncounter()
     {
-        Debug.Log("Stopped Encounter");
-        Time.timeScale = 1;
         isEncounterHappening = false;
+        yield return new WaitForSecondsRealtime(musicStartDelay);
+        Debug.Log("Stopped Encounter");
+
+        Time.timeScale = 1;
     }
 
 
