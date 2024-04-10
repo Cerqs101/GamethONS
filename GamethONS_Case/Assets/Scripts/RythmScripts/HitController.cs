@@ -26,7 +26,7 @@ public class HitController : MonoBehaviour
             spriteRenderer.color = pressedColor;
         else if(Input.GetKeyUp(keyToPress)||Input.GetKeyUp(keyToPress2))
             spriteRenderer.color = unpressedColor;
-        Debug.Log(CompareArray());
+        // Debug.Log(CompareArray());
     }
 float CompareArray()
     {

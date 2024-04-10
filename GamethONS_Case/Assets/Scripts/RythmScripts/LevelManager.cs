@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Started Encounter");
         if(durationInMeasures == 0f)
-            durationInMeasures = beatsPerMeasure;
+            durationInMeasures = measuresPerEncounter;
         Time.timeScale = 0;
         isEncounterHappening = true;
         yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures)-musicStartDelay);
