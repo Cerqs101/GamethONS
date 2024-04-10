@@ -8,6 +8,7 @@ public class HitController : MonoBehaviour
     [SerializeField] private Color32 unpressedColor = new Color32(255, 255, 255, 255);
     [SerializeField] public KeyCode keyToPress  = KeyCode.Z; 
     [SerializeField] public KeyCode keyToPress2 = KeyCode.X; 
+    private Color32 DeltaOpacity = new Color32(0, 0, 0, 255);
 
     private BeatObject[] beats;
     private SpriteRenderer spriteRenderer;
@@ -26,6 +27,13 @@ public class HitController : MonoBehaviour
             spriteRenderer.color = pressedColor;
         else if(Input.GetKeyUp(keyToPress)||Input.GetKeyUp(keyToPress2))
             spriteRenderer.color = unpressedColor;
+        
+        if(LevelManager.isEncounterHappening)
+            spriteRenderer.enabled = true;
+        else
+            spriteRenderer.enabled = false;
+            
+
         // Debug.Log(CompareArray());
     }
 float CompareArray()

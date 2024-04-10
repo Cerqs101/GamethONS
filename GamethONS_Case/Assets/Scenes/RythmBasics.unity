@@ -315,37 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: {fileID: 872681680}
   songStartingTime: 6.75
---- !u!1 &1190438612
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1190438613}
-  m_Layer: 0
-  m_Name: Beat2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1190438613
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190438612}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07243772, y: -1.3818517, z: -0.052003387}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1296262765
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +482,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 5660185823549874418}
   - {fileID: 872681679}
-  - {fileID: 1190438613}
   - {fileID: 342748900}
   - {fileID: 1296262768}

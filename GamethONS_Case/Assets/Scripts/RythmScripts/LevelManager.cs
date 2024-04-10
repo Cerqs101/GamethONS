@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public static bool hasLevelStarted = false;
 
     public static bool isEncounterHappening = false;
+    public static bool noteGeneration = false;
 
     public string midiFilePath;
 
@@ -36,7 +37,7 @@ public class LevelManager : MonoBehaviour
         musicStartDelay = LaneObject.spawnX / (bpm * 4 / 60f);
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
         midiFile = ReadFromMidiFileDisc();
-        
+
         // FindObjectOfType<SoundManager>().Invoke("PlayMusic", musicStartDelay);
         // hasLevelStarted = true;
     }
@@ -61,7 +62,8 @@ public class LevelManager : MonoBehaviour
     {
         if(durationInMeasures == 0f)
             durationInMeasures = measuresPerEncounter;
-
+            
+        noteGeneration = true;
         isEncounterHappening = true;
         Debug.Log("Started Encounter");
 
@@ -73,10 +75,12 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator StopEncounter()
     {
-        isEncounterHappening = false;
+        noteGeneration = false;
+        
         yield return new WaitForSecondsRealtime(musicStartDelay);
         Debug.Log("Stopped Encounter");
 
+        isEncounterHappening = false;
         Time.timeScale = 1;
     }
 

@@ -17,12 +17,15 @@ public class LaneObject : MonoBehaviour
     public List<double> timeStamps = new List<double>(); // in seconds
 
     public GameObject notePrefab;
+    private SpriteRenderer spriteRenderer;
 
 
     void Start()
     {
         Vector3 beatToHitDistance = new Vector3(spawnX, 0f, 0f);
         transform.position = FindObjectOfType<HitController>().transform.position + beatToHitDistance;
+        
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         SetTimeStamps(LevelManager.GetDataFromMidi());
     }
@@ -33,11 +36,16 @@ public class LaneObject : MonoBehaviour
         if(spawnIndex < timeStamps.Count){
             if(LevelManager.timeSinceStarted >= timeStamps[spawnIndex])
             {
-                if(LevelManager.isEncounterHappening)
+                if(LevelManager.noteGeneration)
                     Instantiate(notePrefab, transform.position, new Quaternion(0,0,0,0),  transform);
                 spawnIndex++;
             }
         }
+
+        if(LevelManager.isEncounterHappening)
+            spriteRenderer.enabled = true;
+        else
+            spriteRenderer.enabled = false;
     }
 
 
