@@ -24,50 +24,51 @@ public class HitController : MonoBehaviour
 
     void Update()
     {
-
         if(Input.GetKeyDown(keyToPress)||Input.GetKeyDown(keyToPress2))
             spriteRenderer.color = pressedColor;
         else if(Input.GetKeyUp(keyToPress)||Input.GetKeyUp(keyToPress2))
             spriteRenderer.color = unpressedColor;
         
         if(LevelManager.isEncounterHappening)
-        {   
-            spriteRenderer.enabled = true;
-
+        {
             beats = FindObjectsByType<BeatObject>(FindObjectsSortMode.None);
             if(beats.Count() != 0)
             {
-                BeatObject closerBeat = beats[0];
-                foreach(BeatObject beat in beats)
-                    if(Mathf.Abs(closerBeat.distanceDifference) > Mathf.Abs(beat.distanceDifference))
-                        closerBeat = beat;
+                BeatObject closestBeat = GetClosestBeat(beats);
 
-                if(closerBeat.hittable && (Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2)))
+                if(closestBeat.hittable && (Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2)))
                 {
-                    Destroy(closerBeat.gameObject);
+                    Destroy(closestBeat.gameObject);
                     SoundManager.instance.PlayNoteHitSfx();
                 }
             }
         }
-        else
-            spriteRenderer.enabled = false;
-            
-
-        // Debug.Log(CompareArray());
     }
-float CompareArray()
+
+
+    BeatObject GetClosestBeat(BeatObject[] beats)
     {
-        
-        float position = Mathf.Abs(transform.position.x - beats[0].transform.position.x);
+        BeatObject closestBeat = beats[0];
         foreach(BeatObject beat in beats)
-        {
-            float actualDiference = Mathf.Abs(transform.position.x - beat.transform.position.x);
+            if(Mathf.Abs(closestBeat.distanceDifference) > Mathf.Abs(beat.distanceDifference))
+                closestBeat = beat;
+        return closestBeat;
 
-            if(position > actualDiference)
-            {
-                position = actualDiference;
-            }  
-        }
-        return position;
     }
+
+// float CompareArray()
+//     {
+        
+//         float position = Mathf.Abs(transform.position.x - beats[0].transform.position.x);
+//         foreach(BeatObject beat in beats)
+//         {
+//             float actualDiference = Mathf.Abs(transform.position.x - beat.transform.position.x);
+
+//             if(position > actualDiference)
+//             {
+//                 position = actualDiference;
+//             }  
+//         }
+//         return position;
+//     }
 }

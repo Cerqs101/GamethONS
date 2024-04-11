@@ -527,7 +527,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 413550886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73168f986ecb0194d93890641691bdc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d6a07a0148ba194d9944deb65845755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vidaMax: 10
@@ -1379,7 +1379,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1740548509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9660c40a7f2a0c4438ecfaea6ef5918d, type: 3}
+  m_Script: {fileID: 11500000, guid: 51cf1f7f69bd6ff44adee7b57c634c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vidaPlayer: 0
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1766974844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed836ce772343e489ecbe6d812d03c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4183f55a32a3d8c4496cb6e5c74a2b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dano: 2
@@ -1998,7 +1998,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987586615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a9a0d4d7d5c1cdb8bcc1f4fd84cf3dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 925986164128afb43b259d8fceac1f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 413550891}

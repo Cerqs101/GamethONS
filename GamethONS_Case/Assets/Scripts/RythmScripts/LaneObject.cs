@@ -12,17 +12,17 @@ using System.Linq;
 
 public class LaneObject : MonoBehaviour
 {
-    public int spawnIndex = 0;
-    public static float spawnX = 8;
-    public List<double> timeStamps = new List<double>(); // in seconds
+    [SerializeField] public static float xDistanceToHit = 8;
+    private int spawnIndex = 0;
+    private List<double> timeStamps = new List<double>(); // in seconds
 
-    public GameObject notePrefab;
+    [SerializeField] private GameObject notePrefab;
     private SpriteRenderer spriteRenderer;
 
 
     void Start()
     {
-        Vector3 beatToHitDistance = new Vector3(spawnX, 0f, 0f);
+        Vector3 beatToHitDistance = new Vector3(xDistanceToHit, 0f, 0f);
         transform.position = FindObjectOfType<HitController>().transform.position + beatToHitDistance;
         
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,15 +41,10 @@ public class LaneObject : MonoBehaviour
                 spawnIndex++;
             }
         }
-
-        if(LevelManager.isEncounterHappening)
-            spriteRenderer.enabled = true;
-        else
-            spriteRenderer.enabled = false;
     }
 
 
-    public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] notes)
+    void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] notes)
     {
         foreach(var note in notes)
         {

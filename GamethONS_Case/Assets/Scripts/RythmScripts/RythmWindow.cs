@@ -6,23 +6,44 @@ using UnityEngine.UIElements;
 
 public class RythmWindow : MonoBehaviour
 {
-    private CinemachineVirtualCamera virtualCamera;
+    private Camera virtualCamera;
     private SpriteRenderer spriteRenderer;
     public static RythmWindow Instance;
+
+
     void Start()
     {
-        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        virtualCamera = FindObjectOfType<Camera>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         transform.position = virtualCamera.transform.position + new Vector3(0f, 2f, 1f);
 
-        if(LevelManager.isEncounterHappening)
-            spriteRenderer.enabled = true;
+        if (LevelManager.isEncounterHappening)
+        {
+            if(spriteRenderer.enabled != true)
+                changeChildrenSpriteRendererEnable(true);
+                spriteRenderer.enabled = true;
+        }
         else
-            spriteRenderer.enabled = false;
+        {
+            if(spriteRenderer.enabled != false)
+                changeChildrenSpriteRendererEnable(false);
+                spriteRenderer.enabled = false;
+        }
+    }
+
+
+    void changeChildrenSpriteRendererEnable(bool state)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            SpriteRenderer childSpriteRenderer = transform.GetChild(i).GetComponent<SpriteRenderer>();
+            if (childSpriteRenderer != null)
+                childSpriteRenderer.enabled = state;
+        }
     }
 }
