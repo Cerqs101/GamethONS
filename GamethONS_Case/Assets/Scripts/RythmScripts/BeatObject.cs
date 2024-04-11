@@ -7,8 +7,10 @@ using UnityEngine.UIElements;
 public class BeatObject : MonoBehaviour
 {
     public float noteSpeed;
-    private bool hittable = false;
-    // private int id = 0;
+    public bool hittable = false;
+    public int id;
+    private static int currentSpawnId = 0;
+    public float distanceDifference;
 
     private HitController hit;
     private SoundManager musicPlayer;
@@ -19,29 +21,26 @@ public class BeatObject : MonoBehaviour
         noteSpeed = FindObjectOfType<LevelManager>().bpm * 4 / 60f;
         hit = FindObjectOfType<HitController>();
         musicPlayer = FindObjectOfType<SoundManager>();
+        id = currentSpawnId;
+        currentSpawnId++;
     }
 
 
     void Update()
     {
-        if(LevelManager.hasLevelStarted)
-            MoveBeat(-noteSpeed*Time.unscaledDeltaTime, 0);
-
         Vector3 beatPosition = transform.position;
         Vector3 hitPosition  = hit.transform.position;
 
-        float distanceDifference = beatPosition.x - hitPosition.x;
+        distanceDifference = beatPosition.x - hitPosition.x;
 
-        hittable = determinateHittability(1f, distanceDifference);
-            
-        if(hittable && (Input.GetKeyDown(hit.keyToPress) || Input.GetKeyDown(hit.keyToPress2)))
-        {
-            Destroy(this.gameObject);
-            musicPlayer.PlayNoteHitSfx();
-        }
-
+        if(Mathf.Abs(distanceDifference) <=1)
+            hittable = true;
+        
         if(distanceDifference < -5)
             Destroy(this.gameObject);
+
+        if(LevelManager.hasLevelStarted)
+            MoveBeat(-noteSpeed*Time.unscaledDeltaTime, 0);
 
     }
 
@@ -51,32 +50,19 @@ public class BeatObject : MonoBehaviour
     }
 
 
-    bool determinateHittability(float distanceLimit=1f, float distanceDifference=0f)
-    {
-        if(distanceDifference == 0f){
-            Vector3 beatPosition = transform.position;
-            Vector3 hitPosition  = hit.transform.position;
+    // bool determinateHittability(float distanceLimit=1f, float distanceDifference=0f)
+    // {
+    //     if(distanceDifference == 0f){
+    //         Vector3 beatPosition = transform.position;
+    //         Vector3 hitPosition  = hit.transform.position;
 
-            distanceDifference = Mathf.Abs(beatPosition.x - hitPosition.x);
-        }
+    //         distanceDifference = Mathf.Abs(beatPosition.x - hitPosition.x);
+    //     }
 
-        if(distanceDifference <= 1)
-            return true;
-        else
-            return false;
-    }
-
-
-    // void OnTriggerEnter2D(Collider2D other) {
-    //     hittable = true;
-    //     //id+=1;
-    //     Debug.Log(id);
-    // }
-
-
-    // void OnTriggerExit2D(Collider2D other) {
-    //     hittable = false;
-    //     musicPlayer.PlayNoteMissSfx();
+    //     if(distanceDifference <= 1)
+    //         return true;
+    //     else
+    //         return false;
     // }
 
 }

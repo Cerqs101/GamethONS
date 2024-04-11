@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 199363787}
   - component: {fileID: 199363789}
   m_Layer: 0
-  m_Name: RythmContainer
+  m_Name: RythmWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

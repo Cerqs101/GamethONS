@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Melanchall.DryWetMidi.Interaction;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class HitController : MonoBehaviour
@@ -8,14 +11,13 @@ public class HitController : MonoBehaviour
     [SerializeField] private Color32 unpressedColor = new Color32(255, 255, 255, 255);
     [SerializeField] public KeyCode keyToPress  = KeyCode.Z; 
     [SerializeField] public KeyCode keyToPress2 = KeyCode.X; 
-    private Color32 DeltaOpacity = new Color32(0, 0, 0, 255);
 
     private BeatObject[] beats;
     private SpriteRenderer spriteRenderer;
 
 
     void Start()
-    {   beats = FindObjectsOfType<BeatObject>();
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -29,7 +31,24 @@ public class HitController : MonoBehaviour
             spriteRenderer.color = unpressedColor;
         
         if(LevelManager.isEncounterHappening)
+        {   
             spriteRenderer.enabled = true;
+
+            beats = FindObjectsByType<BeatObject>(FindObjectsSortMode.None);
+            if(beats.Count() != 0)
+            {
+                BeatObject closerBeat = beats[0];
+                foreach(BeatObject beat in beats)
+                    if(Mathf.Abs(closerBeat.distanceDifference) > Mathf.Abs(beat.distanceDifference))
+                        closerBeat = beat;
+
+                if(closerBeat.hittable && (Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2)))
+                {
+                    Destroy(closerBeat.gameObject);
+                    SoundManager.instance.PlayNoteHitSfx();
+                }
+            }
+        }
         else
             spriteRenderer.enabled = false;
             

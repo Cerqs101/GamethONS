@@ -35,10 +35,7 @@ public class ScriptGalinha : MonoBehaviour
             Debug.Log("Colisao foi com o player");
             player.AplicaDano(dano);
             logic.subtraiVida();
+            StartCoroutine(LevelManager.Instance.StartEncounter());
         }
-    }
-    private void OnCollisionExit2D(Collision2D other) {
-        Debug.Log("Colisao GALINHA");
-        StartCoroutine(LevelManager.Instance.StartEncounter());
     }
 }
