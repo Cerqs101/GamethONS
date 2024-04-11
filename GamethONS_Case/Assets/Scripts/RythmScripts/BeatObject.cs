@@ -27,13 +27,22 @@ public class BeatObject : MonoBehaviour
         if(LevelManager.hasLevelStarted)
             MoveBeat(-noteSpeed*Time.unscaledDeltaTime, 0);
 
-        hittable = determinateHittability();
+        Vector3 beatPosition = transform.position;
+        Vector3 hitPosition  = hit.transform.position;
+
+        float distanceDifference = beatPosition.x - hitPosition.x;
+
+        hittable = determinateHittability(1f, distanceDifference);
             
         if(hittable && (Input.GetKeyDown(hit.keyToPress) || Input.GetKeyDown(hit.keyToPress2)))
         {
             Destroy(this.gameObject);
             musicPlayer.PlayNoteHitSfx();
         }
+
+        if(distanceDifference < -5)
+            Destroy(this.gameObject);
+
     }
 
 
@@ -42,12 +51,14 @@ public class BeatObject : MonoBehaviour
     }
 
 
-    bool determinateHittability()
+    bool determinateHittability(float distanceLimit=1f, float distanceDifference=0f)
     {
-        Vector3 beatPosition = transform.position;
-        Vector3 hitPosition  = hit.transform.position;
+        if(distanceDifference == 0f){
+            Vector3 beatPosition = transform.position;
+            Vector3 hitPosition  = hit.transform.position;
 
-        float distanceDifference = Mathf.Abs(beatPosition.x - hitPosition.x);
+            distanceDifference = Mathf.Abs(beatPosition.x - hitPosition.x);
+        }
 
         if(distanceDifference <= 1)
             return true;
