@@ -33,8 +33,8 @@ public class ScriptGalinha : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Colisao foi com o player");
-            player.AplicaDano(dano);
-            logic.subtraiVida();
+            // player.AplicaDano(dano);
+            // logic.subtraiVida();
             StartCoroutine(LevelManager.Instance.StartEncounter());
         }
     }

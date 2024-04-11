@@ -9,8 +9,9 @@ public class HitController : MonoBehaviour
 {
     [SerializeField] private Color32 pressedColor = new Color32(200, 200, 200, 255);
     [SerializeField] private Color32 unpressedColor = new Color32(255, 255, 255, 255);
-    [SerializeField] public KeyCode keyToPress  = KeyCode.Z; 
-    [SerializeField] public KeyCode keyToPress2 = KeyCode.X; 
+    [SerializeField] public KeyCode keyToPress = KeyCode.Z;
+    [SerializeField] public KeyCode keyToPress2 = KeyCode.X;
+
 
     private BeatObject[] beats;
     private SpriteRenderer spriteRenderer;
@@ -24,51 +25,75 @@ public class HitController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(keyToPress)||Input.GetKeyDown(keyToPress2))
+        if (Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2))
             spriteRenderer.color = pressedColor;
-        else if(Input.GetKeyUp(keyToPress)||Input.GetKeyUp(keyToPress2))
+        else if (Input.GetKeyUp(keyToPress) || Input.GetKeyUp(keyToPress2))
             spriteRenderer.color = unpressedColor;
-        
-        if(LevelManager.isEncounterHappening)
-        {
-            beats = FindObjectsByType<BeatObject>(FindObjectsSortMode.None);
-            if(beats.Count() != 0)
-            {
-                BeatObject closestBeat = GetClosestBeat(beats);
 
-                if(closestBeat.hittable && (Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2)))
+        if (LevelManager.isEncounterHappening)
+        {
+            TryToHitBeat();
+        }
+    }
+
+    private void TryToHitBeat()
+    {
+        beats = FindObjectsByType<BeatObject>(FindObjectsSortMode.None);
+        if (beats.Count() != 0)
+        {
+            BeatObject closestBeat = GetClosestBeat(beats);
+
+            if (closestBeat.hittable && (Input.GetKeyDown(keyToPress) || Input.GetKeyDown(keyToPress2)))
+            {
+                Destroy(closestBeat.gameObject);
+                SoundManager.instance.PlayNoteHitSfx();
+                if (closestBeat.distanceDifference <= 0.5)
                 {
-                    Destroy(closestBeat.gameObject);
-                    SoundManager.instance.PlayNoteHitSfx();
+                    Hit();
+                }
+                else
+                {
+                    Miss();
                 }
             }
         }
     }
 
+    private void Hit()
+    {
+        LevelManager.hits++;
+        Debug.Log($"Acertou! {LevelManager.hits}");
+    }
+
+    private void Miss()
+    {
+        LevelManager.misses++;
+        Debug.Log($"Errou... {LevelManager.misses}");
+    }
 
     BeatObject GetClosestBeat(BeatObject[] beats)
     {
         BeatObject closestBeat = beats[0];
-        foreach(BeatObject beat in beats)
-            if(Mathf.Abs(closestBeat.distanceDifference) > Mathf.Abs(beat.distanceDifference))
+        foreach (BeatObject beat in beats)
+            if (Mathf.Abs(closestBeat.distanceDifference) > Mathf.Abs(beat.distanceDifference))
                 closestBeat = beat;
         return closestBeat;
 
     }
 
-// float CompareArray()
-//     {
-        
-//         float position = Mathf.Abs(transform.position.x - beats[0].transform.position.x);
-//         foreach(BeatObject beat in beats)
-//         {
-//             float actualDiference = Mathf.Abs(transform.position.x - beat.transform.position.x);
+    // float CompareArray()
+    //     {
 
-//             if(position > actualDiference)
-//             {
-//                 position = actualDiference;
-//             }  
-//         }
-//         return position;
-//     }
+    //         float position = Mathf.Abs(transform.position.x - beats[0].transform.position.x);
+    //         foreach(BeatObject beat in beats)
+    //         {
+    //             float actualDiference = Mathf.Abs(transform.position.x - beat.transform.position.x);
+
+    //             if(position > actualDiference)
+    //             {
+    //                 position = actualDiference;
+    //             }  
+    //         }
+    //         return position;
+    //     }
 }

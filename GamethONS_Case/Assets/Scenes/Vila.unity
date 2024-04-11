@@ -348,7 +348,7 @@ MonoBehaviour:
   midiFilePath: Music/alvamar.mid
   bpm: 132
   beatsPerMeasure: 4
-  measuresPerEncounter: 2
+  measuresPerEncounter: 4
 --- !u!1 &442443692
 GameObject:
   m_ObjectHideFlags: 0

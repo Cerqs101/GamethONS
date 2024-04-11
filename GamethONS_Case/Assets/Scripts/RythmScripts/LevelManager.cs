@@ -26,6 +26,11 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
     public static MidiFile midiFile;
 
+    public static int hits =   0;
+    public static int misses = 0;
+
+    private Player player;
+
 
     void Start()
     {
@@ -35,6 +40,7 @@ public class LevelManager : MonoBehaviour
         musicStartDelay = LaneObject.xDistanceToHit / (bpm * 4 / 60f);
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
         midiFile = ReadMidiFileFromDisc();
+        player = FindFirstObjectByType<Player>();
 
         // FindObjectOfType<SoundManager>().Invoke("PlayMusic", musicStartDelay);
         // hasLevelStarted = true;
@@ -46,7 +52,6 @@ public class LevelManager : MonoBehaviour
         if(hasLevelStarted)
             timeSinceStarted += Time.unscaledDeltaTime;
 
-            
         if(!hasLevelStarted)
         {
             if(Input.anyKeyDown){
@@ -77,6 +82,9 @@ public class LevelManager : MonoBehaviour
     {
         if(durationInMeasures == 0f)
             durationInMeasures = measuresPerEncounter;
+
+        hits = 0;
+        misses = 0;
             
         noteGeneration = true;
         isEncounterHappening = true;
@@ -96,5 +104,36 @@ public class LevelManager : MonoBehaviour
 
         isEncounterHappening = false;
         Time.timeScale = 1;
+        
+        float accuracy = (float)hits/(hits+misses);
+        Debug.Log($"\nHits{hits}    Misses{misses}    Acurr.{accuracy}");
+        if(accuracy >= 0.9)
+            HighhAccuray();
+        else if(accuracy >= 0.7)
+            MidAccuracy();
+        else
+            LowAccuracy();
     }
+
+    private void HighhAccuray()
+    {
+            Debug.Log("Brabo demais!!");
+            player.AplicaDano(-1);
+            FindObjectOfType<ScriptLogic>().subtraiVida();
+    }
+
+    private void MidAccuracy()
+    {
+            Debug.Log("Tá, ok");
+
+    }
+
+    private void LowAccuracy()
+    {
+            Debug.Log("Dano");
+            player.AplicaDano(2);
+            FindObjectOfType<ScriptLogic>().subtraiVida();
+    }
+
+
 }
