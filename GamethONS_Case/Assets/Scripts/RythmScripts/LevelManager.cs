@@ -26,10 +26,11 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
     public static MidiFile midiFile;
 
-    public static int hits =   0;
+    public static int hits = 0;
     public static int misses = 0;
 
     private Player player;
+    public double secondsPerEncounter;
 
 
     void Start()
@@ -41,7 +42,7 @@ public class LevelManager : MonoBehaviour
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
         midiFile = ReadMidiFileFromDisc();
         player = FindFirstObjectByType<Player>();
-
+        secondsPerEncounter = measuresPerEncounter * measureDuration;
         // FindObjectOfType<SoundManager>().Invoke("PlayMusic", musicStartDelay);
         // hasLevelStarted = true;
     }
