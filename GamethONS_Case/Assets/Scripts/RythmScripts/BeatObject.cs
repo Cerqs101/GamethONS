@@ -9,6 +9,7 @@ public class BeatObject : MonoBehaviour
     public float noteSpeed;
     public bool hittable = false;
     public float distanceDifference;
+    public Melanchall.DryWetMidi.MusicTheory.NoteName noteName;
 
     private HitController hit;
 
@@ -33,7 +34,10 @@ public class BeatObject : MonoBehaviour
             hittable = true;
         
         if(distanceDifference < -5)
+        {
             Destroy(this.gameObject);
+            LevelManager.misses++;
+        }
 
     }
 

@@ -15,19 +15,22 @@ public class LaneObject : MonoBehaviour
     [SerializeField] public static float xDistanceToHit = 8;
     private int spawnIndex = 0;
     public List<double> timeStamps = new List<double>(); // in seconds
+    private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
-    [SerializeField] private GameObject notePrefab;
+    [SerializeField] private GameObject beatPrefab;
+    [SerializeField] private HitController hit;
     private SpriteRenderer spriteRenderer;
-    public static LaneObject Instance;
+
+    // public LaneObject instance;
 
 
     void Start()
     {
-        Instance = this;
+        // instance = this;
         Vector3 beatToHitDistance = new Vector3(xDistanceToHit, 0f, 0f);
-        transform.position = FindObjectOfType<HitController>().transform.position + beatToHitDistance;
-        
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        transform.position = hit.transform.position + beatToHitDistance;
+
+        noteRestriction = hit.noteRestriction;
 
         SetTimeStamps(LevelManager.GetDataFromMidi());
     }
@@ -35,11 +38,17 @@ public class LaneObject : MonoBehaviour
 
     void Update()
     {
-        if(spawnIndex < timeStamps.Count){
-            if(LevelManager.timeSinceStarted >= timeStamps[spawnIndex])
+        if (spawnIndex < timeStamps.Count)
+        {
+            if (LevelManager.timeSinceStarted >= timeStamps[spawnIndex])
             {
-                if(LevelManager.noteGeneration)
-                    Instantiate(notePrefab, transform.position, new Quaternion(0,0,0,0),  transform);
+                if (LevelManager.noteGeneration)
+                {
+                    Debug.Log(spawnIndex);
+                    Debug.Log("Teste");
+                    GameObject newBeat = Instantiate(beatPrefab, transform.position, new Quaternion(0, 0, 0, 0), transform);
+                    newBeat.GetComponent<BeatObject>().noteName = noteRestriction;
+                }
                 spawnIndex++;
             }
         }
@@ -48,12 +57,16 @@ public class LaneObject : MonoBehaviour
 
     void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] notes)
     {
-        foreach(var note in notes)
+        foreach (var note in notes)
         {
-            var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, LevelManager.midiFile.GetTempoMap());
-            timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
+            if (note.NoteName == noteRestriction)
+            {
+                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, LevelManager.midiFile.GetTempoMap());
+                timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
+            }
         }
     }
+
     public int histPerEncounter(){
         int qtdBeats = 0;
         foreach(double stamps in timeStamps){

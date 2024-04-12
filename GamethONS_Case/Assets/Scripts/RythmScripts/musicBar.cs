@@ -7,7 +7,9 @@ public class musicBar : MonoBehaviour
     // Start is called before the first frame update
     public Slider slider;
     public void setMaxHeath(){
-        slider.maxValue = LaneObject.Instance.histPerEncounter()*2;
+        // LaneObject[] lanes = FindObjectsByType<LaneObject>(FindObjectsSortMode.None);
+        // foreach(LaneObject lane in lanes)
+        //     slider.maxValue = lane.instance.histPerEncounter()*2;
     }
     public void SetMusicBar(){
         slider.value =  LevelManager.hits - LevelManager.misses;

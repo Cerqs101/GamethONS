@@ -9,7 +9,7 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private float musicStartDelay = 0f;         // in seconds
+    private float musicStartDelay = 0f;         // in seconds
     public static double timeSinceStarted = 0;                   // in seconds
     public static bool hasLevelStarted = false;
 
