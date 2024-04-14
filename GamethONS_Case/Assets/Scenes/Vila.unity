@@ -247,6 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeStamps: []
+  beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
+  hit: {fileID: 762973267}
 --- !u!212 &98585418
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -550,6 +553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeStamps: []
+  beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
+  hit: {fileID: 1695390212}
 --- !u!212 &266530870
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -646,6 +652,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b110b8937560f64439493cf10214e707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  midiFilePath: ./Music/alvamar.mid
+  bpm: 132
+  beatsPerMeasure: 4
+  measuresPerEncounter: 6
+  secondsPerEncounter: 0
 --- !u!1 &442443692
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,6 +786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d469c958b8e1342bbb2a69b7286e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 461923783}
+  songStartingTime: 6.75
 --- !u!82 &461923783
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1115,6 +1128,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755465539}
   m_CullTransparentMesh: 1
+--- !u!114 &762973267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5490305938657324204, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+  m_PrefabInstance: {fileID: 594284978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be9d3cf8964d4449225d3c67876398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &828946008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,6 +1970,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeStamps: []
+  beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
+  hit: {fileID: 1593372145}
 --- !u!212 &1287686555
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2330,6 +2357,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1593372145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5490305938657324204, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+  m_PrefabInstance: {fileID: 1387490120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be9d3cf8964d4449225d3c67876398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1640932304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,6 +2557,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3835527001067033305, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
   m_PrefabInstance: {fileID: 1695390208}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1695390212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5490305938657324204, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+  m_PrefabInstance: {fileID: 1695390208}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be9d3cf8964d4449225d3c67876398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
