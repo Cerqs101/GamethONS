@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     
     private float horizontal;
     private bool isFacingRight = true;
+    [SerializeField] private float coyoteTimerMax = .2f;
+    private float coyoteTimer;
 
     private bool hasPacoca = false;
     
@@ -27,26 +29,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump") && IsGrounded() && Time.timeScale>0)
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        else if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            // O tanto que vai diminuir da velocidade.y, para q o pulo seja maior quando se segura o botao de pulo.
-            const float lowerVSpeed = .5f;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * lowerVSpeed);
-        }
-
-        if (hasPacoca)
-        {
-            Vector3 ls = transform.localScale;
-            ls.x = Mathf.Sign(ls.x) * 1.5f;
-            transform.localScale = ls;
-        }
-        
-        
-        Flip();
+        Debug.Log(coyoteTimer);
+        Movement();
     }
 
     private void FixedUpdate()
@@ -54,6 +38,31 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
+    private void Movement()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (IsGrounded()) coyoteTimer = coyoteTimerMax;
+        else coyoteTimer -= Time.deltaTime;
+        
+        bool canJump = coyoteTimer > 0f && Time.timeScale > 0f;
+        
+        if (Input.GetButtonDown("Jump") && canJump)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+        else if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            // O tanto que vai diminuir da velocidade.y, para q o pulo seja maior quando se segura o botao de pulo.
+            const float lowerVSpeed = .5f;
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * lowerVSpeed);
+
+            coyoteTimer = 0f;
+        }
+        
+        Flip();
+    }
+    
     private void Flip()
     {
         if (!(isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)) return;
