@@ -7,16 +7,18 @@ public class Player : MonoBehaviour
     public int vidaMax = 10;
     public int vidaAtual;
     
-    private float horizontal;
-    private bool isFacingRight = true;
-    [SerializeField] private float coyoteTimerMax = .2f;
-    private float coyoteTimer;
-
-    private bool hasPacoca = false;
+    private float _horizontal;
+    private bool _isFacingRight = true;
     
-    [SerializeField] private float speed = 8f;
-    [SerializeField] private float jumpForce = 16f;
+    private float _coyoteTimer;
+    private const float CoyoteTimerMax = .2f;
 
+    private float _jumpBufferTimer;
+    private const float JumpBufferTimerMax = .2f;
+    
+    private const float Speed = 8f;
+    private const float JumpForce = 16f;
+    
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -29,35 +31,39 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(coyoteTimer);
         Movement();
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = new Vector2(_horizontal * Speed, rb.velocity.y);
     }
 
     private void Movement()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        _horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (IsGrounded()) coyoteTimer = coyoteTimerMax;
-        else coyoteTimer -= Time.deltaTime;
+        if (IsGrounded()) _coyoteTimer = CoyoteTimerMax;
+        else _coyoteTimer -= Time.deltaTime;
+
+        if (Input.GetButtonDown("Jump")) _jumpBufferTimer = JumpBufferTimerMax;
+        else _jumpBufferTimer -= Time.deltaTime;
         
-        bool canJump = coyoteTimer > 0f && Time.timeScale > 0f;
-        
-        if (Input.GetButtonDown("Jump") && canJump)
+        if (_jumpBufferTimer > 0f && _coyoteTimer > 0f && Time.timeScale > 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, JumpForce);
+
+            _jumpBufferTimer = 0f;
         }
         else if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             // O tanto que vai diminuir da velocidade.y, para q o pulo seja maior quando se segura o botao de pulo.
             const float lowerVSpeed = .5f;
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * lowerVSpeed);
+            Vector2 velocity = rb.velocity;
+            velocity = new Vector2(velocity.x, velocity.y * lowerVSpeed);
+            rb.velocity = velocity;
 
-            coyoteTimer = 0f;
+            _coyoteTimer = 0f;
         }
         
         Flip();
@@ -65,9 +71,9 @@ public class Player : MonoBehaviour
     
     private void Flip()
     {
-        if (!(isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)) return;
+        if (!(_isFacingRight && _horizontal < 0f || !_isFacingRight && _horizontal > 0f)) return;
         
-        isFacingRight = !isFacingRight;
+        _isFacingRight = !_isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
@@ -93,16 +99,11 @@ public class Player : MonoBehaviour
     {
         switch (powerUp)
         {
-            case PowerUps.Pacoca:
-                hasPacoca = true;
-                Debug.Log("Pegou paçoca!");
-                break;
         }
     }
 
     [Serializable]
     public enum PowerUps
     {
-        Pacoca
     }
 }
