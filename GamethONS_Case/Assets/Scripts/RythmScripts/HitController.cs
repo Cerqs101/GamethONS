@@ -14,7 +14,7 @@ public class HitController : MonoBehaviour
     [SerializeField] public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
 
-    private BeatObject[] beats;
+    
     private SpriteRenderer spriteRenderer;
 
 
@@ -39,35 +39,41 @@ public class HitController : MonoBehaviour
 
     private void TryToHitBeat()
     {
-        beats = FindObjectsByType<BeatObject>(FindObjectsSortMode.None);
+        List<BeatObject> beats = FindBeats();
+
         if (beats.Count() != 0)
         {
-            BeatObject closestBeat = GetClosestBeat(beats);
+            BeatObject closestBeat = GetClosestBeat(beats.ToArray());
 
-            if (closestBeat.hittable && closestBeat.noteName==noteRestriction && Input.GetKeyDown(keyToPress))
+            if (Input.GetKeyDown(keyToPress) && closestBeat.hittable)
             {
                 Destroy(closestBeat.gameObject);
-                SoundManager.instance.PlayNoteHitSfx();
                 if (closestBeat.distanceDifference <= 0.5)
-                {
                     Hit();
-                }
                 else
-                {
                     Miss();
-                }
             }
         }
     }
 
+    public List<BeatObject> FindBeats(){
+        List<BeatObject> beats = new List<BeatObject>();
+        foreach(BeatObject beat in FindObjectsByType<BeatObject>(FindObjectsSortMode.None))
+            if(beat.noteName == noteRestriction)
+                beats.Add(beat);
+        return beats;
+    }
+
     private void Hit()
     {
+        SoundManager.instance.PlayNoteHitSfx();
         LevelManager.hits++;
         // Debug.Log($"Acertou! {LevelManager.hits}");
     }
 
     private void Miss()
     {
+        SoundManager.instance.PlayNoteMissSfx();
         LevelManager.misses++;
         // Debug.Log($"Errou... {LevelManager.misses}");
     }
@@ -76,7 +82,7 @@ public class HitController : MonoBehaviour
     {
         BeatObject closestBeat = beats[0];
         foreach (BeatObject beat in beats)
-            if (beat.noteName == noteRestriction && Mathf.Abs(closestBeat.distanceDifference) > Mathf.Abs(beat.distanceDifference))
+            if (Mathf.Abs(closestBeat.distanceDifference) > Mathf.Abs(beat.distanceDifference))
                 closestBeat = beat;
         return closestBeat;
 
