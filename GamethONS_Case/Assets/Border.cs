@@ -7,6 +7,7 @@ public class Border : MonoBehaviour
 {
     // Start is called before the first frame update
     public Image imagem;
+    
     void Start()
     {
         imagem = GetComponent<Image>();
