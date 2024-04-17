@@ -8,6 +8,7 @@ public class musicBar : MonoBehaviour
     bool isToSetMusicBar = true;
     public Slider slider;
     public GameObject musicBarObject;
+    public fillBar fill;
     public void setMaxValueMusicBar(){
         LaneObject[] lanes = FindObjectsByType<LaneObject>(FindObjectsSortMode.None);
         foreach(LaneObject lane in lanes)
@@ -20,7 +21,7 @@ public class musicBar : MonoBehaviour
         Debug.Log(slider.maxValue/2 + (LevelManager.hits - LevelManager.misses));
     }
     void Start(){
-      // musicBarObject.SetActive(false);
+        //musicBarObject.SetActive(false);
     }
     void Update(){
         if(LevelManager.isEncounterHappening){
@@ -30,13 +31,27 @@ public class musicBar : MonoBehaviour
                 isToSetMusicBar = false;
             }
             SetValueMusicBar();
+            ChangeFillColor();
         }
         if(!LevelManager.isEncounterHappening){
             isToSetMusicBar = true;
             slider.maxValue = 0;
-            //usicBarObject.SetActive(false);
+            musicBarObject.SetActive(true);
         }
             
 
+    }
+    void ChangeFillColor(){
+        fill = FindObjectOfType<fillBar>();
+
+        if(slider.value >= slider.maxValue*0.9){
+            fill.imagen.color = fill.perfectColor;
+        }
+        else if(slider.value >= slider.maxValue*0.5){
+            fill.imagen.color = fill.goodColor;
+        }
+        else{
+            fill.imagen.color = fill.errorColor;
+        }
     }
 }

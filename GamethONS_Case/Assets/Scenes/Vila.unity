@@ -355,6 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 137664523}
   musicBarObject: {fileID: 137664520}
+  fill: {fileID: 0}
 --- !u!114 &137664523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,6 +982,7 @@ GameObject:
   - component: {fileID: 755465540}
   - component: {fileID: 755465542}
   - component: {fileID: 755465541}
+  - component: {fileID: 755465543}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -1045,6 +1047,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755465539}
   m_CullTransparentMesh: 1
+--- !u!114 &755465543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755465539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94b64fd474586b4f95e5029d8ea945f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  errorColor:
+    serializedVersion: 2
+    rgba: 4281673423
+  goodColor:
+    serializedVersion: 2
+    rgba: 4290343719
+  perfectColor:
+    serializedVersion: 2
+    rgba: 4280733494
+  imagen: {fileID: 0}
 --- !u!114 &762973267 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5490305938657324204, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
