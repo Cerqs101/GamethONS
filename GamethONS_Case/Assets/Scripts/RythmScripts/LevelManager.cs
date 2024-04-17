@@ -28,6 +28,8 @@ public class LevelManager : MonoBehaviour
 
     public static int hits = 0;
     public static int misses = 0;
+    public static float highAccuracyThreshold = 0.9f;
+    public static float midAccuracyThreshold = 0.7f;
 
     private Player player;
     public double secondsPerEncounter;
@@ -107,34 +109,22 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         
         float accuracy = (float)hits/(hits+misses);
-        Debug.Log($"\nHits{hits}    Misses{misses}    Acurr.{accuracy}");
-        if(accuracy >= 0.9)
-            HighhAccuray();
-        else if(accuracy >= 0.7)
-            MidAccuracy();
+        AcurracyConsequences(accuracy);
+        
+    }
+
+
+    private void AcurracyConsequences(float playerAccuracy){
+        float dano;
+        if(playerAccuracy >= highAccuracyThreshold)
+            dano = Mathf.Pow(2, (playerAccuracy-highAccuracyThreshold)*16) * -1;
+        else if(playerAccuracy >= midAccuracyThreshold)
+            dano = 0f;
         else
-            LowAccuracy();
+            dano = (10*(midAccuracyThreshold-playerAccuracy))+1;
+
+        player.AplicaDano((int) Mathf.Round(dano));
+        FindObjectOfType<ScriptLogic>().subtraiVida();
     }
-
-    private void HighhAccuray()
-    {
-            Debug.Log("Brabo demais!!");
-            player.AplicaDano(-1);
-            FindObjectOfType<ScriptLogic>().subtraiVida();
-    }
-
-    private void MidAccuracy()
-    {
-            Debug.Log("Tá, ok");
-
-    }
-
-    private void LowAccuracy()
-    {
-            Debug.Log("Dano");
-            player.AplicaDano(2);
-            FindObjectOfType<ScriptLogic>().subtraiVida();
-    }
-
 
 }

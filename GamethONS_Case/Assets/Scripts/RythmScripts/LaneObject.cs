@@ -44,8 +44,6 @@ public class LaneObject : MonoBehaviour
             {
                 if (LevelManager.noteGeneration)
                 {
-                    Debug.Log(spawnIndex);
-                    Debug.Log("Teste");
                     GameObject newBeat = Instantiate(beatPrefab, transform.position, new Quaternion(0, 0, 0, 0), transform);
                     newBeat.GetComponent<BeatObject>().noteName = noteRestriction;
                 }

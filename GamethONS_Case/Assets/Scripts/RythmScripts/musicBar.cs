@@ -19,9 +19,6 @@ public class musicBar : MonoBehaviour
     }
     public void SetValueMusicBar(){
         slider.value =  slider.maxValue/2 + (LevelManager.hits - LevelManager.misses);
-        Debug.Log(LevelManager.misses);
-        Debug.Log(LevelManager.hits);
-        Debug.Log(slider.maxValue/2 + (LevelManager.hits - LevelManager.misses));
     }
     void Start(){
         //musicBarObject.SetActive(false);
@@ -30,7 +27,7 @@ public class musicBar : MonoBehaviour
     }
     void Update(){
         if(LevelManager.isEncounterHappening){
-            borderImage.color = standarBorderCollor;
+            // borderImage.color = standarBorderCollor;
             if(isToSetMusicBar){
                 setMaxValueMusicBar();
                 isToSetMusicBar = false;
@@ -41,17 +38,17 @@ public class musicBar : MonoBehaviour
         if(!LevelManager.isEncounterHappening){
             isToSetMusicBar = true;
             slider.maxValue = 0;
-            borderImage.color = new Color(0,0,0,0);
+            // borderImage.color = new Color(0,0,0,0);
         }
             
 
     }
     void ChangeFillColor(){
 
-        if(slider.value >= slider.maxValue*0.9){
+        if(slider.value >= slider.maxValue*LevelManager.highAccuracyThreshold){
             fill.imagen.color = fill.perfectColor;
         }
-        else if(slider.value >= slider.maxValue*0.5){
+        else if(slider.value >= slider.maxValue*LevelManager.midAccuracyThreshold){
             fill.imagen.color = fill.goodColor;
         }
         else{
