@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 137664523}
   - component: {fileID: 137664522}
   m_Layer: 5
-  m_Name: HealthBar
+  m_Name: MusicBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,7 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a811ffcdec37dde48b8c8c722f75c8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  slider: {fileID: 137664523}
+  musicBarObject: {fileID: 137664520}
 --- !u!114 &137664523
 MonoBehaviour:
   m_ObjectHideFlags: 0
