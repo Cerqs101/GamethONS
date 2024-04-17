@@ -25,25 +25,28 @@ public class RythmWindow : MonoBehaviour
         if (LevelManager.isEncounterHappening)
         {
             if(spriteRenderer.enabled != true)
-                changeChildrenSpriteRendererEnable(true);
+                changeChildrenSpriteRendererEnable(true, transform);
                 spriteRenderer.enabled = true;
         }
         else
         {
             if(spriteRenderer.enabled != false)
-                changeChildrenSpriteRendererEnable(false);
+                changeChildrenSpriteRendererEnable(false, transform);
                 spriteRenderer.enabled = false;
         }
     }
 
 
-    void changeChildrenSpriteRendererEnable(bool state)
+    void changeChildrenSpriteRendererEnable(bool state, Transform transform)
     {
         for (int i = 0; i < transform.childCount; i++)
         {
+            Transform child = transform.GetChild(i);
             SpriteRenderer childSpriteRenderer = transform.GetChild(i).GetComponent<SpriteRenderer>();
             if (childSpriteRenderer != null)
                 childSpriteRenderer.enabled = state;
+            if(transform.GetChild(i).childCount != 0)
+                changeChildrenSpriteRendererEnable(state, child);
         }
     }
 }

@@ -17,7 +17,9 @@ public class BeatObject : MonoBehaviour
     void Start()
     {
         noteSpeed = FindObjectOfType<LevelManager>().bpm * 4 / 60f;
-        hit = FindObjectOfType<HitController>();
+        foreach(HitController currentHit in FindObjectsByType<HitController>(FindObjectsSortMode.None))
+            if(currentHit.noteRestriction == noteName)
+                hit = currentHit;
     }
 
 
@@ -33,10 +35,10 @@ public class BeatObject : MonoBehaviour
         if(Mathf.Abs(distanceDifference) <= 1)
             hittable = true;
         
-        if(distanceDifference < -5)
+        if(distanceDifference < -1)
         {
             Destroy(this.gameObject);
-            LevelManager.misses++;
+            hit.Miss();
         }
 
     }

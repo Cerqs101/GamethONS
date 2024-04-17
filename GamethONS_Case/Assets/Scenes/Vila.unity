@@ -355,8 +355,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 137664523}
   musicBarObject: {fileID: 137664520}
-  fill: {fileID: 0}
-  borderImage: {fileID: 0}
+  fill: {fileID: 755465543}
+  borderImage: {fileID: 532218919}
+
   standarBorderCollor:
     serializedVersion: 2
     rgba: 4286545791
@@ -894,7 +895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa82cba1b4e86d249a3333b6b29d16db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagem: {fileID: 0}
+
+  imagem: {fileID: 532218919}
 --- !u!1001 &594284978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -974,6 +976,22 @@ PrefabInstance:
     - target: {fileID: 6366096555479995706, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_Name
       value: Hit Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8510189986523455368, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
@@ -1086,7 +1104,7 @@ MonoBehaviour:
   perfectColor:
     serializedVersion: 2
     rgba: 4280733494
-  imagen: {fileID: 0}
+  imagen: {fileID: 755465541}
 --- !u!114 &762973267 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5490305938657324204, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
@@ -1989,7 +2007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3835527001067033305, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.009963349
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 3835527001067033305, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2042,6 +2060,10 @@ PrefabInstance:
     - target: {fileID: 6366096555479995706, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_Name
       value: Hit Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8510189986523455368, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
@@ -2341,6 +2363,10 @@ PrefabInstance:
     - target: {fileID: 6366096555479995706, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_Name
       value: Hit Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8510189986523455368, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder

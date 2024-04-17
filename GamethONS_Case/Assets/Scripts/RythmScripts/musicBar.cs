@@ -27,7 +27,7 @@ public class musicBar : MonoBehaviour
     }
     void Update(){
         if(LevelManager.isEncounterHappening){
-            // borderImage.color = standarBorderCollor;
+            borderImage.color = standarBorderCollor;
             if(isToSetMusicBar){
                 setMaxValueMusicBar();
                 isToSetMusicBar = false;
@@ -38,7 +38,7 @@ public class musicBar : MonoBehaviour
         if(!LevelManager.isEncounterHappening){
             isToSetMusicBar = true;
             slider.maxValue = 0;
-            // borderImage.color = new Color(0,0,0,0);
+            borderImage.color = new Color(0,0,0,0);
         }
             
 

@@ -2,25 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Melanchall.DryWetMidi.Interaction;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class HitController : MonoBehaviour
 {
+    [SerializeField] private Sprite hitSprite;
+    [SerializeField] private Sprite missSprite;
     [SerializeField] private Color32 pressedColor = new Color32(200, 200, 200, 255);
     [SerializeField] private Color32 unpressedColor = new Color32(255, 255, 255, 255);
     [SerializeField] public KeyCode keyToPress = KeyCode.Z;
 
     [SerializeField] public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
-
-    
     private SpriteRenderer spriteRenderer;
+    private HitDisplay hitDisplay;
 
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        // for(int i = 0; i < transform.childCount; i++)
+        //     if(transform.GetChild(i).GetComponent<HitDisplay>() != null){
+        //         hitDisplay = transform.GetChild(i).gameObject.GetComponent<HitDisplay>();
+        //     }
+        hitDisplay = transform.GetComponentInChildren<HitDisplay>();
     }
 
 
@@ -64,17 +71,19 @@ public class HitController : MonoBehaviour
         return beats;
     }
 
-    private void Hit()
+    public void Hit()
     {
         SoundManager.instance.PlayNoteHitSfx();
         LevelManager.hits++;
+        hitDisplay.SetTemporarySprite(hitSprite);
         // Debug.Log($"Acertou! {LevelManager.hits}");
     }
 
-    private void Miss()
+    public void Miss()
     {
         SoundManager.instance.PlayNoteMissSfx();
         LevelManager.misses++;
+        hitDisplay.SetTemporarySprite(missSprite);
         // Debug.Log($"Errou... {LevelManager.misses}");
     }
 
