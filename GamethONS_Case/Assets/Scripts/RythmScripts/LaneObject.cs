@@ -18,10 +18,8 @@ public class LaneObject : MonoBehaviour
     private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
     [SerializeField] private GameObject beatPrefab;
-    [SerializeField] private HitController hit;
+    [SerializeField] private HitObject hit;
     private SpriteRenderer spriteRenderer;
-
-    // public LaneObject instance;
 
 
     void Start()
@@ -53,7 +51,7 @@ public class LaneObject : MonoBehaviour
     }
 
 
-    void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] notes)
+    private void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] notes)
     {
         foreach (var note in notes)
         {

@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class HitController : MonoBehaviour
+public class HitObject : MonoBehaviour
 {
     [SerializeField] private Sprite hitSprite;
     [SerializeField] private Sprite missSprite;
@@ -40,9 +40,7 @@ public class HitController : MonoBehaviour
             spriteRenderer.color = unpressedColor;
 
         if (LevelManager.isEncounterHappening)
-        {
             TryToHitBeat();
-        }
     }
 
     private void TryToHitBeat()
@@ -74,7 +72,7 @@ public class HitController : MonoBehaviour
 
     public void Hit()
     {
-        SoundManager.instance.PlayNoteHitSfx();
+        SoundManager.Instance.PlayNoteHitSfx();
         LevelManager.hits++;
         hitDisplay.SetTemporarySprite(hitSprite);
         // Debug.Log($"Acertou! {LevelManager.hits}");
@@ -88,13 +86,13 @@ public class HitController : MonoBehaviour
         else
             sprite = missSprite;
 
-        SoundManager.instance.PlayNoteMissSfx();
+        SoundManager.Instance.PlayNoteMissSfx();
         LevelManager.misses++;
         hitDisplay.SetTemporarySprite(sprite);
         // Debug.Log($"Errou... {LevelManager.misses}");
     }
 
-    BeatObject GetClosestBeat(BeatObject[] beats)
+    public BeatObject GetClosestBeat(BeatObject[] beats)
     {
         BeatObject closestBeat = beats[0];
         foreach (BeatObject beat in beats)
@@ -103,20 +101,4 @@ public class HitController : MonoBehaviour
         return closestBeat;
 
     }
-
-    // float CompareArray()
-    //     {
-
-    //         float position = Mathf.Abs(transform.position.x - beats[0].transform.position.x);
-    //         foreach(BeatObject beat in beats)
-    //         {
-    //             float actualDiference = Mathf.Abs(transform.position.x - beat.transform.position.x);
-
-    //             if(position > actualDiference)
-    //             {
-    //                 position = actualDiference;
-    //             }  
-    //         }
-    //         return position;
-    //     }
 }

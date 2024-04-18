@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class fillBar : MonoBehaviour
+public class MusicBarFill : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]public Color32 errorColor = new Color32(207,38,53,255);
     [SerializeField]public Color32 goodColor = new Color32(207,38,53,255);
     [SerializeField]public Color32 perfectColor = new Color32(207,38,53,255);
     public Image imagen;
-    public static fillBar Instance;
+    public static MusicBarFill Instance;
     void Start()
     {
         Instance = this;

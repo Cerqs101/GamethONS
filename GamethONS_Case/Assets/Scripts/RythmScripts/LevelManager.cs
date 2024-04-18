@@ -16,23 +16,24 @@ public class LevelManager : MonoBehaviour
     public static bool isEncounterHappening = false;
     public static bool noteGeneration = false;
 
-    public string midiFilePath;
 
     public float bpm = 60f;
     [SerializeField] private float beatsPerMeasure = 4f; // time signature
     [SerializeField] private float measuresPerEncounter = 2f; 
-    private double measureDuration;                             // in seconds
+    private double measureDuration;   
+    public double secondsPerEncounter;  
 
-    public static LevelManager Instance;
-    public static MidiFile midiFile;
-
+    [SerializeField] public float highAccuracyThreshold = 0.9f;
+    [SerializeField] public float midAccuracyThreshold = 0.7f;
     public static int hits = 0;
     public static int misses = 0;
-    public static float highAccuracyThreshold = 0.9f;
-    public static float midAccuracyThreshold = 0.7f;
+                        // in seconds
 
     private Player player;
-    public double secondsPerEncounter;
+    public static LevelManager Instance;
+    public static MidiFile midiFile;
+    public string midiFilePath;
+
 
 
     void Start()
@@ -45,8 +46,6 @@ public class LevelManager : MonoBehaviour
         midiFile = ReadMidiFileFromDisc();
         player = FindFirstObjectByType<Player>();
         secondsPerEncounter = measuresPerEncounter * measureDuration;
-        // FindObjectOfType<SoundManager>().Invoke("PlayMusic", musicStartDelay);
-        // hasLevelStarted = true;
     }
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Border : MonoBehaviour
+public class MusicBarBorder : MonoBehaviour
 {
     // Start is called before the first frame update
     public Image imagem;

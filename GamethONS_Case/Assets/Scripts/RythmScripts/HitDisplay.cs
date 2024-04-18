@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class HitDisplay : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
     private Coroutine currentCoroutine;
     private bool isCoroutineRunning = false;
+    private SpriteRenderer spriteRenderer;
 
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    void Update(){
-        
     }
 
 
@@ -25,8 +21,8 @@ public class HitDisplay : MonoBehaviour
         isCoroutineRunning = true;
         currentCoroutine = StartCoroutine(FadeOut(waitTime));
         isCoroutineRunning = false;
-
     }
+
 
     public void ChangeSprite(Sprite sprite)
     {

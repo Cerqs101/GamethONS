@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 204737885}
   - component: {fileID: 204737884}
   m_Layer: 0
-  m_Name: RythmWindow
+  m_Name: RhythmWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -658,11 +658,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b110b8937560f64439493cf10214e707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  midiFilePath: ./Music/alvamar.mid
   bpm: 132
   beatsPerMeasure: 4
   measuresPerEncounter: 6
   secondsPerEncounter: 0
+  highAccuracyThreshold: 0.9
+  midAccuracyThreshold: 0.7
+  midiFilePath: ./Music/alvamar.mid
 --- !u!1 &461923780
 GameObject:
   m_ObjectHideFlags: 0

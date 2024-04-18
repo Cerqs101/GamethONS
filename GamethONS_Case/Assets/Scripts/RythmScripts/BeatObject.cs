@@ -11,13 +11,13 @@ public class BeatObject : MonoBehaviour
     public float distanceDifference;
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteName;
 
-    private HitController hit;
+    private HitObject hit;
 
 
     void Start()
     {
         noteSpeed = FindObjectOfType<LevelManager>().bpm * 4 / 60f;
-        foreach(HitController currentHit in FindObjectsByType<HitController>(FindObjectsSortMode.None))
+        foreach(HitObject currentHit in FindObjectsByType<HitObject>(FindObjectsSortMode.None))
             if(currentHit.noteRestriction == noteName)
                 hit = currentHit;
     }
@@ -36,10 +36,9 @@ public class BeatObject : MonoBehaviour
             hittable = true;
         
         if(distanceDifference < -1)
-        {
-            Destroy(this.gameObject);
             hit.Miss(true);
-        }
+        if(distanceDifference < -4)
+            Destroy(this.gameObject);
 
     }
 
