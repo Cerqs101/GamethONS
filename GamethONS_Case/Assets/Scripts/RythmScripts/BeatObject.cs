@@ -38,7 +38,7 @@ public class BeatObject : MonoBehaviour
         if(distanceDifference < -1)
         {
             Destroy(this.gameObject);
-            hit.Miss();
+            hit.Miss(true);
         }
 
     }
