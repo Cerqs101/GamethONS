@@ -87,7 +87,7 @@ public class LevelManager : MonoBehaviour
 
         StartEncounter();
         yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
-        StartCoroutine(StopEncounter());
+        yield return StopEncounter();
 
         SolveEncounter(obj);
     }
