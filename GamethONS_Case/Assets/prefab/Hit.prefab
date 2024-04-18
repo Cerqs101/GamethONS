@@ -199,6 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSprite: {fileID: 21300000, guid: f96042e96881ec642b76073aa2435dd0, type: 3}
   missSprite: {fileID: 21300000, guid: b20bc07c35bc78b4692e6c7b2351cd77, type: 3}
+  passSprite: {fileID: 21300000, guid: a428fa5c5837f24469ca34755ade56c3, type: 3}
   pressedColor:
     serializedVersion: 2
     rgba: 4291348680

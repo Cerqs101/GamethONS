@@ -10,6 +10,7 @@ public class HitController : MonoBehaviour
 {
     [SerializeField] private Sprite hitSprite;
     [SerializeField] private Sprite missSprite;
+    [SerializeField] private Sprite passSprite;
     [SerializeField] private Color32 pressedColor = new Color32(200, 200, 200, 255);
     [SerializeField] private Color32 unpressedColor = new Color32(255, 255, 255, 255);
     [SerializeField] public KeyCode keyToPress = KeyCode.Z;
@@ -79,11 +80,17 @@ public class HitController : MonoBehaviour
         // Debug.Log($"Acertou! {LevelManager.hits}");
     }
 
-    public void Miss()
+    public void Miss(bool unclicked=false)
     {
+        Sprite sprite;
+        if(unclicked)
+            sprite = passSprite;
+        else
+            sprite = missSprite;
+
         SoundManager.instance.PlayNoteMissSfx();
         LevelManager.misses++;
-        hitDisplay.SetTemporarySprite(missSprite);
+        hitDisplay.SetTemporarySprite(sprite);
         // Debug.Log($"Errou... {LevelManager.misses}");
     }
 
