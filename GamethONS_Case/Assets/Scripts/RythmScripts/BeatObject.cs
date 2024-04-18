@@ -35,9 +35,12 @@ public class BeatObject : MonoBehaviour
         if(Mathf.Abs(distanceDifference) <= 1)
             hittable = true;
         
-        if(distanceDifference < -1)
+        if(hittable && distanceDifference < -1)
+        {
+            hittable=false;
             hit.Miss(true);
-        if(distanceDifference < -4)
+        }
+        if(distanceDifference < -3)
             Destroy(this.gameObject);
 
     }

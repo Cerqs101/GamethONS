@@ -80,11 +80,20 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public IEnumerator StartEncounter(float durationInMeasures=0f)
+    public IEnumerator Encounter(ScriptGalinha obj, float durationInMeasures=0f)
     {
         if(durationInMeasures == 0f)
             durationInMeasures = measuresPerEncounter;
 
+        StartEncounter();
+        yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
+        StartCoroutine(StopEncounter());
+
+        SolveEncounter(obj);
+    }
+
+    public void StartEncounter()
+    {
         hits = 0;
         misses = 0;
             
@@ -93,8 +102,8 @@ public class LevelManager : MonoBehaviour
 
         Time.timeScale = 0;
 
-        yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
-        StartCoroutine(StopEncounter());
+        // yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
+        // StartCoroutine(StopEncounter(obj));
     }
 
 
@@ -106,10 +115,15 @@ public class LevelManager : MonoBehaviour
 
         isEncounterHappening = false;
         Time.timeScale = 1;
-        
+    }
+
+
+    public void SolveEncounter(ScriptGalinha obj)
+    {
+        Destroy(obj.gameObject);
+
         float accuracy = (float)hits/(hits+misses);
         AcurracyConsequences(accuracy);
-        
     }
 
 
