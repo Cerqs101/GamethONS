@@ -357,7 +357,6 @@ MonoBehaviour:
   musicBarObject: {fileID: 137664520}
   fill: {fileID: 755465543}
   borderImage: {fileID: 532218919}
-
   standarBorderCollor:
     serializedVersion: 2
     rgba: 4286545791
@@ -895,7 +894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa82cba1b4e86d249a3333b6b29d16db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
   imagem: {fileID: 532218919}
 --- !u!1001 &594284978
 PrefabInstance:
