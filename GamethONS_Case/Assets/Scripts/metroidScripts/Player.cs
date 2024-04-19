@@ -23,7 +23,10 @@ public class Player : MonoBehaviour
     private const float DashTime = .2f;
     private const float DashCooldown = .2f;
 
-    private bool doubleJump;
+    private bool _doubleJump;
+
+    private bool _isWallSliding;
+    private const float WallSlidingSpeed = 2f;
     
     private float _horizontal;
     private bool _isFacingRight = true;
@@ -39,10 +42,13 @@ public class Player : MonoBehaviour
     
     [SerializeField] private bool hasDash; // Player possui a habilidade dash
     [SerializeField] private bool has2Jump; // Player possui a habilidade pulo duplo
+    [SerializeField] private bool hasWallJump; // Player possui a habilidade pulo na parede
     
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private LayerMask wallLayer;
     [SerializeField] private TrailRenderer trailRenderer;
     
     
@@ -62,26 +68,37 @@ public class Player : MonoBehaviour
         if (_isDashing) return;
         
         _horizontal = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(_horizontal * Speed, rb.velocity.y);
+        Flip();
+        Jump();
+        WallSlide();
+        // Dash --
+        if (hasDash && Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
+        {
+            StartCoroutine(Co_Dash());
+        }
+        // -- Dash
+    }
 
-        // Pulo --
+    private void Jump()
+    {
         if (IsGrounded()) _coyoteTimer = CoyoteTimerMax;
         else _coyoteTimer -= Time.deltaTime;
 
         if (Input.GetButtonDown("Jump")) _jumpBufferTimer = JumpBufferTimerMax;
         else _jumpBufferTimer -= Time.deltaTime;
 
-        if (IsGrounded() && !Input.GetButton("Jump")) doubleJump = false;
+        if (IsGrounded() && !Input.GetButton("Jump")) _doubleJump = false;
 
         if (_jumpBufferTimer > 0f) // Equivalente a if (Input.GetButtonDown("Jump"))
         {
             if ((_coyoteTimer > 0f && !_isJumping && Time.timeScale > 0f)
-                || (doubleJump && has2Jump))
+                || (_doubleJump && has2Jump))
             {
-
                 rb.velocity = new Vector2(rb.velocity.x, JumpPower);
 
                 _jumpBufferTimer = 0f;
-                doubleJump = !doubleJump;
+                _doubleJump = !_doubleJump;
 
                 StartCoroutine(Co_JumpCooldown());
             }
@@ -97,17 +114,20 @@ public class Player : MonoBehaviour
 
             _coyoteTimer = 0f;
         }
-        // -- Pulo
-        
-        rb.velocity = new Vector2(_horizontal * Speed, rb.velocity.y);
-        Flip();
-        
-        // Dash --
-        if (hasDash && Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
+    }
+    
+    private void WallSlide()
+    {
+        if (hasWallJump && IsWalled() && !IsGrounded() && _horizontal != 0f)
         {
-            StartCoroutine(Co_Dash());
+            _isWallSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x,
+                Mathf.Clamp(rb.velocity.y, -WallSlidingSpeed, float.MaxValue));
         }
-        // -- Dash
+        else
+        {
+            _isWallSliding = false;
+        }
     }
     
     private void Flip()
@@ -126,6 +146,12 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, radius, groundLayer);
     }
 
+    private bool IsWalled()
+    {
+        const float radius = .2f;
+        return Physics2D.OverlapCircle(wallCheck.position, radius, wallLayer);
+    }
+    
     private IEnumerator Co_JumpCooldown()
     {
         _isJumping = true;
