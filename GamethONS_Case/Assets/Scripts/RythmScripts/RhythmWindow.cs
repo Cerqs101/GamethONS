@@ -4,11 +4,11 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class RythmWindow : MonoBehaviour
+public class RhythmWindow : MonoBehaviour
 {
     private Camera virtualCamera;
     private SpriteRenderer spriteRenderer;
-    public static RythmWindow Instance;
+    public static RhythmWindow Instance;
 
 
     void Start()

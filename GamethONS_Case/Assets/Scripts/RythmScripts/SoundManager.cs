@@ -8,12 +8,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public AudioSource music;
     [SerializeField] private float songStartingTime = 0f;
     
-    public static SoundManager instance;
+    public static SoundManager Instance;
 
 
     void Start()
     {
-        instance = this;
+        Instance = this;
     }
 
 
@@ -24,13 +24,13 @@ public class SoundManager : MonoBehaviour
 
     public static double GetAudioTime(){
         // return (double) instance.music.timeSamples / instance.music.clip.frequency;
-        return instance.music.time;
+        return Instance.music.time;
     }
 
 
     public void PlayMusic(){
-        instance.music.time = songStartingTime;
-        instance.music.Play();
+        Instance.music.time = songStartingTime;
+        Instance.music.Play();
     }
 
 
