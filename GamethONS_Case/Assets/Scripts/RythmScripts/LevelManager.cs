@@ -28,8 +28,8 @@ public class LevelManager : MonoBehaviour
 
     public static int hits = 0;
     public static int misses = 0;
-    public static float highAccuracyThreshold = 0.9f;
-    public static float midAccuracyThreshold = 0.7f;
+    public static float highAccuracyThreshold = 0.8f;
+    public static float midAccuracyThreshold = 0.6f;
 
     private Player player;
     public double secondsPerEncounter;
