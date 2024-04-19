@@ -1,5 +1,5 @@
 /*
- * Dash, Coyote Time, Jump Buffer vieram deste canal:
+ * Dash, Coyote Time, Jump Buffer, Wall Jump, Wall Slide vieram deste canal:
  * https://www.youtube.com/@bendux
  */
 
