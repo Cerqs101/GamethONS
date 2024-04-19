@@ -27,7 +27,15 @@ public class Player : MonoBehaviour
 
     private bool _isWallSliding;
     private const float WallSlidingSpeed = 2f;
-    
+
+    private bool _isWallJumping;
+    private float _wallJumpingDirection;
+    private const float WallJumpingTime = .2f;
+    private float _wallJumpingCounter;
+    private const float WallJumpingDuration = .4f;
+    private readonly Vector2 WallJumpingPower = new(Speed, JumpPower);
+
+
     private float _horizontal;
     private bool _isFacingRight = true;
 
@@ -57,7 +65,7 @@ public class Player : MonoBehaviour
         vidaAtual = vidaMax;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Movement();
     }
@@ -68,10 +76,15 @@ public class Player : MonoBehaviour
         if (_isDashing) return;
         
         _horizontal = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(_horizontal * Speed, rb.velocity.y);
-        Flip();
+        if (!_isWallJumping)
+        {
+            rb.velocity = new Vector2(_horizontal * Speed, rb.velocity.y);
+            if ((_isFacingRight && _horizontal < 0f) || (!_isFacingRight && _horizontal > 0f))
+                Flip();
+        }
         Jump();
         WallSlide();
+        WallJump();
         // Dash --
         if (hasDash && Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
         {
@@ -118,7 +131,9 @@ public class Player : MonoBehaviour
     
     private void WallSlide()
     {
-        if (hasWallJump && IsWalled() && !IsGrounded() && _horizontal != 0f)
+        if (!hasWallJump) return;
+        
+        if (IsWalled() && !IsGrounded() && _horizontal != 0f)
         {
             _isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x,
@@ -129,11 +144,45 @@ public class Player : MonoBehaviour
             _isWallSliding = false;
         }
     }
+
+    private void WallJump()
+    {
+        if (!hasWallJump) return;
+        
+        if (_isWallSliding)
+        {
+            _isWallJumping = false;
+            // localScale.x é -1 se player estiver olhando para a esquerda, +1 para a direita
+            _wallJumpingDirection = -transform.localScale.x;
+            _wallJumpingCounter = WallJumpingTime;
+            
+            CancelInvoke(nameof(StopWallJumping));
+        }
+        else
+        {
+            _wallJumpingCounter -= Time.deltaTime;
+        }
+
+        if (Input.GetButtonDown("Jump") && _wallJumpingCounter > 0f)
+        {
+            _isWallJumping = true;
+            rb.velocity = new Vector2(_wallJumpingDirection, 1) * WallJumpingPower;
+            _wallJumpingCounter = 0f;
+            
+            if (transform.localScale.x != _wallJumpingDirection)
+                Flip();
+            
+            Invoke(nameof(StopWallJumping), WallJumpingDuration);
+        }
+    }
+
+    private void StopWallJumping()
+    {
+        _isWallJumping = false;
+    }
     
     private void Flip()
     {
-        if (!(_isFacingRight && _horizontal < 0f || !_isFacingRight && _horizontal > 0f)) return;
-        
         _isFacingRight = !_isFacingRight;
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
