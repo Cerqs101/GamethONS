@@ -21,12 +21,14 @@ public class Player : MonoBehaviour
     private bool _isDashing;
     private const float DashPower = 24f;
     private const float DashTime = .2f;
-    private const float DashCooldown = 1f;
+    private const float DashCooldown = .2f;
+
+    private bool doubleJump;
     
     private float _horizontal;
     private bool _isFacingRight = true;
 
-    private bool _isJumping = false;
+    private bool _isJumping;
     private const float JumpCooldown = .4f;
     
     private float _coyoteTimer;
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     private const float JumpBufferTimerMax = .2f;
     
     [SerializeField] private bool hasDash; // Player possui a habilidade dash
+    [SerializeField] private bool has2Jump; // Player possui a habilidade pulo duplo
     
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -66,14 +69,22 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump")) _jumpBufferTimer = JumpBufferTimerMax;
         else _jumpBufferTimer -= Time.deltaTime;
-        
-        if (_jumpBufferTimer > 0f && _coyoteTimer > 0f && !_isJumping && Time.timeScale > 0f)
+
+        if (IsGrounded() && !Input.GetButton("Jump")) doubleJump = false;
+
+        if (_jumpBufferTimer > 0f) // Equivalente a if (Input.GetButtonDown("Jump"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, JumpPower);
+            if ((_coyoteTimer > 0f && !_isJumping && Time.timeScale > 0f)
+                || (doubleJump && has2Jump))
+            {
 
-            _jumpBufferTimer = 0f;
+                rb.velocity = new Vector2(rb.velocity.x, JumpPower);
 
-            StartCoroutine(Co_JumpCooldown());
+                _jumpBufferTimer = 0f;
+                doubleJump = !doubleJump;
+
+                StartCoroutine(Co_JumpCooldown());
+            }
         }
         
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
@@ -138,6 +149,7 @@ public class Player : MonoBehaviour
         rb.gravityScale = originalGravity;
         _isDashing = false;
 
+        yield return new WaitUntil(IsGrounded); // Dash só reseta qnd pisa no chão
         yield return new WaitForSeconds(DashCooldown);
         _canDash = true;
     }

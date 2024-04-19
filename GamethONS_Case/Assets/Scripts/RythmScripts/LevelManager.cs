@@ -28,8 +28,9 @@ public class LevelManager : MonoBehaviour
     public static int hits = 0;
     public static int misses = 0;
 
-    public static float highAccuracyThreshold = 0.8f;
-    public static float midAccuracyThreshold = 0.6f;
+    // Comentei isso pq unity não estava deixando rodar o jogo
+    // public static float highAccuracyThreshold = 0.8f;
+    // public static float midAccuracyThreshold = 0.6f;
 
     private Player player;
     public static LevelManager Instance;
