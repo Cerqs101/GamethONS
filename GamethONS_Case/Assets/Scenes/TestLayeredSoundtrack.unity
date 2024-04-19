@@ -724,7 +724,7 @@ MonoBehaviour:
   secondsPerEncounter: 0
   highAccuracyThreshold: 0.9
   midAccuracyThreshold: 0.7
-  midiFilePath: ./Music/track01.mid
+  midiFilePath: ./Music/Track01/track01.mid
 --- !u!1 &461923780
 GameObject:
   m_ObjectHideFlags: 0
