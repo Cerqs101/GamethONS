@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public static bool noteGeneration = false;
 
 
+
     public float bpm = 60f;
     [SerializeField] private float beatsPerMeasure = 4f; // time signature
     [SerializeField] private float measuresPerEncounter = 2f; 
@@ -27,10 +28,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public float midAccuracyThreshold = 0.7f;
     public static int hits = 0;
     public static int misses = 0;
-
-    // Comentei isso pq unity não estava deixando rodar o jogo
-    // public static float highAccuracyThreshold = 0.8f;
-    // public static float midAccuracyThreshold = 0.6f;
 
     private Player player;
     public static LevelManager Instance;
@@ -60,7 +57,7 @@ public class LevelManager : MonoBehaviour
         if(!hasLevelStarted)
         {
             if(Input.anyKeyDown){
-                FindObjectOfType<SoundManager>().Invoke("PlayMusic", musicStartDelay);
+                SoundManager.Instance.Invoke("PlayAllSongs", musicStartDelay);
                 hasLevelStarted = true;
             }
         }
@@ -127,6 +124,8 @@ public class LevelManager : MonoBehaviour
 
         float accuracy = (float)hits/(hits+misses);
         AcurracyConsequences(accuracy);
+
+        SoundManager.Instance.StartNextSongLayer();
     }
 
 
