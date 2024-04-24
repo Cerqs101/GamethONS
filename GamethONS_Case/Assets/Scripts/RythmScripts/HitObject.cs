@@ -24,10 +24,6 @@ public class HitObject : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // for(int i = 0; i < transform.childCount; i++)
-        //     if(transform.GetChild(i).GetComponent<HitDisplay>() != null){
-        //         hitDisplay = transform.GetChild(i).gameObject.GetComponent<HitDisplay>();
-        //     }
         hitDisplay = transform.GetComponentInChildren<HitDisplay>();
     }
 
@@ -45,24 +41,28 @@ public class HitObject : MonoBehaviour
 
     private void TryToHitBeat()
     {
-        List<BeatObject> beats = FindBeats();
-
+        List<BeatObject> beats = FindAllBeats();
         if (beats.Count() != 0)
         {
             BeatObject closestBeat = GetClosestBeat(beats.ToArray());
 
             if (Input.GetKeyDown(keyToPress) && closestBeat.hittable)
-            {
-                Destroy(closestBeat.gameObject);
-                if (closestBeat.distanceDifference <= 0.5)
-                    Hit();
-                else
-                    Miss();
-            }
+                SolveHitAttempt(closestBeat);
         }
     }
 
-    public List<BeatObject> FindBeats(){
+
+    public void SolveHitAttempt(BeatObject beat)
+    {
+        Destroy(beat.gameObject);
+        if (beat.distanceDifference <= 0.5)
+            Hit();
+        else
+            Miss();
+    }
+
+
+    public List<BeatObject> FindAllBeats(){
         List<BeatObject> beats = new List<BeatObject>();
         foreach(BeatObject beat in FindObjectsByType<BeatObject>(FindObjectsSortMode.None))
             if(beat.noteName == noteRestriction)
@@ -70,13 +70,14 @@ public class HitObject : MonoBehaviour
         return beats;
     }
 
+
     public void Hit()
     {
         SoundManager.Instance.PlayNoteHitSfx();
         Encounter.hits++;
         hitDisplay.SetTemporarySprite(hitSprite);
-        // Debug.Log($"Acertou! {LevelManager.hits}");
     }
+
 
     public void Miss(bool unclicked=false)
     {
@@ -89,8 +90,8 @@ public class HitObject : MonoBehaviour
         SoundManager.Instance.PlayNoteMissSfx();
         Encounter.misses++;
         hitDisplay.SetTemporarySprite(sprite);
-        // Debug.Log($"Errou... {LevelManager.misses}");
     }
+
 
     public BeatObject GetClosestBeat(BeatObject[] beats)
     {

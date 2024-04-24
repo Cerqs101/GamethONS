@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private List<AudioSource> songs = new List<AudioSource>();
+    private List<AudioSource> songLayers = new List<AudioSource>();
     [SerializeField] private float songStartingTime = 0f;
-    [SerializeField] private float fadeInTime = 1f;
+    [SerializeField] private float fadeInDuration = 1f;
     
     private static int currentSongLayer = 0;
     
@@ -20,11 +20,10 @@ public class SoundManager : MonoBehaviour
         Instance = this;
 
         foreach(Encounter encounter in FindObjectsByType<Encounter>(FindObjectsSortMode.None))
-            songs.Add(encounter.songLayer);
+            songLayers.Add(encounter.songLayer);
 
-        for(int i = currentSongLayer; i < songs.Count(); i++)
-            songs[i].volume = 0;
-        
+        for(int i = currentSongLayer; i < songLayers.Count(); i++)
+            songLayers[i].volume = 0;
     }
 
 
@@ -35,27 +34,28 @@ public class SoundManager : MonoBehaviour
 
     public void StartNextSongLayer()
     {
-        if(currentSongLayer+1 < songs.Count())
+        if(currentSongLayer+1 < songLayers.Count())
         {
             currentSongLayer++;
-            songs[currentSongLayer].volume = 1;
+            FadeIn(songLayers[currentSongLayer]);
         }
     }
 
+
     public void StartSongLayer(AudioSource songLayer)
     {
-        StartCoroutine(FadeIn(songLayer, fadeInTime));
+        StartCoroutine(FadeIn(songLayer, fadeInDuration));
     }
 
 
     public static double GetAudioTime(){
         // return (double) instance.music.timeSamples / instance.music.clip.frequency;
-        return Instance.songs[0].time;
+        return Instance.songLayers[0].time;
     }
 
 
     public void PlayAllSongs(){
-        foreach(AudioSource song in songs)
+        foreach(AudioSource song in songLayers)
             PlaySong(song);
     }
 

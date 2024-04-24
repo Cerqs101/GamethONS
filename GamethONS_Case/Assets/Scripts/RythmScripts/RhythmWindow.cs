@@ -25,19 +25,23 @@ public class RhythmWindow : MonoBehaviour
         if (LevelManager.isEncounterHappening)
         {
             if(spriteRenderer.enabled != true)
-                changeChildrenSpriteRendererEnable(true, transform);
+            {
+                changeChildrenSpriteRendererEnableState(true, transform);
                 spriteRenderer.enabled = true;
+            }
         }
         else
         {
             if(spriteRenderer.enabled != false)
-                changeChildrenSpriteRendererEnable(false, transform);
+            {
+                changeChildrenSpriteRendererEnableState(false, transform);
                 spriteRenderer.enabled = false;
+            }
         }
     }
 
 
-    void changeChildrenSpriteRendererEnable(bool state, Transform transform)
+    void changeChildrenSpriteRendererEnableState(bool state, Transform transform)
     {
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -46,7 +50,7 @@ public class RhythmWindow : MonoBehaviour
             if (childSpriteRenderer != null)
                 childSpriteRenderer.enabled = state;
             if(transform.GetChild(i).childCount != 0)
-                changeChildrenSpriteRendererEnable(state, child);
+                changeChildrenSpriteRendererEnableState(state, child);
         }
     }
 }

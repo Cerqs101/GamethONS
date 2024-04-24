@@ -13,8 +13,8 @@ using System.Linq;
 public class LaneObject : MonoBehaviour
 {
     [SerializeField] public static float xDistanceToHit = 8;
+    [NonSerialized] public List<double> timeStamps = new List<double>(); // in seconds
     private int spawnIndex = 0;
-    public List<double> timeStamps = new List<double>(); // in seconds
     private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
     [SerializeField] private GameObject beatPrefab;
@@ -37,7 +37,6 @@ public class LaneObject : MonoBehaviour
     void Update()
     {
         if (spawnIndex < timeStamps.Count)
-        {
             if (LevelManager.timeSinceStarted >= timeStamps[spawnIndex])
             {
                 if (LevelManager.noteGeneration)
@@ -47,7 +46,6 @@ public class LaneObject : MonoBehaviour
                 }
                 spawnIndex++;
             }
-        }
     }
 
 
@@ -65,18 +63,14 @@ public class LaneObject : MonoBehaviour
 
     public int histPerEncounter(){
         int qtdBeats = 0;
-        foreach(double stamps in timeStamps){
-            
-        Encounter encounter = null;
-        foreach(Encounter currentEncounter in FindObjectsByType<Encounter>(FindObjectsSortMode.None))
-            if(currentEncounter.isHappening)
-                encounter = currentEncounter;
-
+        foreach(double stamps in timeStamps)
+        {    
+            Encounter encounter = Encounter.GetCurrentEncounter();
             if(stamps >= LevelManager.timeSinceStarted && stamps <= LevelManager.timeSinceStarted + encounter.secondsPerEncounter){
                 qtdBeats++;
             }
         }
-    return qtdBeats;
+        return qtdBeats;
     }
 
 }

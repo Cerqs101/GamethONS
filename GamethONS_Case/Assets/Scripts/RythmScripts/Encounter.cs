@@ -6,13 +6,12 @@ using System;
 public class Encounter : MonoBehaviour
 {
     [SerializeField] public AudioSource songLayer;
+
     [SerializeField] private float measuresInEncounter = 4f;
     [NonSerialized] public double secondsPerEncounter;
-
     public static int hits = 0;
     public static int misses = 0;
-
-    public bool isHappening = false;
+    [NonSerialized] public bool isHappening = false;
 
 
     void Start()
@@ -20,30 +19,29 @@ public class Encounter : MonoBehaviour
         secondsPerEncounter = measuresInEncounter * LevelManager.Instance.measureDuration;
     }
 
+
     // Update is called once per frame
     void Update()
     {
 
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("Colisao foi com o player");
-            StartCoroutine(MakeEncounter(measuresInEncounter));
-        }
+            StartCoroutine(RunEncounter());
     }
 
-    public IEnumerator MakeEncounter(float durationInMeasures = 4f)
-    {
 
+    public IEnumerator RunEncounter()
+    {
         StartEncounter();
         yield return new WaitForSecondsRealtime((float)secondsPerEncounter);
         yield return StopEncounter();
-
         SolveEncounter();
     }
+
 
     public void StartEncounter()
     {
@@ -55,9 +53,6 @@ public class Encounter : MonoBehaviour
         isHappening = true;
 
         Time.timeScale = 0;
-
-        // yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
-        // StartCoroutine(StopEncounter(obj));
     }
 
 
@@ -69,6 +64,7 @@ public class Encounter : MonoBehaviour
 
         isHappening = false;
         LevelManager.isEncounterHappening = false;
+
         Time.timeScale = 1;
     }
 
@@ -83,4 +79,13 @@ public class Encounter : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+
+    public static Encounter GetCurrentEncounter()
+    {
+        Encounter encounter = null;
+        foreach(Encounter currentEncounter in FindObjectsByType<Encounter>(FindObjectsSortMode.None))
+            if(currentEncounter.isHappening)
+                encounter = currentEncounter;
+        return encounter;
+    }
 }

@@ -11,55 +11,66 @@ public class MusicBarObject : MonoBehaviour
     public GameObject musicBarObject;
     public MusicBarFill fill;
     public Image borderImage;
-    [SerializeField] Color32 standarBorderCollor = new Color32(127,127,127,255);
+    [SerializeField] Color32 standarBorderCollor = new Color32(127, 127, 127, 255);
 
 
-    void Start(){
+    void Start()
+    {
         //musicBarObject.SetActive(false);
         fill = FindObjectOfType<MusicBarFill>();
         borderImage = FindObjectOfType<MusicBarBorder>().imagem;
     }
 
 
-    void Update(){
-        if(LevelManager.isEncounterHappening){
+    void Update()
+    {
+        if (LevelManager.isEncounterHappening)
+        {
             borderImage.color = standarBorderCollor;
-            if(isToSetMusicBar){
+            if (isToSetMusicBar)
+            {
                 setMaxValueMusicBar();
                 isToSetMusicBar = false;
             }
             SetValueMusicBar();
             ChangeFillColor();
         }
-        if(!LevelManager.isEncounterHappening){
+        if (!LevelManager.isEncounterHappening)
+        {
             isToSetMusicBar = true;
             slider.maxValue = 0;
-            borderImage.color = new Color(0,0,0,0);
+            borderImage.color = new Color(0, 0, 0, 0);
         }
-    }   
+    }
 
 
-    public void setMaxValueMusicBar(){
+    public void setMaxValueMusicBar()
+    {
         LaneObject[] lanes = FindObjectsByType<LaneObject>(FindObjectsSortMode.None);
-        foreach(LaneObject lane in lanes)
-            slider.maxValue += lane.histPerEncounter()*2;
-    }
-
-    
-    public void SetValueMusicBar(){
-        slider.value =  slider.maxValue/2 + (Encounter.hits - Encounter.misses);
+        foreach (LaneObject lane in lanes)
+            slider.maxValue += lane.histPerEncounter() * 2;
     }
 
 
-    void ChangeFillColor(){
+    public void SetValueMusicBar()
+    {
+        slider.value = slider.maxValue / 2 + (Encounter.hits - Encounter.misses);
+    }
 
-        if(slider.value >= slider.maxValue*LevelManager.Instance.highAccuracyThreshold){
+
+    void ChangeFillColor()
+    {
+
+        if (slider.value >= slider.maxValue * LevelManager.Instance.highAccuracyThreshold)
+        {
             fill.imagen.color = fill.perfectColor;
         }
-        else if(slider.value >= slider.maxValue*LevelManager.Instance.midAccuracyThreshold){
+        else if (slider.value >= slider.maxValue * LevelManager.Instance.midAccuracyThreshold)
+        {
             fill.imagen.color = fill.goodColor;
         }
-        else{
+        else
+        {
             fill.imagen.color = fill.errorColor;
         }
     }

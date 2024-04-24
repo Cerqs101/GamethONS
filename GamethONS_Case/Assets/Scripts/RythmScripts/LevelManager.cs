@@ -9,7 +9,7 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] public float musicStartDelay = 0f;         // in seconds
+    [NonSerialized] public float musicStartDelay = 0f;         // in seconds
     public static double timeSinceStarted = 0;                   // in seconds
     public static bool hasLevelStarted = false;
 
@@ -19,11 +19,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float hitDelay = 0f;
 
 
-
     [SerializeField] public float bpm = 60f;
     [SerializeField] private float beatsPerMeasure = 4f; // time signature
     [NonSerialized] public double measureDuration;   
-    // [NonSerialized] public double secondsPerEncounter;
 
     [SerializeField] public float highAccuracyThreshold = 0.9f;
     [SerializeField] public float midAccuracyThreshold = 0.7f;
@@ -32,7 +30,6 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
     public static MidiFile midiFile;
     [SerializeField] public string midiFilePath;
-
 
 
     void Start()
@@ -53,12 +50,10 @@ public class LevelManager : MonoBehaviour
             timeSinceStarted += Time.unscaledDeltaTime;
 
         if(!hasLevelStarted)
-        {
             if(Input.anyKeyDown){
                 SoundManager.Instance.Invoke("PlayAllSongs", musicStartDelay);
                 hasLevelStarted = true;
             }
-        }
     }
 
 
@@ -68,26 +63,27 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public static Melanchall.DryWetMidi.Interaction.Note[] GetDataFromMidi()
+    public static Note[] GetDataFromMidi()
     {
         midiFile = FindObjectOfType<LevelManager>().ReadMidiFileFromDisc();
-        var notes = midiFile.GetNotes();
-        var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
+        ICollection<Note> notes = midiFile.GetNotes();
+        Note[] array = new Note[notes.Count];
         notes.CopyTo(array, 0);
         return array;
     }
 
 
-    public void AcurracyConsequences(float playerAccuracy){
-        float dano;
+    public void AcurracyConsequences(float playerAccuracy)
+    {
+        float damage;
         if(playerAccuracy >= highAccuracyThreshold)
-            dano = Mathf.Pow(2, (playerAccuracy-highAccuracyThreshold)*16) * -1;
+            damage = Mathf.Pow(2, (playerAccuracy-highAccuracyThreshold)*16) * -1;
         else if(playerAccuracy >= midAccuracyThreshold)
-            dano = 0f;
+            damage = 0f;
         else
-            dano = (10*(midAccuracyThreshold-playerAccuracy))+1;
+            damage = (10*(midAccuracyThreshold-playerAccuracy))+1;
 
-        player.AplicaDano((int) Mathf.Round(dano));
+        player.AplicaDano((int) Mathf.Round(damage));
         FindObjectOfType<ScriptLogic>().subtraiVida();
     }
 

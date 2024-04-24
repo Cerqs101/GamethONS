@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HitDisplay : MonoBehaviour
 {
-    private Coroutine currentCoroutine;
-    private bool isCoroutineRunning = false;
+    private Coroutine currentFadeOut;
+    private bool isFadingOut = false;
+
     private SpriteRenderer spriteRenderer;
 
 
@@ -18,18 +19,17 @@ public class HitDisplay : MonoBehaviour
     public void SetTemporarySprite(Sprite sprite, float waitTime=1f)
     {
         ChangeSprite(sprite);
-        isCoroutineRunning = true;
-        currentCoroutine = StartCoroutine(FadeOut(waitTime));
-        isCoroutineRunning = false;
+        isFadingOut = true;
+        currentFadeOut = StartCoroutine(FadeOut(waitTime));
     }
 
 
     public void ChangeSprite(Sprite sprite)
     {
-        if(isCoroutineRunning)
+        if(isFadingOut)
         {
-            isCoroutineRunning = false;
-            StopCoroutine(currentCoroutine);
+            StopCoroutine(currentFadeOut);
+            isFadingOut = false;
         }
         spriteRenderer.color = new Color32(255, 255, 255, 255);
         spriteRenderer.sprite = sprite;
@@ -39,11 +39,12 @@ public class HitDisplay : MonoBehaviour
     private IEnumerator FadeOut(float waitTime=0.5f)
     {
         float waitPerLoop = waitTime/255f;
-        Color32 lessAlpha = new Color32(0,0,0,1);
+        Color32 opacityReduction = new Color32(0,0,0,1);
         while(spriteRenderer.color != new Color32(255,255,255,0))
         {
-            spriteRenderer.color -= lessAlpha;
+            spriteRenderer.color -= opacityReduction;
             yield return new WaitForSecondsRealtime(waitPerLoop);
         }
+        isFadingOut = false;
     }
 }

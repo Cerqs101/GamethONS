@@ -17,6 +17,7 @@ public class BeatObject : MonoBehaviour
     void Start()
     {
         noteSpeed = FindObjectOfType<LevelManager>().bpm * 4 / 60f;
+        
         foreach(HitObject currentHit in FindObjectsByType<HitObject>(FindObjectsSortMode.None))
             if(currentHit.noteRestriction == noteName)
                 hit = currentHit;
@@ -46,7 +47,8 @@ public class BeatObject : MonoBehaviour
     }
 
 
-    void MoveBeat(float x, float y){
+    void MoveBeat(float x, float y)
+    {
         transform.position += new Vector3(x, y, 0f);
     }
 }
