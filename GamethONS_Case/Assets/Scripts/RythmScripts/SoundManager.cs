@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] public AudioSource[] songs;
+    private List<AudioSource> songs = new List<AudioSource>();
     [SerializeField] private float songStartingTime = 0f;
+    [SerializeField] private float fadeInTime = 1f;
     
     private static int currentSongLayer = 0;
     
@@ -17,8 +18,13 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-        for(int i = currentSongLayer+1; i < songs.Count(); i++)
+
+        foreach(Encounter encounter in FindObjectsByType<Encounter>(FindObjectsSortMode.None))
+            songs.Add(encounter.songLayer);
+
+        for(int i = currentSongLayer; i < songs.Count(); i++)
             songs[i].volume = 0;
+        
     }
 
 
@@ -34,6 +40,11 @@ public class SoundManager : MonoBehaviour
             currentSongLayer++;
             songs[currentSongLayer].volume = 1;
         }
+    }
+
+    public void StartSongLayer(AudioSource songLayer)
+    {
+        StartCoroutine(FadeIn(songLayer, fadeInTime));
     }
 
 
@@ -62,5 +73,16 @@ public class SoundManager : MonoBehaviour
 
     public void PlayNoteMissSfx(){
         // Debug.Log("O MAYY GAAA");
+    }
+
+    private IEnumerator FadeIn(AudioSource songLayer, float waitTime=1f)
+    {
+        float intensity = 0.01f;
+        float waitPerLoop = waitTime*intensity;
+        while(songLayer.volume != 1)
+        {
+            songLayer.volume += intensity;
+            yield return new WaitForSecondsRealtime(waitPerLoop);
+        }
     }
 }

@@ -29,13 +29,10 @@ public class ScriptGalinha : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colisao aconteceu");
+        // Debug.Log("Colisao aconteceu");
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Colisao foi com o player");
-            // player.AplicaDano(dano);
-            // logic.subtraiVida();
-            StartCoroutine(LevelManager.Instance.Encounter(this));
+            // Debug.Log("Colisao foi com o player");
         }
     }
 }

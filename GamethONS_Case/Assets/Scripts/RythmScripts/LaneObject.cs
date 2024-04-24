@@ -66,7 +66,13 @@ public class LaneObject : MonoBehaviour
     public int histPerEncounter(){
         int qtdBeats = 0;
         foreach(double stamps in timeStamps){
-            if(stamps >= LevelManager.timeSinceStarted && stamps <= LevelManager.timeSinceStarted + LevelManager.Instance.secondsPerEncounter){
+            
+        Encounter encounter = null;
+        foreach(Encounter currentEncounter in FindObjectsByType<Encounter>(FindObjectsSortMode.None))
+            if(currentEncounter.isHappening)
+                encounter = currentEncounter;
+
+            if(stamps >= LevelManager.timeSinceStarted && stamps <= LevelManager.timeSinceStarted + encounter.secondsPerEncounter){
                 qtdBeats++;
             }
         }
