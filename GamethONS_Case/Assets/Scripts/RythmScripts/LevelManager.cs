@@ -16,13 +16,14 @@ public class LevelManager : MonoBehaviour
     public static bool isEncounterHappening = false;
     public static bool noteGeneration = false;
 
+    [SerializeField] private float hitDelay = 0f;
+
 
 
     public float bpm = 60f;
     [SerializeField] private float beatsPerMeasure = 4f; // time signature
-    [SerializeField] private float measuresPerEncounter = 2f; 
-    private double measureDuration;   
-    public double secondsPerEncounter;  
+    public double measureDuration;   
+    // public double secondsPerEncounter;  
 
     [SerializeField] public float highAccuracyThreshold = 0.9f;
     [SerializeField] public float midAccuracyThreshold = 0.7f;
@@ -41,11 +42,11 @@ public class LevelManager : MonoBehaviour
         Instance = this;
 
         // bea = midiFile.GetTempoMap().GetTempoAtTime(???); // <-- para tentar fazer no futuro futuro
-        musicStartDelay = LaneObject.xDistanceToHit / (bpm * 4 / 60f);
+        musicStartDelay = (LaneObject.xDistanceToHit / (bpm * 4 / 60f)) + hitDelay;
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
         midiFile = ReadMidiFileFromDisc();
         player = FindFirstObjectByType<Player>();
-        secondsPerEncounter = measuresPerEncounter * measureDuration;
+        // secondsPerEncounter = measuresPerEncounter * measureDuration;
     }
 
 
@@ -80,10 +81,9 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public IEnumerator Encounter(ScriptGalinha obj, float durationInMeasures=0f)
+    public IEnumerator Encounter(GameObject obj, float durationInMeasures=4f)
     {
-        if(durationInMeasures == 0f)
-            durationInMeasures = measuresPerEncounter;
+        obj.GetComponent<Encounter>().isHappening = true;
 
         StartEncounter();
         yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
     {
         hits = 0;
         misses = 0;
-            
+        
         noteGeneration = true;
         isEncounterHappening = true;
 
@@ -118,14 +118,14 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void SolveEncounter(ScriptGalinha obj)
+    public void SolveEncounter(GameObject obj)
     {
-        Destroy(obj.gameObject);
-
         float accuracy = (float)hits/(hits+misses);
         AcurracyConsequences(accuracy);
 
-        SoundManager.Instance.StartNextSongLayer();
+        SoundManager.Instance.StartSongLayer(obj.GetComponent<Encounter>().songLayer);
+
+        Destroy(obj);
     }
 
 
