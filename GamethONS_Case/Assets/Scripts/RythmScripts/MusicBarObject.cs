@@ -47,7 +47,7 @@ public class MusicBarObject : MonoBehaviour
 
     
     public void SetValueMusicBar(){
-        slider.value =  slider.maxValue/2 + (LevelManager.hits - LevelManager.misses);
+        slider.value =  slider.maxValue/2 + (Encounter.hits - Encounter.misses);
     }
 
 

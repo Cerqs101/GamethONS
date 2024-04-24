@@ -9,7 +9,7 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    private float musicStartDelay = 0f;         // in seconds
+    [SerializeField] public float musicStartDelay = 0f;         // in seconds
     public static double timeSinceStarted = 0;                   // in seconds
     public static bool hasLevelStarted = false;
 
@@ -20,20 +20,18 @@ public class LevelManager : MonoBehaviour
 
 
 
-    public float bpm = 60f;
+    [SerializeField] public float bpm = 60f;
     [SerializeField] private float beatsPerMeasure = 4f; // time signature
-    public double measureDuration;   
-    // public double secondsPerEncounter;  
+    [NonSerialized] public double measureDuration;   
+    // [NonSerialized] public double secondsPerEncounter;
 
     [SerializeField] public float highAccuracyThreshold = 0.9f;
     [SerializeField] public float midAccuracyThreshold = 0.7f;
-    public static int hits = 0;
-    public static int misses = 0;
 
     private Player player;
     public static LevelManager Instance;
     public static MidiFile midiFile;
-    public string midiFilePath;
+    [SerializeField] public string midiFilePath;
 
 
 
@@ -46,7 +44,6 @@ public class LevelManager : MonoBehaviour
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
         midiFile = ReadMidiFileFromDisc();
         player = FindFirstObjectByType<Player>();
-        // secondsPerEncounter = measuresPerEncounter * measureDuration;
     }
 
 
@@ -81,55 +78,7 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public IEnumerator Encounter(GameObject obj, float durationInMeasures=4f)
-    {
-        obj.GetComponent<Encounter>().isHappening = true;
-
-        StartEncounter();
-        yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
-        yield return StopEncounter();
-
-        SolveEncounter(obj);
-    }
-
-    public void StartEncounter()
-    {
-        hits = 0;
-        misses = 0;
-        
-        noteGeneration = true;
-        isEncounterHappening = true;
-
-        Time.timeScale = 0;
-
-        // yield return new WaitForSecondsRealtime((float)(measureDuration*durationInMeasures));
-        // StartCoroutine(StopEncounter(obj));
-    }
-
-
-    public IEnumerator StopEncounter()
-    {
-        noteGeneration = false;
-        
-        yield return new WaitForSecondsRealtime(musicStartDelay);
-
-        isEncounterHappening = false;
-        Time.timeScale = 1;
-    }
-
-
-    public void SolveEncounter(GameObject obj)
-    {
-        float accuracy = (float)hits/(hits+misses);
-        AcurracyConsequences(accuracy);
-
-        SoundManager.Instance.StartSongLayer(obj.GetComponent<Encounter>().songLayer);
-
-        Destroy(obj);
-    }
-
-
-    private void AcurracyConsequences(float playerAccuracy){
+    public void AcurracyConsequences(float playerAccuracy){
         float dano;
         if(playerAccuracy >= highAccuracyThreshold)
             dano = Mathf.Pow(2, (playerAccuracy-highAccuracyThreshold)*16) * -1;
