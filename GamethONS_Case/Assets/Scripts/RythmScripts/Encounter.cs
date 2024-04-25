@@ -76,8 +76,10 @@ public class Encounter : MonoBehaviour
         float accuracy = (float)hits / (hits + misses);
         LevelManager.Instance.AcurracyConsequences(accuracy);
 
-        SoundManager.Instance.StartSongLayer(songLayer);
-        rhythmWindow.gameObject.SetActive(true);
+        if(songLayer != null)
+            SoundManager.Instance.StartSongLayer(songLayer);
+        if(rhythmWindow != null)
+            rhythmWindow.gameObject.SetActive(true);
 
         Destroy(this.gameObject);
     }
