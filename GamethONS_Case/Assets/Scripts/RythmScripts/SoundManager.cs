@@ -7,6 +7,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private List<AudioSource> songLayers = new List<AudioSource>();
+    [SerializeField] private AudioSource firstSongLayer;
     [SerializeField] private float songStartingTime = 0f;
     [SerializeField] private float fadeInDuration = 1f;
     
@@ -19,11 +20,14 @@ public class SoundManager : MonoBehaviour
     {
         Instance = this;
 
+        songLayers.Add(firstSongLayer);
         foreach(Encounter encounter in FindObjectsByType<Encounter>(FindObjectsSortMode.None))
             songLayers.Add(encounter.songLayer);
 
         for(int i = currentSongLayer; i < songLayers.Count(); i++)
             songLayers[i].volume = 0;
+        
+        firstSongLayer.volume = 1;
     }
 
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
@@ -8,19 +9,20 @@ public class RhythmWindow : MonoBehaviour
 {
     private Camera virtualCamera;
     private SpriteRenderer spriteRenderer;
-    public static RhythmWindow Instance;
+    private Vector3 distanceFromCenter;
 
 
     void Start()
     {
         virtualCamera = FindObjectOfType<Camera>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        distanceFromCenter = new Vector3(0f, 2f + transform.position.y - transform.parent.position.y, 1f);
     }
 
 
     void Update()
     {
-        transform.position = virtualCamera.transform.position + new Vector3(0f, 2f, 1f);
+        transform.position = virtualCamera.transform.position + distanceFromCenter;
 
         if (LevelManager.isEncounterHappening)
         {

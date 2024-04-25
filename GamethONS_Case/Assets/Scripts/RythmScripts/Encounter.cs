@@ -6,12 +6,14 @@ using System;
 public class Encounter : MonoBehaviour
 {
     [SerializeField] public AudioSource songLayer;
+    [SerializeField] private RhythmWindow rhythmWindow;
 
     [SerializeField] private float measuresInEncounter = 4f;
     [NonSerialized] public double secondsPerEncounter;
     public static int hits = 0;
     public static int misses = 0;
     [NonSerialized] public bool isHappening = false;
+
 
 
     void Start()
@@ -75,6 +77,7 @@ public class Encounter : MonoBehaviour
         LevelManager.Instance.AcurracyConsequences(accuracy);
 
         SoundManager.Instance.StartSongLayer(songLayer);
+        rhythmWindow.gameObject.SetActive(true);
 
         Destroy(this.gameObject);
     }
