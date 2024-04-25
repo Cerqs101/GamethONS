@@ -22,7 +22,8 @@ public class SoundManager : MonoBehaviour
 
         songLayers.Add(firstSongLayer);
         foreach(Encounter encounter in FindObjectsByType<Encounter>(FindObjectsSortMode.None))
-            songLayers.Add(encounter.songLayer);
+            if(encounter.songLayer != null)
+                songLayers.Add(encounter.songLayer);
 
         for(int i = currentSongLayer; i < songLayers.Count(); i++)
             songLayers[i].volume = 0;
