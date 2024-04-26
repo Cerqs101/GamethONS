@@ -5,20 +5,21 @@ using UnityEngine.UI;
 public class MusicBarObject : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField]public Color32 errorColor = new Color32(207,38,53,255);
+    [SerializeField]public Color32 goodColor = new Color32(39,115,185,255);
+    [SerializeField]public Color32 perfectColor = new Color32(54,207,38,255);
     bool isToSetMusicBar = true;
 
     public Slider slider;
-    public GameObject musicBarObject;
-    public MusicBarFill fill;
-    public Image borderImage;
+    public  Image fill;
+
+    private Image borderImage;
     [SerializeField] Color32 standarBorderCollor = new Color32(127, 127, 127, 255);
 
 
     void Start()
     {
-        //musicBarObject.SetActive(false);
-        fill = FindObjectOfType<MusicBarFill>();
-        borderImage = FindObjectOfType<MusicBarBorder>().imagem;
+        borderImage = this.gameObject.transform.GetChild(0).GetComponent<Image>();
     }
 
 
@@ -63,15 +64,15 @@ public class MusicBarObject : MonoBehaviour
 
         if (slider.value >= slider.maxValue * LevelManager.Instance.highAccuracyThreshold)
         {
-            fill.imagen.color = fill.perfectColor;
+            fill.color = perfectColor;
         }
         else if (slider.value >= slider.maxValue * LevelManager.Instance.midAccuracyThreshold)
         {
-            fill.imagen.color = fill.goodColor;
+            fill.color = goodColor;
         }
         else
         {
-            fill.imagen.color = fill.errorColor;
+            fill.color = errorColor;
         }
     }
 }
