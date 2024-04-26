@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
         Instance = this;
 
         // bea = midiFile.GetTempoMap().GetTempoAtTime(???); // <-- para tentar fazer no futuro futuro
-        musicStartDelay = (LaneObject.xDistanceToHit / (bpm * 4 / 60f)) + hitDelay;
+        musicStartDelay = (LaneObject.xDistanceToHit / (bpm * 4 / 60f)) - hitDelay;
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
         midiFile = ReadMidiFileFromDisc();
         player = FindFirstObjectByType<Player>();
