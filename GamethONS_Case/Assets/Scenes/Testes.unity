@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b110b8937560f64439493cf10214e707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitDelay: 0
+  hitDelay: 0.05
   bpm: 160
   beatsPerMeasure: 3
   highAccuracyThreshold: 0.9
@@ -2677,7 +2677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1201030618}
   m_Layer: 0
-  m_Name: Inimugos
+  m_Name: Encontros
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
