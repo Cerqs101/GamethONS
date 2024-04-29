@@ -309,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 101439465}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.83974, y: -1, z: -10}
+  m_LocalPosition: {x: -3.1585302, y: -1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2449,16 +2449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94b64fd474586b4f95e5029d8ea945f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  errorColor:
-    serializedVersion: 2
-    rgba: 4281673423
-  goodColor:
-    serializedVersion: 2
-    rgba: 4290343719
-  perfectColor:
-    serializedVersion: 2
-    rgba: 4280733494
-  imagen: {fileID: 1052923122}
 --- !u!114 &1052923122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3645,7 +3635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa82cba1b4e86d249a3333b6b29d16db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagem: {fileID: 1628855705}
 --- !u!114 &1628855705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4574,10 +4563,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a811ffcdec37dde48b8c8c722f75c8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  errorColor:
+    serializedVersion: 2
+    rgba: 4281673423
+  goodColor:
+    serializedVersion: 2
+    rgba: 4290343719
+  perfectColor:
+    serializedVersion: 2
+    rgba: 4280733494
   slider: {fileID: 2036422603}
-  musicBarObject: {fileID: 2036422600}
-  fill: {fileID: 1052923121}
-  borderImage: {fileID: 1628855705}
+  fill: {fileID: 1052923122}
   standarBorderCollor:
     serializedVersion: 2
     rgba: 4286545791
