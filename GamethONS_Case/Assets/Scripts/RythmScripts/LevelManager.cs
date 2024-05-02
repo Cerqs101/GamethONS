@@ -10,7 +10,7 @@ using System;
 public class LevelManager : MonoBehaviour
 {
     [NonSerialized] public float musicStartDelay = 0f;         // in seconds
-    public static double timeSinceStarted = 0;                   // in seconds
+    public static double timeInSongLoop = 0;                   // in seconds
     public static bool hasLevelStarted = false;
 
     public static bool isEncounterHappening = false;
@@ -47,13 +47,21 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if(hasLevelStarted)
-            timeSinceStarted += Time.unscaledDeltaTime;
+            timeInSongLoop += Time.unscaledDeltaTime;
 
         if(!hasLevelStarted)
-            if(Input.anyKeyDown){
+            if(Input.anyKeyDown)
+            {
                 SoundManager.Instance.Invoke("PlayAllSongs", musicStartDelay);
                 hasLevelStarted = true;
             }
+        
+        if(timeInSongLoop >= SoundManager.GetAudioLenght() + musicStartDelay)
+        {   
+            foreach(LaneObject lane in FindObjectsByType<LaneObject>(FindObjectsSortMode.None))
+                lane.spawnIndex = 0;
+            timeInSongLoop = musicStartDelay;
+        }
     }
 
 

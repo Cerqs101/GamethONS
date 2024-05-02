@@ -49,7 +49,7 @@ public class MusicBarObject : MonoBehaviour
     {
         LaneObject[] lanes = FindObjectsByType<LaneObject>(FindObjectsSortMode.None);
         foreach (LaneObject lane in lanes)
-            slider.maxValue += lane.histPerEncounter() * 2;
+            slider.maxValue += lane.histInEncounter() * 2;
     }
 
 

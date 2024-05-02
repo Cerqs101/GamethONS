@@ -14,7 +14,7 @@ public class LaneObject : MonoBehaviour
 {
     [SerializeField] public static float xDistanceToHit = 8;
     [NonSerialized] public List<double> timeStamps = new List<double>(); // in seconds
-    private int spawnIndex = 0;
+    public int spawnIndex = 0;
     private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
     [SerializeField] private GameObject beatPrefab;
@@ -37,7 +37,7 @@ public class LaneObject : MonoBehaviour
     void Update()
     {
         if (spawnIndex < timeStamps.Count)
-            if (LevelManager.timeSinceStarted >= timeStamps[spawnIndex])
+            if (LevelManager.timeInSongLoop >= timeStamps[spawnIndex])
             {
                 if (LevelManager.noteGeneration)
                 {
@@ -61,15 +61,27 @@ public class LaneObject : MonoBehaviour
         }
     }
 
-    public int histPerEncounter(){
+    public int histInEncounter(){
+        Encounter encounter = Encounter.GetCurrentEncounter();
+        double songLegth = SoundManager.GetAudioLenght();
+
+        int songLoopsInEncounter = (int) Mathf.Floor((float) (encounter.secondsInEncounter/songLegth));
+        if(LevelManager.timeInSongLoop + encounter.secondsInEncounter > songLegth)
+            songLoopsInEncounter +=1;
+
         int qtdBeats = 0;
-        foreach(double stamps in timeStamps)
-        {    
-            Encounter encounter = Encounter.GetCurrentEncounter();
-            if(stamps >= LevelManager.timeSinceStarted && stamps <= LevelManager.timeSinceStarted + encounter.secondsPerEncounter){
+        qtdBeats += songLoopsInEncounter*hitsInInterval(0, songLegth);
+        qtdBeats += hitsInInterval(LevelManager.timeInSongLoop, LevelManager.timeInSongLoop + encounter.secondsInEncounter - (songLoopsInEncounter*songLegth));
+        return qtdBeats;
+    }
+
+
+    private int hitsInInterval(double start, double end)
+    {
+        int qtdBeats = 0;
+        foreach(double stamp in timeStamps)    
+            if(stamp >= start && stamp <= end)
                 qtdBeats++;
-            }
-        }
         return qtdBeats;
     }
 

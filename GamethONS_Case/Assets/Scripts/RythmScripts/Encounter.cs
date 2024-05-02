@@ -9,7 +9,7 @@ public class Encounter : MonoBehaviour
     [SerializeField] private RhythmWindow rhythmWindow;
 
     [SerializeField] private float measuresInEncounter = 4f;
-    [NonSerialized] public double secondsPerEncounter;
+    [NonSerialized] public double secondsInEncounter;
     public static int hits = 0;
     public static int misses = 0;
     [NonSerialized] public bool isHappening = false;
@@ -18,7 +18,7 @@ public class Encounter : MonoBehaviour
 
     void Start()
     {
-        secondsPerEncounter = measuresInEncounter * LevelManager.Instance.measureDuration;
+        secondsInEncounter = measuresInEncounter * LevelManager.Instance.measureDuration;
     }
 
 
@@ -39,7 +39,7 @@ public class Encounter : MonoBehaviour
     public IEnumerator RunEncounter()
     {
         StartEncounter();
-        yield return new WaitForSecondsRealtime((float)secondsPerEncounter);
+        yield return new WaitForSecondsRealtime((float)secondsInEncounter);
         yield return StopEncounter();
         SolveEncounter();
     }

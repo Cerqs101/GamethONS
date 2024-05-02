@@ -7,7 +7,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private List<AudioSource> songLayers = new List<AudioSource>();
-    [SerializeField] private AudioSource firstSongLayer;
+    [SerializeField] public AudioSource firstSongLayer;
     [SerializeField] private float songStartingTime = 0f;
     [SerializeField] private float fadeInDuration = 1f;
     
@@ -27,7 +27,6 @@ public class SoundManager : MonoBehaviour
 
         for(int i = currentSongLayer; i < songLayers.Count(); i++)
             songLayers[i].volume = 0;
-        
         firstSongLayer.volume = 1;
     }
 
@@ -53,9 +52,19 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    public static double GetAudioTime(){
+    public static double GetAudioTime(AudioSource audio = null){
         // return (double) instance.music.timeSamples / instance.music.clip.frequency;
-        return Instance.songLayers[0].time;
+        if(audio == null)
+            audio = Instance.songLayers[0];
+        return audio.time;
+    }
+
+
+    public static double GetAudioLenght(AudioSource audio = null)
+    { 
+        if(audio == null)
+            audio = Instance.songLayers[0];
+        return audio.clip.length;
     }
 
 

@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 153108953}
   - component: {fileID: 153108956}
   - component: {fileID: 153108955}
-  - component: {fileID: 153108954}
   m_Layer: 5
   m_Name: border
   m_TagString: Untagged
@@ -303,19 +302,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0014648438, y: -0.000022888184}
   m_SizeDelta: {x: -0.49560547, y: -0.9049988}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &153108954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153108952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa82cba1b4e86d249a3333b6b29d16db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imagem: {fileID: 153108955}
 --- !u!114 &153108955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,6 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnIndex: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 1895733181}
 --- !u!212 &326763606
@@ -997,7 +984,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1150,7 +1137,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1461,7 +1448,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.78, y: 14.15, z: -0.37504905}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1009856920}
   - {fileID: 1237575605}
@@ -1513,6 +1500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnIndex: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 838230741}
 --- !u!212 &892430487
@@ -1673,7 +1661,6 @@ GameObject:
   - component: {fileID: 985558613}
   - component: {fileID: 985558616}
   - component: {fileID: 985558615}
-  - component: {fileID: 985558614}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -1700,25 +1687,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0006713867, y: 0}
   m_SizeDelta: {x: -0.0014038, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &985558614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985558612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94b64fd474586b4f95e5029d8ea945f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  errorColor:
-    rgba: 4281673423
-  goodColor:
-    rgba: 4290343719
-  perfectColor:
-    rgba: 4280733494
-  imagen: {fileID: 985558615}
 --- !u!114 &985558615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,7 +2210,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2342,6 +2310,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 201361718492216122, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 201361718492216122, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 721517628132694441, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
@@ -25823,6 +25795,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Encounter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: songLayer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: measuresInEncounter
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7649796221366203537, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.63
@@ -25929,6 +25909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnIndex: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 1978302264}
 --- !u!212 &2005418963
