@@ -60,6 +60,12 @@ public class SoundManager : MonoBehaviour
     }
 
 
+    public static void SetTimeToAllSongLayers(float time)
+    {
+        foreach(AudioSource songLayer in Instance.songLayers)
+            songLayer.time = time + Instance.songStartingTime;
+    }
+
     public static double GetAudioLenght(AudioSource audio = null)
     { 
         if(audio == null)

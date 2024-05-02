@@ -6,6 +6,7 @@ using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
 using System;
+using Unity.Burst.Intrinsics;
 
 public class LevelManager : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class LevelManager : MonoBehaviour
     public static MidiFile midiFile;
     [SerializeField] public string midiFilePath;
 
+    private float commonSongAndBeatDisalingment;
+
 
     void Start()
     {
@@ -46,6 +49,9 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
+        commonSongAndBeatDisalingment *= 0.7f;
+        commonSongAndBeatDisalingment += ((float)timeInSongLoop - SoundManager.Instance.firstSongLayer.time)*0.3f;
+
         if(hasLevelStarted)
             timeInSongLoop += Time.unscaledDeltaTime;
 
@@ -62,6 +68,11 @@ public class LevelManager : MonoBehaviour
                 lane.spawnIndex = 0;
             timeInSongLoop = musicStartDelay;
         }
+
+        if(SoundManager.Instance.firstSongLayer.isPlaying 
+        && Mathf.Round((float)timeInSongLoop - SoundManager.Instance.firstSongLayer.time) != Math.Round(commonSongAndBeatDisalingment))
+            SoundManager.SetTimeToAllSongLayers((float)(timeInSongLoop - musicStartDelay));
+
     }
 
 
