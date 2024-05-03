@@ -10,11 +10,11 @@ using System.Linq;
 // using Melanchall.DryWetMidi.Interaction.TempoMap;
 // using Melanchall.DryWetMidi.MusicTheory;
 
-public class LaneObject : MonoBehaviour
+public class BeatCreator : MonoBehaviour
 {
     [SerializeField] public static float xDistanceToHit = 8;
     [NonSerialized] public List<double> timeStamps = new List<double>(); // in seconds
-    public int spawnIndex = 0;
+    [NonSerialized] public int spawnIndex = 0;
     private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
     [SerializeField] private GameObject beatPrefab;
@@ -84,5 +84,4 @@ public class LaneObject : MonoBehaviour
                 qtdBeats++;
         return qtdBeats;
     }
-
 }

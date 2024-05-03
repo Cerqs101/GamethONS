@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,10 @@ using UnityEngine.UIElements;
 
 public class BeatObject : MonoBehaviour
 {
-    public float noteSpeed;
-    public bool hittable = false;
-    public float distanceDifference;
-    public Melanchall.DryWetMidi.MusicTheory.NoteName noteName;
+    [NonSerialized] public float noteSpeed;
+    [NonSerialized] public bool hittable = false;
+    [NonSerialized] public float distanceDifference;
+    [NonSerialized] public Melanchall.DryWetMidi.MusicTheory.NoteName noteName;
 
     private HitObject hit;
 
@@ -43,7 +44,6 @@ public class BeatObject : MonoBehaviour
         }
         if(distanceDifference < -3)
             Destroy(this.gameObject);
-
     }
 
 

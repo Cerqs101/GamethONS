@@ -32,7 +32,6 @@ public class LevelManager : MonoBehaviour
     public static MidiFile midiFile;
     [SerializeField] public string midiFilePath;
 
-    private float commonSongAndBeatDisalingment;
 
 
     void Start()
@@ -40,7 +39,7 @@ public class LevelManager : MonoBehaviour
         Instance = this;
 
         // bea = midiFile.GetTempoMap().GetTempoAtTime(???); // <-- para tentar fazer no futuro futuro
-        musicStartDelay = (LaneObject.xDistanceToHit / (bpm * 4 / 60f)) - hitDelay;
+        musicStartDelay = (BeatCreator.xDistanceToHit / (bpm * 4 / 60f)) - hitDelay;
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
         midiFile = ReadMidiFileFromDisc();
         player = FindFirstObjectByType<Player>();
@@ -49,9 +48,6 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        commonSongAndBeatDisalingment *= 0.7f;
-        commonSongAndBeatDisalingment += ((float)timeInSongLoop - SoundManager.Instance.firstSongLayer.time)*0.3f;
-
         if(hasLevelStarted)
             timeInSongLoop += Time.unscaledDeltaTime;
 
@@ -64,15 +60,10 @@ public class LevelManager : MonoBehaviour
         
         if(timeInSongLoop >= SoundManager.GetAudioLenght() + musicStartDelay)
         {   
-            foreach(LaneObject lane in FindObjectsByType<LaneObject>(FindObjectsSortMode.None))
+            foreach(BeatCreator lane in FindObjectsByType<BeatCreator>(FindObjectsSortMode.None))
                 lane.spawnIndex = 0;
             timeInSongLoop = musicStartDelay;
         }
-
-        if(SoundManager.Instance.firstSongLayer.isPlaying 
-        && Mathf.Round((float)timeInSongLoop - SoundManager.Instance.firstSongLayer.time) != Math.Round(commonSongAndBeatDisalingment))
-            SoundManager.SetTimeToAllSongLayers((float)(timeInSongLoop - musicStartDelay));
-
     }
 
 
