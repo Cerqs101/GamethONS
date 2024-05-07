@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private const float DashCooldown = .2f;
 
     private bool _doubleJump;
+    private bool _jump;
 
     private bool _isWallSliding;
     private const float WallSlidingSpeed = 2f;
@@ -32,8 +33,8 @@ public class Player : MonoBehaviour
     private float _wallJumpingDirection;
     private const float WallJumpingTime = .2f;
     private float _wallJumpingCounter;
-    private const float WallJumpingDuration = .4f;
-    private readonly Vector2 WallJumpingPower = new(Speed, JumpPower);
+    private const float WallJumpingDuration = .2f;
+    private readonly Vector2 _wallJumpingPower = new(Speed, JumpPower);
 
 
     private float _horizontal;
@@ -101,8 +102,13 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump")) _jumpBufferTimer = JumpBufferTimerMax;
         else _jumpBufferTimer -= Time.deltaTime;
 
-        if (IsGrounded() && !Input.GetButton("Jump")) _doubleJump = false;
-
+        if (IsGrounded() && !Input.GetButton("Jump"))
+        {
+            _doubleJump = false;
+            _jump = false;
+        }
+        if (!IsGrounded() && !_doubleJump && !_jump) _doubleJump = true;
+        
         if (_jumpBufferTimer > 0f) // Equivalente a if (Input.GetButtonDown("Jump"))
         {
             if ((_coyoteTimer > 0f && !_isJumping && Time.timeScale > 0f)
@@ -112,6 +118,7 @@ public class Player : MonoBehaviour
 
                 _jumpBufferTimer = 0f;
                 _doubleJump = !_doubleJump;
+                _jump = true;
 
                 StartCoroutine(Co_JumpCooldown());
             }
@@ -166,7 +173,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && _wallJumpingCounter > 0f)
         {
             _isWallJumping = true;
-            rb.velocity = new Vector2(_wallJumpingDirection, 1) * WallJumpingPower;
+            rb.velocity = new Vector2(_wallJumpingDirection, 1) * _wallJumpingPower;
             _wallJumpingCounter = 0f;
             
             if (transform.localScale.x != _wallJumpingDirection)
