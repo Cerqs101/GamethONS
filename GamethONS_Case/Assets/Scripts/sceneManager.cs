@@ -12,5 +12,11 @@ public class sceneManager : MonoBehaviour
     public void PlayCredits(){
         SceneManager.LoadScene("Creditos", LoadSceneMode.Single);
     }
+        public void GoToMainMenu(){
+        SceneManager.LoadScene("Menu Principal", LoadSceneMode.Single);
+    }
+        public void Plays(){
+        SceneManager.LoadScene("FaseWallJump", LoadSceneMode.Single);
+    }
 
 }
