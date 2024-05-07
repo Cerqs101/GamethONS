@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: 84a36ac5880a9d24e871d44fcb9f6380
+  - enabled: 1
+    path: Assets/Scenes/FaseWallJump.unity
+    guid: 2367d7f1bc752fe4f8a9e7170030777e
+  - enabled: 1
+    path: Assets/Scenes/Menu Principal.unity
+    guid: e85f4e62450f3024faa18c11989d3472
+  - enabled: 1
+    path: Assets/Scenes/Teste Fase.unity
+    guid: da9f298f4b5e41346901b7b9c6d25987
+  - enabled: 1
+    path: Assets/Scenes/Testes.unity
+    guid: 1b50b5d4eb180f64d885c7eaf3e6abb8
   m_configObjects: {}
