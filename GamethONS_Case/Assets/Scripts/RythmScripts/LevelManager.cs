@@ -7,6 +7,7 @@ using System.IO;
 using UnityEngine.Networking;
 using System;
 using Unity.Burst.Intrinsics;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -97,4 +98,17 @@ public class LevelManager : MonoBehaviour
         FindObjectOfType<ScriptLogic>().subtraiVida();
     }
 
+
+    public IEnumerator EndGame()
+    {
+        float waitTime = 5f;
+        SoundManager.Instance.FadeOutAllSongLayers(waitTime);
+        StartCoroutine(FindObjectOfType<SceneFadeObject>().FadeIn());
+        yield return new WaitForSecondsRealtime(waitTime);
+
+        hasLevelStarted = false;
+        timeInSongLoop = 0;
+        
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
+    }
 }

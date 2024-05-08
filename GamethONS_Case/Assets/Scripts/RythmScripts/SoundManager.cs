@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    private List<AudioSource> songLayers = new List<AudioSource>();
+    public List<AudioSource> songLayers = new List<AudioSource>();
     [SerializeField] public AudioSource firstSongLayer;
     [SerializeField] private float songStartingTime = 0f;
     [SerializeField] private float fadeInDuration = 1f;
@@ -109,10 +109,27 @@ public class SoundManager : MonoBehaviour
     {
         float intensity = 0.01f;
         float waitPerLoop = waitTime*intensity;
-        while(songLayer.volume != 1)
+        while(songLayer.volume < 1)
         {
             songLayer.volume += intensity;
             yield return new WaitForSecondsRealtime(waitPerLoop);
         }
+    }
+
+    private IEnumerator FadeOut(AudioSource songLayer, float waitTime=1f)
+    {
+        float intensity = 0.01f;
+        float waitPerLoop = waitTime*intensity;
+        while(songLayer.volume > 0)
+        {
+            songLayer.volume -= intensity;
+            yield return new WaitForSecondsRealtime(waitPerLoop);
+        }
+    }
+
+    public void FadeOutAllSongLayers(float waitTime=1f)
+    {
+        foreach(AudioSource songLayer in songLayers)
+            StartCoroutine(FadeOut(songLayer, waitTime));
     }
 }
