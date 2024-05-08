@@ -1,22 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class sceneManager : MonoBehaviour
+public class SceneManager : MonoBehaviour
 {
+    public static SceneManager instance;
     // Start is called before the first frame update
-    public void EndGame(){
+
+    private void Start()
+    {
+        instance = this;
+    }
+
+
+    public void EndGame()
+    {
         Application.Quit();
     }
-    public void PlayCredits(){
-        SceneManager.LoadScene("Creditos", LoadSceneMode.Single);
+
+
+    public void PlayCredits()
+    {
+        StartCoroutine(PlayScene("Creditos"));
     }
-        public void GoToMainMenu(){
-        SceneManager.LoadScene("Menu Principal", LoadSceneMode.Single);
+
+
+    public void GoToMainMenu(bool fade=true)
+    {
+        StartCoroutine(PlayScene("Menu Principal", fade));
     }
-        public void Plays(){
-        SceneManager.LoadScene("FaseWallJump", LoadSceneMode.Single);
+
+
+    public void Plays()
+    {
+        StartCoroutine(PlayScene("FaseWallJump", true));
+    }
+
+
+    public IEnumerator PlayScene(string scene, bool fade=false)
+    {
+        if(fade)
+        {
+            SceneFadeObject sceneFadeObject = SceneFadeObject.instance;
+            StartCoroutine(sceneFadeObject.FadeIn());
+            yield return new WaitForSeconds(sceneFadeObject.waitTime);
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
 }

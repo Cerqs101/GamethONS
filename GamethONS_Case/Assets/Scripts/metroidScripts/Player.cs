@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private const float Speed = 8f;
     private const float JumpPower = 16f;
 
+    private bool _isAlive = true;
     private bool _canDash = true;
     private bool _isDashing;
     private const float DashPower = 24f;
@@ -68,7 +69,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        if(_isAlive)
+            Movement();
     }
 
     
@@ -241,9 +243,8 @@ public class Player : MonoBehaviour
         vidaAtual -= dano;
         Debug.Log("Chegamo aqui" + dano);   
         if( vidaAtual <= 0)
-        {
-            Destroy(gameObject);
-        }
+            Morrer();
+        
     }
 
     public void GetPowerUp(PowerUps powerUp)
@@ -253,5 +254,12 @@ public class Player : MonoBehaviour
     [Serializable]
     public enum PowerUps
     {
+    }
+
+
+    public void Morrer()
+    {
+        _isAlive = false;
+        StartCoroutine(LevelManager.Instance.EndGame());
     }
 }
