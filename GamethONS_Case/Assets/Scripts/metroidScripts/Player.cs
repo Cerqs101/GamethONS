@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private const float JumpPower = 16f;
 
     private bool _isAlive = true;
+    public bool _canMove = true;
     private bool _canDash = true;
     private bool _isDashing;
     private const float DashPower = 24f;
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(_isAlive)
+        if(_isAlive && _canMove)
             Movement();
     }
 
