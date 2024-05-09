@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +7,11 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public List<AudioSource> songLayers = new List<AudioSource>();
+    [NonSerialized] public List<AudioSource> songLayers = new List<AudioSource>();
     [SerializeField] public AudioSource firstSongLayer;
     [SerializeField] private float songStartingTime = 0f;
     [SerializeField] private float fadeInDuration = 1f;
+    [SerializeField] private bool playFirstSongLayerOnAwake = true;
     
     private static int currentSongLayer = 0;
     
@@ -29,7 +31,8 @@ public class SoundManager : MonoBehaviour
 
         for(int i = currentSongLayer; i < songLayers.Count(); i++)
             songLayers[i].volume = 0;
-        firstSongLayer.volume = 1;
+        if(playFirstSongLayerOnAwake)
+            StartCoroutine(FadeIn(firstSongLayer));
     }
 
 
@@ -105,7 +108,7 @@ public class SoundManager : MonoBehaviour
         // Debug.Log("O MAYY GAAA");
     }
 
-    private IEnumerator FadeIn(AudioSource songLayer, float waitTime=1f)
+    public IEnumerator FadeIn(AudioSource songLayer, float waitTime=1f)
     {
         float intensity = 0.01f;
         float waitPerLoop = waitTime*intensity;
@@ -116,7 +119,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeOut(AudioSource songLayer, float waitTime=1f)
+    public IEnumerator FadeOut(AudioSource songLayer, float waitTime=1f)
     {
         float intensity = 0.01f;
         float waitPerLoop = waitTime*intensity;
@@ -131,5 +134,11 @@ public class SoundManager : MonoBehaviour
     {
         foreach(AudioSource songLayer in songLayers)
             StartCoroutine(FadeOut(songLayer, waitTime));
+    }
+
+    public void addToSongLayers(AudioSource song)
+    {
+        song.volume = 0;
+        songLayers.Add(song);
     }
 }

@@ -263,4 +263,10 @@ public class Player : MonoBehaviour
         _isAlive = false;
         StartCoroutine(LevelManager.Instance.EndGame());
     }
+
+    public void StopMovemnt()
+    {
+        _canMove = false;
+        rb.velocity = new Vector2(0,0);
+    }
 }

@@ -67,6 +67,7 @@ public class DialogBox : MonoBehaviour
 
     public void ActivateDialogBox()
     {
+        player.StopMovemnt();
         player._canMove = false;
         textBox.SetActive(true);
     }

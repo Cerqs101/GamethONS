@@ -1,0 +1,63 @@
+Oh, está funcionando!
+Se tudo funcionou, você entende português, não é?
+Bem vindo ao mundo, meu querido robozinho!
+Eu sou seu inventor, é um prazer conhecê-lo!
+Você é um rapazinho muito importante, mas ainda tem muito o que aprender sobre si e sobre o mundo...
+...Então sem mais delongas, avance para a direita para começar o seu treinamento!
+...
+Ahn? Eu? Ah, não se preocupe comigo, vou ficar por aqui.
+Mas pode ficar tranquilo, você tem um rádio imbutido. Vou falar com você de longe!
+Vamos, vá para direita!
+
+<Place Holder daqui pra frente>
+Água vai te machucar. Não caia nela.
+Você vai morrer, e isso não é uma ideia muito boa.
+Aperte [Z] para pular.
+
+Boa. Você também consegue se propulcionar no ar, mas só uma vez.
+Aperte [Z] no ar para dar o pulo duplo.
+
+Muito bem.
+Agora que você sabe como se mexer sem se machucar, vamos falar do seu propósito.
+Adicionar usinas para o SIN e concertar os periféricos pelo caminho.
+É como se você estivesse participando, conduzindo e melhorando uma orquestra gigantesca! Uma orquestra elétrica!
+Uma que ajuda as pessoas, que ilumina a vida delas!
+Por enquanto, temos apenas uma usina. Ande um pouco e você já deve conseguir ouvir o som dela!
+
+Está ouvindo? Esse é o ritmo dessa usina, e temos que levar ele em consideração quando formos mexer no SIN.
+Toda vez que você mexer no SIN, você verá uma tela com <hit> e <beatCreator> com <beats> saindo dele.
+Aperte, nos <beats> quando eles chegarem no <hit>. Isso vai te ajudar a seguir o ritmo do SIN.
+Olha só, ali na frente tem um <encontro_menor>. Experimente!
+
+Tirou onda.
+Você pode ter percebido uma barra colorida subindo e descendo.
+Essa é a sua <vida>.
+O resultado do seu concerto depende da sua performance como maestro elétrico.
+Se você seguir quase perfeitamente o ritmo do SIN, sua bara fica verde e você ganha <vida>.
+Entretanto, se você for muito mal isso pode gerar alguns danos pra você.
+Você pode acabar com um fusível queimado!
+Nesses casos, sua barra fica vermelha e você perde <vida>!
+Também existe a possibilidade de você realizar a tarefa sem se machucar, mas sem ir muito bem.
+Nesse caso, nada acontece com você e sua barra é azul!
+Então lembre-se, busque sempre deixar a barra verde. Azul está tudo bem, e vermelho é perigo!
+Vamos, faça mais alguns concertos. Com bastante cuidado pra não se machucar!
+
+Só que nem todos os <encontros_menores> tem a mesma facilidade.
+Alguns <encontros_menores> vão te exiger mais tempo pra concertar.
+Ou seja, mais tempo seguinto o ritmo!
+Ali na frente tem um <encontro_menor_um_pouco_maior>. Tente de novo!
+
+Isso ai. Você pegou o jeito.
+Bem, o som dessa usina não tá muito legal, né?
+Acho que ela pode estar danificada.
+Por sorte ela está logo ali na frente. Por que não a concertamos?
+É importante dizer que as usinas são as mais complicadas de concertar.
+Então você vai conduzir o SIN por mais tempo que o normal.
+Com isso dito, você consegue! Mete bronca!
+
+Bravo! Bravíssimo!
+Com a união de diversas usinas ao SIN, seus sons vão harmozinando e começamos a formar uma linda sinfônia.
+Entretando, uma mais complexa de operar.
+Essa usina já estava no SIN, mas quando formos integrar mais, eles irão criar mais linhas.
+Ou seja, você vai ser que apertar mais de um botão ao mesmo tempo.
+Avante, oh bravo automato musical! A energia do Brasil cai sob suas mãos!
