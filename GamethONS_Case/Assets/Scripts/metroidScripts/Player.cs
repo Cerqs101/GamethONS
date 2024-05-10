@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         if (!_isWallJumping)
         {
             rb.velocity = new Vector2(_horizontal * Speed, rb.velocity.y);
-            if ((_isFacingRight && _horizontal < 0f) || (!_isFacingRight && _horizontal > 0f))
+            if (Time.timeScale != 0 && (_isFacingRight && _horizontal < 0f) || (!_isFacingRight && _horizontal > 0f))
                 Flip();
         }
         Jump();
@@ -179,10 +179,11 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(_wallJumpingDirection, 1) * _wallJumpingPower;
             _wallJumpingCounter = 0f;
             
-            if (transform.localScale.x != _wallJumpingDirection)
+            if (Time.timeScale != 0 && transform.localScale.x != _wallJumpingDirection)
                 Flip();
             
             Invoke(nameof(StopWallJumping), WallJumpingDuration);
+            _doubleJump = !_doubleJump;
         }
     }
 
