@@ -61,6 +61,9 @@ public class SoundManager : MonoBehaviour
 
     public void StartSongLayer(AudioSource songLayer)
     {
+        if(songLayer == firstSongLayer)
+            foreach(AudioSource song in songLayers)
+                StartCoroutine(FadeOut(song));
         StartCoroutine(FadeIn(songLayer, fadeInDuration));
     }
 
@@ -139,6 +142,7 @@ public class SoundManager : MonoBehaviour
     public void addToSongLayers(AudioSource song)
     {
         song.volume = 0;
+        song.time = firstSongLayer.time;
         songLayers.Add(song);
     }
 }

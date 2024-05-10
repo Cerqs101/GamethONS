@@ -479,10 +479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d469c958b8e1342bbb2a69b7286e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  songLayers: []
   firstSongLayer: {fileID: 433092322}
   songStartingTime: 0
   fadeInDuration: 1
+  playFirstSongLayerOnAwake: 1
 --- !u!82 &193390165
 AudioSource:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitDelay: 0.05
-  bpm: 160
+  bpm: 158
   beatsPerMeasure: 3
   highAccuracyThreshold: 0.9
   midAccuracyThreshold: 0.7
@@ -2753,7 +2753,7 @@ Transform:
   m_GameObject: {fileID: 1063138352}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.119707, y: -32.67577, z: -9.841077}
+  m_LocalPosition: {x: -24.862621, y: -32.667877, z: -9.841077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
