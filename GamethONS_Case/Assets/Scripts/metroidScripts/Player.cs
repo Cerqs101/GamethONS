@@ -243,6 +243,7 @@ public class Player : MonoBehaviour
     public void AplicaDano(int dano)
     {
         vidaAtual -= dano;
+        vidaAtual = Mathf.Clamp(vidaAtual, 0, vidaMax);
         Debug.Log("Chegamo aqui" + dano);   
         if( vidaAtual <= 0)
             Morrer();
