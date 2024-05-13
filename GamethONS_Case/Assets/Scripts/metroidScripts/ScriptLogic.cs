@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class ScriptLogic : MonoBehaviour
 {
     public int vidaPlayer;
-    public Text textoVida;
+    public Slider sliderVida;
     public Player player;
 
     public void subtraiVida()
     {
-        textoVida.text = player.vidaAtual.ToString();
+        sliderVida.value = player.vidaAtual;
+    }
+    void Update(){
+        subtraiVida();
     }
 }
