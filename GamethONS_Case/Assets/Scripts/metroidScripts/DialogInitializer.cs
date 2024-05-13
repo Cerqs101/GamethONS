@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class DialogInitializer : MonoBehaviour
 {
     [SerializeField] private int dialogBlockIndex;
     [SerializeField] private bool destroyAfterActivated = true;
+
     [SerializeField] private AudioSource audioSource;
-
-
+    [SerializeField] private Texture video;
     private DialogBox dialogBox;
 
     void Start()
@@ -30,15 +31,24 @@ public class DialogInitializer : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
-        {
-            dialogBox.ActivateDialogBox();
-            dialogBox.WriteDialogueBlock(dialogBlockIndex);
-            if(audioSource != null)
-                audioSource.volume = 1;
+        if (other.tag == "Player")
+            InitializeDialog();
+    }
 
-            if(destroyAfterActivated)
-                Destroy(this);
+    public void InitializeDialog()
+    {
+        if(video != null)
+        {
+            dialogBox.videoWindow.texture = video;
+            dialogBox.videoWindow.color   = new Color32(255,255,255,255);
         }
+
+        dialogBox.ActivateDialogBox();
+        dialogBox.WriteDialogueBlock(dialogBlockIndex);
+        if (audioSource != null)
+            audioSource.volume = 1;
+
+        if (destroyAfterActivated)
+            Destroy(this);
     }
 }

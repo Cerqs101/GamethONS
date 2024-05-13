@@ -19,6 +19,7 @@ public class DialogBox : MonoBehaviour
 
 
     private Player player;
+    [SerializeField] public RawImage videoWindow;
 
     void Start()
     {
@@ -50,10 +51,15 @@ public class DialogBox : MonoBehaviour
             DeactivateDialogBox();
 
         WriteDialogueBlock(currentDialogBlock);
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.X))
             currentLine++;
-        else if(Input.GetKeyDown(KeyCode.LeftShift))
+        else if(Input.GetKeyDown(KeyCode.Z))
             currentLine--;
+        else if(Input.GetKeyDown(KeyCode.C))
+            DeactivateDialogBox();
+
+        if(currentLine < 0)
+            currentLine = 0;
     }
 
 
@@ -61,6 +67,7 @@ public class DialogBox : MonoBehaviour
     {
         player._canMove = true;
         textBox.SetActive(false);
+        videoWindow.color = new Color32(255,255,255,0);
         currentLine = 0;
     }
 

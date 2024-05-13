@@ -61,3 +61,7 @@ Entretando, uma mais complexa de operar.
 Essa usina já estava no SIN, mas quando formos integrar mais, eles irão criar mais linhas.
 Ou seja, você vai ser que apertar mais de um botão ao mesmo tempo.
 Avante, oh bravo automato musical! A energia do Brasil cai sob suas mãos!
+
+Faça todos os <encontros_menores> antes de continuar, caro robô!
+
+Concerte a usina, meu robozinho, por favor!
