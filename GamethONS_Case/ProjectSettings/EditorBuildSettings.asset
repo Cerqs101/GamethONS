@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Teste Fase.unity
     guid: da9f298f4b5e41346901b7b9c6d25987
   - enabled: 1
+    path: Assets/Scenes/Opcoes.unity
+    guid: 8026fdec9190cab4cb0b603877d804d9
+  - enabled: 1
     path: Assets/Scenes/Testes.unity
     guid: 1b50b5d4eb180f64d885c7eaf3e6abb8
   m_configObjects: {}

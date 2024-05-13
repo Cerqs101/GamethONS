@@ -37,6 +37,9 @@ public class SceneManager : MonoBehaviour
     {
         StartCoroutine(PlayScene("FaseWallJump", true));
     }
+    public void GoToSetting(){
+        StartCoroutine(PlayScene("Opcoes",true));
+    }
 
 
     public IEnumerator PlayScene(string scene, bool fade=false)
