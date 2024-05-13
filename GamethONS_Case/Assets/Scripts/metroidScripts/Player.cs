@@ -17,10 +17,10 @@ public class Player : MonoBehaviour
     private const float Speed = 8f;
     private const float JumpPower = 16f;
 
-    private bool _isAlive = true;
+    public bool _isAlive { private set; get; } = true;
     public bool _canMove = true;
     private bool _canDash = true;
-    private bool _isDashing;
+    public bool _isDashing { private set; get; }
     private const float DashPower = 24f;
     private const float DashTime = .2f;
     private const float DashCooldown = .2f;
@@ -28,10 +28,10 @@ public class Player : MonoBehaviour
     private bool _doubleJump;
     private bool _jump;
 
-    private bool _isWallSliding;
+    public bool _isWallSliding { private set; get; }
     private const float WallSlidingSpeed = 2f;
 
-    private bool _isWallJumping;
+    public bool _isWallJumping { private set; get; }
     private float _wallJumpingDirection;
     private const float WallJumpingTime = .2f;
     private float _wallJumpingCounter;
@@ -39,10 +39,11 @@ public class Player : MonoBehaviour
     private readonly Vector2 _wallJumpingPower = new(Speed, JumpPower);
 
 
-    private float _horizontal;
+    public float _horizontal { private set; get; }
+    public float Vertical { private set; get; }
     private bool _isFacingRight = true;
 
-    private bool _isJumping;
+    public bool _isJumping { private set; get; }
     private const float JumpCooldown = .4f;
     
     private float _coyoteTimer;
@@ -95,6 +96,8 @@ public class Player : MonoBehaviour
             StartCoroutine(Co_Dash());
         }
         // -- Dash
+
+        Vertical = rb.velocity.y == 0 ? 0 : rb.velocity.y < 0 ? -1 : 1;
     }
 
     private void Jump()
@@ -200,7 +203,7 @@ public class Player : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         const float radius = .2f;
         return Physics2D.OverlapCircle(groundCheck.position, radius, groundLayer);
