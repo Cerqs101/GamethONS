@@ -17,10 +17,10 @@ public class Player : MonoBehaviour
     private const float Speed = 8f;
     private const float JumpPower = 16f;
 
-    public bool _isAlive { private set; get; } = true;
-    public bool _canMove = true;
+    public bool IsAlive { private set; get; } = true;
+    public bool canMove = true;
     private bool _canDash = true;
-    public bool _isDashing { private set; get; }
+    public bool IsDashing { private set; get; }
     private const float DashPower = 24f;
     private const float DashTime = .2f;
     private const float DashCooldown = .2f;
@@ -28,10 +28,10 @@ public class Player : MonoBehaviour
     private bool _doubleJump;
     private bool _jump;
 
-    public bool _isWallSliding { private set; get; }
+    public bool IsWallSliding { private set; get; }
     private const float WallSlidingSpeed = 2f;
 
-    public bool _isWallJumping { private set; get; }
+    public bool IsWallJumping { private set; get; }
     private float _wallJumpingDirection;
     private const float WallJumpingTime = .2f;
     private float _wallJumpingCounter;
@@ -39,11 +39,11 @@ public class Player : MonoBehaviour
     private readonly Vector2 _wallJumpingPower = new(Speed, JumpPower);
 
 
-    public float _horizontal { private set; get; }
+    public float Horizontal { private set; get; }
     public float Vertical { private set; get; }
     private bool _isFacingRight = true;
 
-    public bool _isJumping { private set; get; }
+    public bool IsJumping { private set; get; }
     private const float JumpCooldown = .4f;
     
     private float _coyoteTimer;
@@ -52,9 +52,9 @@ public class Player : MonoBehaviour
     private float _jumpBufferTimer;
     private const float JumpBufferTimerMax = .2f;
     
-    [SerializeField] private bool hasDash; // Player possui a habilidade dash
-    [SerializeField] private bool has2Jump; // Player possui a habilidade pulo duplo
-    [SerializeField] private bool hasWallJump; // Player possui a habilidade pulo na parede
+    public bool hasDash; // Player possui a habilidade dash
+    public bool has2Jump; // Player possui a habilidade pulo duplo
+    public bool hasWallJump; // Player possui a habilidade pulo na parede
     
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -71,20 +71,20 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(_isAlive && _canMove)
+        if(IsAlive && canMove)
             Movement();
     }
 
     
     private void Movement()
     {
-        if (_isDashing) return;
+        if (IsDashing) return;
         
-        _horizontal = Input.GetAxisRaw("Horizontal");
-        if (!_isWallJumping)
+        Horizontal = Input.GetAxisRaw("Horizontal");
+        if (!IsWallJumping)
         {
-            rb.velocity = new Vector2(_horizontal * Speed, rb.velocity.y);
-            if (Time.timeScale != 0 && (_isFacingRight && _horizontal < 0f) || (!_isFacingRight && _horizontal > 0f))
+            rb.velocity = new Vector2(Horizontal * Speed, rb.velocity.y);
+            if (Time.timeScale != 0 && (_isFacingRight && Horizontal < 0f) || (!_isFacingRight && Horizontal > 0f))
                 Flip();
         }
         Jump();
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
         
         if (_jumpBufferTimer > 0f) // Equivalente a if (Input.GetButtonDown("Jump"))
         {
-            if ((_coyoteTimer > 0f && !_isJumping && Time.timeScale > 0f)
+            if ((_coyoteTimer > 0f && !IsJumping && Time.timeScale > 0f)
                 || (_doubleJump && has2Jump))
             {
                 rb.velocity = new Vector2(rb.velocity.x, JumpPower);
@@ -146,15 +146,15 @@ public class Player : MonoBehaviour
     {
         if (!hasWallJump) return;
         
-        if (IsWalled() && !IsGrounded() && _horizontal != 0f)
+        if (IsWalled() && !IsGrounded() && Horizontal != 0f)
         {
-            _isWallSliding = true;
+            IsWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x,
                 Mathf.Clamp(rb.velocity.y, -WallSlidingSpeed, float.MaxValue));
         }
         else
         {
-            _isWallSliding = false;
+            IsWallSliding = false;
         }
     }
 
@@ -162,9 +162,9 @@ public class Player : MonoBehaviour
     {
         if (!hasWallJump) return;
         
-        if (_isWallSliding)
+        if (IsWallSliding)
         {
-            _isWallJumping = false;
+            IsWallJumping = false;
             // localScale.x é -1 se player estiver olhando para a esquerda, +1 para a direita
             _wallJumpingDirection = -transform.localScale.x;
             _wallJumpingCounter = WallJumpingTime;
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && _wallJumpingCounter > 0f)
         {
-            _isWallJumping = true;
+            IsWallJumping = true;
             rb.velocity = new Vector2(_wallJumpingDirection, 1) * _wallJumpingPower;
             _wallJumpingCounter = 0f;
             
@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
 
     private void StopWallJumping()
     {
-        _isWallJumping = false;
+        IsWallJumping = false;
     }
     
     private void Flip()
@@ -217,15 +217,15 @@ public class Player : MonoBehaviour
     
     private IEnumerator Co_JumpCooldown()
     {
-        _isJumping = true;
+        IsJumping = true;
         yield return new WaitForSeconds(JumpCooldown);
-        _isJumping = false;
+        IsJumping = false;
     }
 
     private IEnumerator Co_Dash()
     {
         _canDash = false;
-        _isDashing = true;
+        IsDashing = true;
 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
@@ -236,7 +236,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(DashTime);
         trailRenderer.emitting = false;
         rb.gravityScale = originalGravity;
-        _isDashing = false;
+        IsDashing = false;
 
         yield return new WaitUntil(IsGrounded); // Dash só reseta qnd pisa no chão
         yield return new WaitForSeconds(DashCooldown);
@@ -265,13 +265,13 @@ public class Player : MonoBehaviour
 
     public void Morrer()
     {
-        _isAlive = false;
+        IsAlive = false;
         StartCoroutine(LevelManager.Instance.EndGame());
     }
 
     public void StopMovemnt()
     {
-        _canMove = false;
+        canMove = false;
         rb.velocity = new Vector2(0,0);
     }
 }

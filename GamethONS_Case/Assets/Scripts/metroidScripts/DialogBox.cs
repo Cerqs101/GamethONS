@@ -65,7 +65,7 @@ public class DialogBox : MonoBehaviour
 
     public void DeactivateDialogBox()
     {
-        player._canMove = true;
+        player.canMove = true;
         textBox.SetActive(false);
         videoWindow.color = new Color32(255,255,255,0);
         currentLine = 0;
@@ -75,7 +75,7 @@ public class DialogBox : MonoBehaviour
     public void ActivateDialogBox()
     {
         player.StopMovemnt();
-        player._canMove = false;
+        player.canMove = false;
         textBox.SetActive(true);
     }
 

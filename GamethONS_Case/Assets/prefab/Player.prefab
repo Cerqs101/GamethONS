@@ -308,9 +308,9 @@ MonoBehaviour:
   vidaMax: 10
   vidaAtual: 0
   _canMove: 1
-  hasDash: 1
+  hasDash: 0
   has2Jump: 1
-  hasWallJump: 1
+  hasWallJump: 0
   rb: {fileID: 6992322034360159257}
   groundCheck: {fileID: 7305615885447153963}
   groundLayer:

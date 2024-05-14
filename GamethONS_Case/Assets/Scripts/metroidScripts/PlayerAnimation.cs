@@ -20,7 +20,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (player._isWallSliding)
+        if (player.IsWallSliding)
         {
             ChangeAnimationState(PlayerOnWall);
             Vector3 ls = transform.localScale;
@@ -36,32 +36,32 @@ public class PlayerAnimation : MonoBehaviour
         }
         
         
-        if (!player._isAlive)
+        if (!player.IsAlive)
         {
             ChangeAnimationState(PlayerDed);
             return;
         }
 
 
-        if (player.IsGrounded() && player._horizontal == 0)
+        if (player.IsGrounded() && player.Horizontal == 0)
         {
             ChangeAnimationState(PlayerIdle);
             return;
         }
 
-        if (player.IsGrounded() && player._horizontal != 0 && !player._isDashing)
+        if (player.IsGrounded() && player.Horizontal != 0 && !player.IsDashing)
         {
             ChangeAnimationState(PlayerWalk);
             return;
         }
 
-        if (player._isDashing)
+        if (player.IsDashing)
         {
             ChangeAnimationState(PlayerDash);
             return;
         }
 
-        if (player.Vertical < 0 && !player._isDashing && !player._isWallSliding)
+        if (player.Vertical < 0 && !player.IsDashing && !player.IsWallSliding)
         {
             ChangeAnimationState(PlayerFall);
             return;
