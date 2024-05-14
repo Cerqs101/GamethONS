@@ -309,7 +309,7 @@ Transform:
   m_GameObject: {fileID: 101439465}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.966642, y: -4.342736, z: -10.216827}
+  m_LocalPosition: {x: -12.040008, y: -4.342736, z: -10.216827}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1130,6 +1130,7 @@ MonoBehaviour:
   firstSongLayer: {fileID: 127181903}
   songStartingTime: 0
   fadeInDuration: 1
+  playFirstSongLayerOnAwake: 1
 --- !u!82 &602175565
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1289,7 +1290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnIndex: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 257450096}
 --- !u!212 &602302905
@@ -2634,7 +2634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnIndex: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 1501504649}
 --- !u!212 &1149058162
@@ -2956,7 +2955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnIndex: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 2044490037}
 --- !u!212 &1334451378
@@ -3747,7 +3745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaPlayer: 0
-  textoVida: {fileID: 928676110}
+  sliderVida: {fileID: 0}
   player: {fileID: 413550891}
 --- !u!4 &1740548511
 Transform:

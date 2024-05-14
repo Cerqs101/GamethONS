@@ -52,9 +52,9 @@ public class Player : MonoBehaviour
     private float _jumpBufferTimer;
     private const float JumpBufferTimerMax = .2f;
     
-    public bool hasDash; // Player possui a habilidade dash
-    public bool has2Jump; // Player possui a habilidade pulo duplo
-    public bool hasWallJump; // Player possui a habilidade pulo na parede
+    private static bool _hasDash; // Player possui a habilidade dash
+    private static bool _has2Jump = true; // Player possui a habilidade pulo duplo
+    private static bool _hasWallJump; // Player possui a habilidade pulo na parede
     
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -71,6 +71,31 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        #region Teste de manter coiso entre cenas
+            
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _hasDash = !_hasDash;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _has2Jump = !_has2Jump;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _hasWallJump = !_hasWallJump;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Teste Fase");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("FaseWallJump");
+        }
+        
+        #endregion
+        
         if(IsAlive && canMove)
             Movement();
     }
@@ -91,7 +116,7 @@ public class Player : MonoBehaviour
         WallSlide();
         WallJump();
         // Dash --
-        if (hasDash && Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
+        if (_hasDash && Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
         {
             StartCoroutine(Co_Dash());
         }
@@ -118,7 +143,7 @@ public class Player : MonoBehaviour
         if (_jumpBufferTimer > 0f) // Equivalente a if (Input.GetButtonDown("Jump"))
         {
             if ((_coyoteTimer > 0f && !IsJumping && Time.timeScale > 0f)
-                || (_doubleJump && has2Jump))
+                || (_doubleJump && _has2Jump))
             {
                 rb.velocity = new Vector2(rb.velocity.x, JumpPower);
 
@@ -144,7 +169,7 @@ public class Player : MonoBehaviour
     
     private void WallSlide()
     {
-        if (!hasWallJump) return;
+        if (!_hasWallJump) return;
         
         if (IsWalled() && !IsGrounded() && Horizontal != 0f)
         {
@@ -160,7 +185,7 @@ public class Player : MonoBehaviour
 
     private void WallJump()
     {
-        if (!hasWallJump) return;
+        if (!_hasWallJump) return;
         
         if (IsWallSliding)
         {
