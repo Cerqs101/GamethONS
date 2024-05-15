@@ -18,7 +18,7 @@ public class BeatCreator : MonoBehaviour
     private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
     [SerializeField] private GameObject beatPrefab;
-    [SerializeField] private HitObject hit;
+    [SerializeField] public HitObject hit;
     private SpriteRenderer spriteRenderer;
 
 
@@ -30,12 +30,13 @@ public class BeatCreator : MonoBehaviour
 
         noteRestriction = hit.noteRestriction;
 
-        SetTimeStamps(LevelManager.GetDataFromMidi());
+        SetTimeStamps(FindObjectOfType<LaneContainer>().GetDataFromMidi());
     }
 
 
     void Update()
     {
+        spawnIndex = LaneContainer.beatIndexes[noteRestriction];
         if (spawnIndex < timeStamps.Count)
             if (LevelManager.timeInSongLoop >= timeStamps[spawnIndex])
             {
@@ -44,7 +45,7 @@ public class BeatCreator : MonoBehaviour
                     GameObject newBeat = Instantiate(beatPrefab, transform.position, new Quaternion(0, 0, 0, 0), transform);
                     newBeat.GetComponent<BeatObject>().noteName = noteRestriction;
                 }
-                spawnIndex++;
+                LaneContainer.beatIndexes[noteRestriction]++;
             }
     }
 
@@ -55,7 +56,7 @@ public class BeatCreator : MonoBehaviour
         {
             if (note.NoteName == noteRestriction)
             {
-                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, LevelManager.midiFile.GetTempoMap());
+                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, LaneContainer.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
             }
         }

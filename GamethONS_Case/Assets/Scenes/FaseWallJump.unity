@@ -663,14 +663,14 @@ Transform:
   m_GameObject: {fileID: 193390163}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.52387, y: -34.09343, z: 0.14833517}
+  m_LocalPosition: {x: 0.86327744, y: -1.2808228, z: -0.010588005}
   m_LocalScale: {x: 1.0868614, y: 1.0137, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 746845663}
   - {fileID: 1099841218}
   - {fileID: 433092323}
-  m_Father: {fileID: 421643285}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &196392655
 GameObject:
@@ -781,7 +781,6 @@ MonoBehaviour:
   beatsPerMeasure: 3
   highAccuracyThreshold: 0.9
   midAccuracyThreshold: 0.7
-  midiFilePath: ./Music/Track01/LayeredTrack01.mid
 --- !u!4 &269167205
 Transform:
   m_ObjectHideFlags: 0
@@ -1134,7 +1133,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 269167205}
-  - {fileID: 193390166}
   - {fileID: 415331434}
   - {fileID: 75150446}
   - {fileID: 826926127}
@@ -2554,6 +2552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 854990700}
+  - component: {fileID: 854990701}
   m_Layer: 0
   m_Name: RhythmWindow
   m_TagString: Untagged
@@ -2579,6 +2578,19 @@ Transform:
   - {fileID: 301288465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &854990701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854990699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5c314417bae7e4eabba49abf632b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  midiFilePath: ./Music/Track01/LayeredTrack01.mid
 --- !u!1 &892430484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,7 +2877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1009856920
 Transform:
   m_ObjectHideFlags: 0
@@ -3068,7 +3080,7 @@ Transform:
   m_GameObject: {fileID: 1063138352}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.246544, y: -32.682842, z: -9.841077}
+  m_LocalPosition: {x: -24.72736, y: -32.667027, z: -9.841077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48329,3 +48341,4 @@ SceneRoots:
   - {fileID: 572422259}
   - {fileID: 421643285}
   - {fileID: 1679549418}
+  - {fileID: 193390166}

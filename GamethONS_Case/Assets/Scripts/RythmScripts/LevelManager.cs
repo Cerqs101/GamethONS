@@ -8,6 +8,8 @@ using UnityEngine.Networking;
 using System;
 using Unity.Burst.Intrinsics;
 using UnityEngine.SceneManagement;
+using Melanchall.DryWetMidi.MusicTheory;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
@@ -30,8 +32,8 @@ public class LevelManager : MonoBehaviour
 
     private Player player;
     public static LevelManager Instance;
-    public static MidiFile midiFile;
-    [SerializeField] public string midiFilePath;
+    // public static MidiFile midiFile;
+    // [SerializeField] public string midiFilePath;
 
 
 
@@ -40,10 +42,13 @@ public class LevelManager : MonoBehaviour
         Instance = this;
 
         // bea = midiFile.GetTempoMap().GetTempoAtTime(???); // <-- para tentar fazer no futuro futuro
-        musicStartDelay = (BeatCreator.xDistanceToHit / (bpm * 4 / 60f)) - hitDelay;
+        musicStartDelay = (BeatCreator.xDistanceToHit / (bpm * 3 / 60f)) - hitDelay;
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
-        midiFile = ReadMidiFileFromDisc();
+        // midiFile = ReadMidiFileFromDisc();
         player = FindFirstObjectByType<Player>();
+
+        if(timeInSongLoop == 0)
+            timeInSongLoop = musicStartDelay;
     }
 
 
@@ -61,26 +66,10 @@ public class LevelManager : MonoBehaviour
         
         if(timeInSongLoop >= SoundManager.GetAudioLenght() + musicStartDelay)
         {   
-            foreach(BeatCreator lane in FindObjectsByType<BeatCreator>(FindObjectsSortMode.None))
-                lane.spawnIndex = 0;
+            foreach(NoteName lane in LaneContainer.beatIndexes.Keys.ToList())
+                LaneContainer.beatIndexes[lane] = 0;
             timeInSongLoop = musicStartDelay;
         }
-    }
-
-
-    private MidiFile ReadMidiFileFromDisc()
-    {
-        return MidiFile.Read(Application.dataPath + "/" + midiFilePath);
-    }
-
-
-    public static Note[] GetDataFromMidi()
-    {
-        midiFile = FindObjectOfType<LevelManager>().ReadMidiFileFromDisc();
-        ICollection<Note> notes = midiFile.GetNotes();
-        Note[] array = new Note[notes.Count];
-        notes.CopyTo(array, 0);
-        return array;
     }
 
 

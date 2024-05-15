@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class BeatObject : MonoBehaviour
 {
-    [NonSerialized] public float noteSpeed;
+    [NonSerialized] public static float noteSpeed;
     [NonSerialized] public bool hittable = false;
     [NonSerialized] public float distanceDifference;
     [NonSerialized] public Melanchall.DryWetMidi.MusicTheory.NoteName noteName;
@@ -17,7 +17,7 @@ public class BeatObject : MonoBehaviour
 
     void Start()
     {
-        noteSpeed = FindObjectOfType<LevelManager>().bpm * 4 / 60f;
+        noteSpeed = FindObjectOfType<LevelManager>().bpm * 3 / 60f;
         
         foreach(HitObject currentHit in FindObjectsByType<HitObject>(FindObjectsSortMode.None))
             if(currentHit.noteRestriction == noteName)

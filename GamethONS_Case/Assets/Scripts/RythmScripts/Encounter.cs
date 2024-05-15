@@ -6,7 +6,7 @@ using System;
 public class Encounter : MonoBehaviour
 {
     [SerializeField] public AudioSource songLayer;
-    [SerializeField] private RhythmWindow rhythmWindow;
+    [SerializeField] private LaneWindow rhythmWindow;
 
     [SerializeField] private float measuresInEncounter = 4f;
     [NonSerialized] public double secondsInEncounter;
