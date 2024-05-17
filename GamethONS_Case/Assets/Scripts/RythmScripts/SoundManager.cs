@@ -17,22 +17,32 @@ public class SoundManager : MonoBehaviour
     
     public static SoundManager Instance;
 
-    private float commonSongAndBeatDisalingment;
+    private static float commonSongAndBeatDisalingment;
 
 
     void Start()
     {
-        Instance = this;
+        // Instance = this;
+        
+        if(Instance != null)
+            Destroy(gameObject);
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(transform.gameObject);
+        }
 
         songLayers.Add(firstSongLayer);
-        foreach(Encounter encounter in FindObjectsByType<Encounter>(FindObjectsSortMode.None))
-            if(encounter.songLayer != null)
-                songLayers.Add(encounter.songLayer);
+        foreach(AudioSource songLayer in GetComponentsInChildren<AudioSource>(true))
+                songLayers.Add(songLayer);
 
         for(int i = currentSongLayer; i < songLayers.Count(); i++)
             songLayers[i].volume = 0;
         if(playFirstSongLayerOnAwake)
             StartCoroutine(FadeIn(firstSongLayer));
+
+        // Invoke("PlayAllSongs", LevelManager.Instance.musicStartDelay);
+        // SetTimeToAllSongLayers((float)(LevelManager.timeInSongLoop - LevelManager.Instance.musicStartDelay));
     }
 
 

@@ -5,7 +5,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class RhythmWindow : MonoBehaviour
+public class LaneWindow : MonoBehaviour
 {
     private Camera virtualCamera;
     private SpriteRenderer spriteRenderer;
