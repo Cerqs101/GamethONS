@@ -149,6 +149,12 @@ public class SoundManager : MonoBehaviour
             StartCoroutine(FadeOut(songLayer, waitTime));
     }
 
+    public void FadeInAllSongLayers(float waitTime=1f)
+    {
+        foreach(AudioSource songLayer in songLayers)
+            StartCoroutine(FadeIn(songLayer, waitTime));
+    }
+
     public void addToSongLayers(AudioSource song)
     {
         song.volume = 0;

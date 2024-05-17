@@ -4,10 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour
+public class ScenesManager : MonoBehaviour
 {
-    public static SceneManager instance;
+    public static ScenesManager instance;
     // Start is called before the first frame update
+    public static string lastSceneLoaded;
 
     private void Start()
     {
@@ -41,8 +42,13 @@ public class SceneManager : MonoBehaviour
         StartCoroutine(PlayScene("Opcoes",true));
     }
 
+    public void GoToMainHub()
+    {
+        StartCoroutine(PlayScene("HubCentral", true));
+    }
 
-    public IEnumerator PlayScene(string scene, bool fade=false)
+
+    public IEnumerator PlayScene(string scene, bool fade=false, LoadSceneMode loadSceneMode=LoadSceneMode.Single)
     {
         if(fade)
         {
@@ -50,7 +56,8 @@ public class SceneManager : MonoBehaviour
             StartCoroutine(sceneFadeObject.FadeIn());
             yield return new WaitForSeconds(sceneFadeObject.waitTime);
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        lastSceneLoaded = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(scene, loadSceneMode);
     }
 
 }

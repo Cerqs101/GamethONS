@@ -75,16 +75,21 @@ public class LevelManager : MonoBehaviour
 
     public void AcurracyConsequences(float playerAccuracy)
     {
-        float damage;
+        float deltaHealth;
         if(playerAccuracy >= highAccuracyThreshold)
-            damage = Mathf.Pow(2, (playerAccuracy-highAccuracyThreshold)*16) * -1;
+            deltaHealth = Mathf.Pow(2, (playerAccuracy-highAccuracyThreshold)*16);
         else if(playerAccuracy >= midAccuracyThreshold)
-            damage = 0f;
+            deltaHealth = 0f;
         else
-            damage = (10*(midAccuracyThreshold-playerAccuracy))+1;
+            deltaHealth = ((10*(midAccuracyThreshold-playerAccuracy))+1) *-1;
 
-        player.AplicaDano((int) Mathf.Round(damage));
+        int deltaHealthInt = (int) Mathf.Round(deltaHealth);
+        
+        player.AplicaDano(deltaHealthInt * -1);
         FindObjectOfType<ScriptLogic>().subtraiVida();
+
+        if(deltaHealthInt > 0)
+            ScoreManager.Instance.levelRecoveredHealth += deltaHealthInt;
     }
 
 
@@ -98,6 +103,6 @@ public class LevelManager : MonoBehaviour
         hasLevelStarted = false;
         timeInSongLoop = 0;
         
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
+        SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
     }
 }

@@ -44,6 +44,9 @@ public class ScriptHub : MonoBehaviour
                 case 3:
                     PlayScene("Fase3");
                     break;
+                case 4:
+                    SceneManager.LoadScene("Score", LoadSceneMode.Additive);
+                    break;
             }
 
             trigger = false;
