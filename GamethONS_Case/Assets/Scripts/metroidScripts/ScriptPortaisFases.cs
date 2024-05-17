@@ -31,6 +31,9 @@ public class ScriptHub : MonoBehaviour
             Debug.Log("B");
             switch (fase)
             {
+                case 0:
+                    PlayScene("HubCentral");
+                    break;
                 case 1:
                     Debug.Log("C");
                     PlayScene("Fase1");
