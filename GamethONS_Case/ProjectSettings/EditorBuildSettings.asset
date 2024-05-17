@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Over.unity
     guid: 6ba2ff3cf6c060f448bae5d8971a9864
   - enabled: 1
-    path: Assets/Scenes/Teste Fase.unity
+    path: Assets/Scenes/Fase1.unity
     guid: da9f298f4b5e41346901b7b9c6d25987
   - enabled: 1
     path: Assets/Scenes/Opcoes.unity
