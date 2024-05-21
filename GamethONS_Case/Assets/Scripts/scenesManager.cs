@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager instance;
+    public GameObject inicio,creditos,opcoes;
     // Start is called before the first frame update
     public static string lastSceneLoaded;
 
     private void Start()
     {
         instance = this;
+        creditos.SetActive(false);
+        opcoes.SetActive(false);
     }
 
 
@@ -24,13 +27,15 @@ public class ScenesManager : MonoBehaviour
 
     public void PlayCredits()
     {
-        StartCoroutine(PlayScene("Creditos"));
+        inicio.SetActive(false);
+        creditos.SetActive(true);
     }
 
 
-    public void GoToMainMenu(bool fade=true)
+    public void EndCredits()
     {
-        StartCoroutine(PlayScene("Menu Principal", fade));
+        creditos.SetActive(false);
+        inicio.SetActive(true);
     }
 
 
@@ -39,7 +44,12 @@ public class ScenesManager : MonoBehaviour
         StartCoroutine(PlayScene("FaseWallJump", true));
     }
     public void GoToSetting(){
-        StartCoroutine(PlayScene("Opcoes",true));
+        inicio.SetActive(false);
+        opcoes.SetActive(true);
+    }
+    public void EndSetting(){
+        opcoes.SetActive(false);
+        inicio.SetActive(true);
     }
 
     public void GoToMainHub()
