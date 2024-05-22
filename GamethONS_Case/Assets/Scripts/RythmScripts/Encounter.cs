@@ -6,7 +6,7 @@ using System;
 public class Encounter : MonoBehaviour
 {
     [SerializeField] public AudioSource songLayer;
-    [SerializeField] private LaneWindow rhythmWindow;
+    [SerializeField] private LaneWindow laneWindow;
 
     [SerializeField] private float measuresInEncounter = 4f;
     [NonSerialized] public double secondsInEncounter;
@@ -85,8 +85,11 @@ public class Encounter : MonoBehaviour
 
         if(songLayer != null)
             SoundManager.Instance.StartSongLayer(songLayer);
-        if(rhythmWindow != null)
-            rhythmWindow.gameObject.SetActive(true);
+        if(laneWindow != null)
+        {
+            laneWindow.gameObject.SetActive(true);
+            LaneContainer.activeLanes.Add(laneWindow.GetComponentInChildren<HitObject>().keyToPress);
+        }
 
         Destroy(this.gameObject);
     }

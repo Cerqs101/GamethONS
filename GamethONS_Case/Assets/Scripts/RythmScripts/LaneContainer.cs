@@ -12,12 +12,18 @@ public class LaneContainer : MonoBehaviour
     public static Dictionary<NoteName, int> beatIndexes = new Dictionary<NoteName, int>();
     public static MidiFile midiFile;
     [SerializeField] public string midiFilePath;
+    public static List<KeyCode> activeLanes = new List<KeyCode>();
 
 
     void Start()
     {
         foreach(BeatCreator beatCreator in transform.GetComponentsInChildren<BeatCreator>(true))
-            beatIndexes.Add(beatCreator.hit.noteRestriction, 0);
+            if(!beatIndexes.Keys.ToList().Contains(beatCreator.hit.noteRestriction))
+                beatIndexes.Add(beatCreator.hit.noteRestriction, 0);
+
+        foreach(LaneWindow lane in transform.GetComponentsInChildren<LaneWindow>(true))
+            if(activeLanes.Contains(lane.transform.GetComponentInChildren<HitObject>().keyToPress))
+                lane.gameObject.SetActive(true);
 
         midiFile = ReadMidiFileFromDisc();
     }
