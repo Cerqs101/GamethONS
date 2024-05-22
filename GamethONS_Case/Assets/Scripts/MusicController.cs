@@ -22,4 +22,15 @@ public class MusicController : MonoBehaviour
     public void changeVolume(){
         audioVolume.SetFloat("MasterAudio",audioMaster.value);
     }
+
+    public static IEnumerator FadeOut(AudioSource songLayer, float waitTime=1f)
+    {
+        float intensity = 0.01f;
+        float waitPerLoop = waitTime*intensity;
+        while(songLayer.volume > 0)
+        {
+            songLayer.volume -= intensity;
+            yield return new WaitForSecondsRealtime(waitPerLoop);
+        }
+    }
 }
