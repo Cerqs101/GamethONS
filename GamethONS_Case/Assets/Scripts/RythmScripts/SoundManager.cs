@@ -17,7 +17,7 @@ public class SoundManager : MonoBehaviour
     
     public static SoundManager Instance;
 
-    private static float commonSongAndBeatDisalingment;
+    // private static float commonSongAndBeatDisalingment;
 
 
     void Start()
@@ -50,11 +50,11 @@ public class SoundManager : MonoBehaviour
     {
         double timeInSongLoop = LevelManager.timeInSongLoop;
 
-        commonSongAndBeatDisalingment *= 0.7f;
-        commonSongAndBeatDisalingment += ((float)timeInSongLoop - firstSongLayer.time)*0.3f;
+        // commonSongAndBeatDisalingment *= 0.7f;
+        // commonSongAndBeatDisalingment += ((float)timeInSongLoop - firstSongLayer.time)*0.3f;
 
         if(firstSongLayer.isPlaying 
-        && Mathf.Round((float)timeInSongLoop - firstSongLayer.time) != Mathf.Round(commonSongAndBeatDisalingment))
+        && Mathf.Round((float)timeInSongLoop - firstSongLayer.time) != Mathf.Round(songStartingTime + LevelManager.Instance.musicStartDelay))
             SetTimeToAllSongLayers((float)(timeInSongLoop - LevelManager.Instance.musicStartDelay));
     }
 
