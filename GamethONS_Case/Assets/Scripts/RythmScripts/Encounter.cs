@@ -89,6 +89,7 @@ public class Encounter : MonoBehaviour
         {
             laneWindow.gameObject.SetActive(true);
             LaneContainer.activeLanes.Add(laneWindow.GetComponentInChildren<HitObject>().keyToPress);
+            FindObjectOfType<LaneContainer>().wasLaneAdded = true;
         }
 
         Destroy(this.gameObject);

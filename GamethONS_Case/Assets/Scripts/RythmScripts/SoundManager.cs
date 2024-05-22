@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [NonSerialized] public List<AudioSource> songLayers = new List<AudioSource>();
+    [NonSerialized] public List<AudioSource> allSongLayers = new List<AudioSource>();
+    [NonSerialized] public List<AudioSource> activeSongLayers = new List<AudioSource>();
     [SerializeField] public AudioSource firstSongLayer;
     [SerializeField] private float songStartingTime = 0f;
     [SerializeField] private float fadeInDuration = 1f;
@@ -32,12 +33,14 @@ public class SoundManager : MonoBehaviour
             DontDestroyOnLoad(transform.gameObject);
         }
 
-        songLayers.Add(firstSongLayer);
-        foreach(AudioSource songLayer in GetComponentsInChildren<AudioSource>(true))
-                songLayers.Add(songLayer);
+        allSongLayers.Add(firstSongLayer);
+        activeSongLayers.Add(firstSongLayer);
 
-        for(int i = currentSongLayer; i < songLayers.Count(); i++)
-            songLayers[i].volume = 0;
+        foreach(AudioSource songLayer in GetComponentsInChildren<AudioSource>(true))
+                allSongLayers.Add(songLayer);
+
+        for(int i = currentSongLayer; i < allSongLayers.Count(); i++)
+            allSongLayers[i].volume = 0;
         if(playFirstSongLayerOnAwake)
             StartCoroutine(FadeIn(firstSongLayer));
 
@@ -53,7 +56,7 @@ public class SoundManager : MonoBehaviour
         // commonSongAndBeatDisalingment *= 0.7f;
         // commonSongAndBeatDisalingment += ((float)timeInSongLoop - firstSongLayer.time)*0.3f;
 
-        if(firstSongLayer.isPlaying 
+        if(firstSongLayer.isPlaying && timeInSongLoop > LevelManager.Instance.musicStartDelay
         && Mathf.Round((float)timeInSongLoop - firstSongLayer.time) != Mathf.Round(songStartingTime + LevelManager.Instance.musicStartDelay))
             SetTimeToAllSongLayers((float)(timeInSongLoop - LevelManager.Instance.musicStartDelay));
     }
@@ -61,10 +64,10 @@ public class SoundManager : MonoBehaviour
 
     public void StartNextSongLayer()
     {
-        if(currentSongLayer+1 < songLayers.Count())
+        if(currentSongLayer+1 < allSongLayers.Count())
         {
             currentSongLayer++;
-            FadeIn(songLayers[currentSongLayer]);
+            FadeIn(allSongLayers[currentSongLayer]);
         }
     }
 
@@ -72,7 +75,7 @@ public class SoundManager : MonoBehaviour
     public void StartSongLayer(AudioSource songLayer)
     {
         if(songLayer == firstSongLayer)
-            foreach(AudioSource song in songLayers)
+            foreach(AudioSource song in allSongLayers)
                 StartCoroutine(FadeOut(song));
         StartCoroutine(FadeIn(songLayer, fadeInDuration));
     }
@@ -81,27 +84,27 @@ public class SoundManager : MonoBehaviour
     public static double GetAudioTime(AudioSource audio = null){
         // return (double) instance.music.timeSamples / instance.music.clip.frequency;
         if(audio == null)
-            audio = Instance.songLayers[0];
+            audio = Instance.allSongLayers[0];
         return audio.time;
     }
 
 
     public static void SetTimeToAllSongLayers(float time)
     {
-        foreach(AudioSource songLayer in Instance.songLayers)
+        foreach(AudioSource songLayer in Instance.allSongLayers)
             songLayer.time = time + Instance.songStartingTime;
     }
 
     public static double GetAudioLenght(AudioSource audio = null)
     { 
         if(audio == null)
-            audio = Instance.songLayers[0];
+            audio = Instance.allSongLayers[0];
         return audio.clip.length;
     }
 
 
     public void PlayAllSongs(){
-        foreach(AudioSource song in songLayers)
+        foreach(AudioSource song in allSongLayers)
             PlaySong(song);
     }
 
@@ -143,22 +146,31 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void FadeOutAllSongLayers(float waitTime=1f)
+    public void FadeOutAllSongLayers(float waitTime=1f, bool activeOnly=false)
     {
-        foreach(AudioSource songLayer in songLayers)
-            StartCoroutine(FadeOut(songLayer, waitTime));
+        if(activeOnly)
+            foreach(AudioSource songLayer in activeSongLayers)
+                StartCoroutine(FadeOut(songLayer, waitTime));
+        else
+            foreach(AudioSource songLayer in allSongLayers)
+                StartCoroutine(FadeOut(songLayer, waitTime));
+
     }
 
-    public void FadeInAllSongLayers(float waitTime=1f)
+    public void FadeInAllSongLayers(float waitTime=1f, bool activeOnly=false)
     {
-        foreach(AudioSource songLayer in songLayers)
-            StartCoroutine(FadeIn(songLayer, waitTime));
+        if(activeOnly)
+            foreach(AudioSource songLayer in activeSongLayers)
+                StartCoroutine(FadeIn(songLayer, waitTime));
+        else
+            foreach(AudioSource songLayer in allSongLayers)
+                StartCoroutine(FadeIn(songLayer, waitTime));
     }
 
     public void addToSongLayers(AudioSource song)
     {
         song.volume = 0;
         song.time = firstSongLayer.time;
-        songLayers.Add(song);
+        allSongLayers.Add(song);
     }
 }

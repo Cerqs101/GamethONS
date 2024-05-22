@@ -13,10 +13,17 @@ public class LaneContainer : MonoBehaviour
     public static MidiFile midiFile;
     [SerializeField] public string midiFilePath;
     public static List<KeyCode> activeLanes = new List<KeyCode>();
+    public bool wasLaneAdded = false;
 
+    void Awake()
+    {
+        foreach(NoteName lane in beatIndexes.Keys.ToList())
+            beatIndexes[lane] = 0;
+    }
 
     void Start()
     {
+
         foreach(BeatCreator beatCreator in transform.GetComponentsInChildren<BeatCreator>(true))
             if(!beatIndexes.Keys.ToList().Contains(beatCreator.hit.noteRestriction))
                 beatIndexes.Add(beatCreator.hit.noteRestriction, 0);
