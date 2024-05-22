@@ -9,19 +9,28 @@ public class ScenesManager : MonoBehaviour
     public static ScenesManager instance;
     public GameObject inicio,creditos,opcoes;
     // Start is called before the first frame update
-    public static string lastSceneLoaded;
+    public static string previousScene;
 
     private void Start()
     {
         instance = this;
-        creditos.SetActive(false);
-        opcoes.SetActive(false);
+        if(creditos != null)
+            creditos.SetActive(false);
+        if(opcoes!=null)
+            opcoes.SetActive(false);
     }
 
 
     public void EndGame()
     {
         Application.Quit();
+    }
+
+
+    public void GoToPreviousScene()
+    {
+        StartCoroutine(PlayScene(previousScene, true));
+
     }
 
 
@@ -43,6 +52,12 @@ public class ScenesManager : MonoBehaviour
     {
         StartCoroutine(PlayScene("FaseWallJump", true));
     }
+
+    public void GoToTutorial(){
+        StartCoroutine(PlayScene("Tutorial", true));
+        StartCoroutine(MusicController.FadeOut(FindObjectOfType<AudioSource>()));
+    }
+
     public void GoToSetting(){
         inicio.SetActive(false);
         opcoes.SetActive(true);
@@ -66,7 +81,7 @@ public class ScenesManager : MonoBehaviour
             StartCoroutine(sceneFadeObject.FadeIn());
             yield return new WaitForSeconds(sceneFadeObject.waitTime);
         }
-        lastSceneLoaded = SceneManager.GetActiveScene().name;
+        previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(scene, loadSceneMode);
     }
 
