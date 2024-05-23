@@ -7,8 +7,9 @@ public class Encounter : MonoBehaviour
 {
     [SerializeField] public AudioSource songLayer;
     [SerializeField] private LaneWindow rhythmWindow;
+    [SerializeField] public ScriptPortaisFases portalFimDeFase;
 
-    [SerializeField] private float measuresInEncounter = 4f;
+    [SerializeField] public float measuresInEncounter = 4f;
     [NonSerialized] public double secondsInEncounter;
     public static int hits = 0;
     public static int misses = 0;
@@ -87,6 +88,11 @@ public class Encounter : MonoBehaviour
             SoundManager.Instance.StartSongLayer(songLayer);
         if(rhythmWindow != null)
             rhythmWindow.gameObject.SetActive(true);
+
+        if (portalFimDeFase != null && measuresInEncounter == 12f)
+        {
+            portalFimDeFase.gameObject.SetActive(true);
+        }
 
         Destroy(this.gameObject);
     }

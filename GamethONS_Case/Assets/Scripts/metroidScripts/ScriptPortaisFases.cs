@@ -4,15 +4,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScriptHub : MonoBehaviour
+public class ScriptPortaisFases : MonoBehaviour
 {
     public int fase = 0;
+    public bool ehPortalFimDeFase = false;
     public bool trigger = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(ehPortalFimDeFase == true)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
