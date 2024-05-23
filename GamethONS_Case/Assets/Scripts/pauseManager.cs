@@ -26,7 +26,10 @@ public class pauseManager : MonoBehaviour
         Pause();
     }
     public void Pause(){ 
-        if(Input.GetKeyDown(KeyCode.Escape)){
+            
+        bool isHappening = Encounter.instance.isHappening;
+
+        if(Input.GetKeyDown(KeyCode.Escape) && !isHappening){
             if(Time.timeScale == 1){
                 Time.timeScale = 0;
                 //Time.unscaledTime = 0;
