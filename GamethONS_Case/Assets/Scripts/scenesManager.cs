@@ -71,6 +71,10 @@ public class ScenesManager : MonoBehaviour
     {
         StartCoroutine(PlayScene("HubCentral", true));
     }
+    public void goToMenu(){
+        StartCoroutine(PlayScene("Menu Principal", true));
+    }
+
 
 
     public IEnumerator PlayScene(string scene, bool fade=false, LoadSceneMode loadSceneMode=LoadSceneMode.Single)

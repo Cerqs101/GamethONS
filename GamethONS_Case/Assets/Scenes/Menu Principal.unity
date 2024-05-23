@@ -2585,7 +2585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01532d019f135354bb6e2f46e73bfe81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMaster: {fileID: 157387101}
+  audioSlider: {fileID: 157387101}
   audioVolume: {fileID: 24100000, guid: 42aeffa225138694485dd4f65b376f5a, type: 2}
 --- !u!1 &1179092649
 GameObject:
