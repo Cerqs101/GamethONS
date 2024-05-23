@@ -26,6 +26,19 @@ public class ScenesManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void ActivateScreen(GameObject screen)
+    {
+        inicio.SetActive(false);
+        screen.SetActive(true);
+    }
+
+
+    public void DeactivateScreen(GameObject screen)
+    {
+        screen.SetActive(false);
+        inicio.SetActive(true);
+    }
+
 
     public void GoToPreviousScene()
     {
