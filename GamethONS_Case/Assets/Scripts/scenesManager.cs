@@ -73,6 +73,7 @@ public class ScenesManager : MonoBehaviour
     }
     public void goToMenu(){
         StartCoroutine(PlayScene("Menu Principal", true));
+        //SceneManager.LoadScene("Menu Principal");
     }
 
 
@@ -83,7 +84,7 @@ public class ScenesManager : MonoBehaviour
         {
             SceneFadeObject sceneFadeObject = SceneFadeObject.instance;
             StartCoroutine(sceneFadeObject.FadeIn());
-            yield return new WaitForSeconds(sceneFadeObject.waitTime);
+            yield return new WaitForSecondsRealtime(sceneFadeObject.waitTime);
         }
         previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(scene, loadSceneMode);

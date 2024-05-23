@@ -15,11 +15,13 @@ public class Encounter : MonoBehaviour
     public static int hits = 0;
     public static int misses = 0;
     [NonSerialized] public bool isHappening = false;
+    public static Encounter instance;
 
 
 
     void Start()
     {
+        instance = this;
         secondsInEncounter = measuresInEncounter * LevelManager.Instance.measureDuration;
     }
 
