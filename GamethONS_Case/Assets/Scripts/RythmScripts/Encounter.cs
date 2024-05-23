@@ -18,7 +18,9 @@ public class Encounter : MonoBehaviour
     private bool acabou = false;
     [NonSerialized] public bool isHappening = false;
 
-
+    public Player.Habilidades habilidadeQueDa = Player.Habilidades.None;
+    [SerializeField] private Player player;
+    
 
     void Start()
     {
@@ -108,6 +110,19 @@ public class Encounter : MonoBehaviour
 
         animator.SetBool("Acabou", true);
         acabou = true;
+        
+        switch (habilidadeQueDa)
+        {
+            case Player.Habilidades.WallJump:
+                player.GetWallJump();
+                break;
+            case Player.Habilidades.Dash:
+                player.GetDash();
+                break;
+            case Player.Habilidades.None: default:
+                break;
+        }
+
     }
 
 

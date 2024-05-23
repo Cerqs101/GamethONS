@@ -73,9 +73,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0a307eb8c0aa740860e3f003f005b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  songLayer: {fileID: 0}
-  rhythmWindow: {fileID: 0}
+  songLayerName: 
+  portalFimDeFase: {fileID: 0}
+  laneWindow: {fileID: 0}
+  animator: {fileID: 0}
   measuresInEncounter: 4
+  habilidadeQueDa: 0
+  player: {fileID: 3168378165726108165, guid: bfae54c361730f6478ed0af8dbc72667, type: 3}
 --- !u!1 &5645853827116806954
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +186,7 @@ MonoBehaviour:
   logic: {fileID: 0}
   corpoRigido: {fileID: 8814078244764165778}
   velocidade: 2
+  animator: {fileID: 0}
 --- !u!61 &290547389102350133
 BoxCollider2D:
   m_ObjectHideFlags: 0
