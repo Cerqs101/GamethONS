@@ -10222,7 +10222,7 @@ Transform:
   m_GameObject: {fileID: 582345977}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.919407, y: -7.655574, z: -10.018093}
+  m_LocalPosition: {x: -34.930626, y: -7.655574, z: -10.018093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13333,6 +13333,7 @@ Transform:
   - {fileID: 1718542715}
   - {fileID: 260504802}
   - {fileID: 199435595}
+  - {fileID: 2016864182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1802584930
@@ -20574,7 +20575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogBlockIndex: 9
+  dialogBlockIndex: 0
   destroyAfterActivated: 0
   audioSource: {fileID: 0}
   video: {fileID: 0}
@@ -20605,7 +20606,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1788751801}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2035133913
 GameObject:
@@ -21073,4 +21074,3 @@ SceneRoots:
   - {fileID: 288407738}
   - {fileID: 301445809}
   - {fileID: 1818872419}
-  - {fileID: 2016864182}
