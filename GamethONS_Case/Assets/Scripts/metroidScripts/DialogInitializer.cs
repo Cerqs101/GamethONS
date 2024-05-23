@@ -35,8 +35,11 @@ public class DialogInitializer : MonoBehaviour
             InitializeDialog();
     }
 
-    public void InitializeDialog()
+    public void InitializeDialog(int dialogBlock = -1)
     {
+        if(dialogBlock == -1)
+            dialogBlock = dialogBlockIndex;
+
         if(video != null)
         {
             dialogBox.videoWindow.texture = video;
@@ -44,7 +47,7 @@ public class DialogInitializer : MonoBehaviour
         }
 
         dialogBox.ActivateDialogBox();
-        dialogBox.WriteDialogueBlock(dialogBlockIndex);
+        dialogBox.WriteDialogueBlock(dialogBlock);
         if (audioSource != null)
             audioSource.volume = 1;
 

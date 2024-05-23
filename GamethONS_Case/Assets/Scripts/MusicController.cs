@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 
 public class MusicController : MonoBehaviour
 {
-    public Slider audioMaster;
+    public Slider audioSlider;
     public AudioMixer audioVolume;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,17 @@ public class MusicController : MonoBehaviour
 
     }
     public void changeVolume(){
-        audioVolume.SetFloat("MasterAudio",audioMaster.value);
+        audioVolume.SetFloat("MasterAudio",audioSlider.value);
+    }
+
+    public static IEnumerator FadeOut(AudioSource songLayer, float waitTime=1f)
+    {
+        float intensity = 0.01f;
+        float waitPerLoop = waitTime*intensity;
+        while(songLayer.volume > 0)
+        {
+            songLayer.volume -= intensity;
+            yield return new WaitForSecondsRealtime(waitPerLoop);
+        }
     }
 }

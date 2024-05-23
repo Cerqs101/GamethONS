@@ -61,6 +61,7 @@ public class LevelManager : MonoBehaviour
             if(Input.anyKeyDown)
             {
                 SoundManager.Instance.Invoke("PlayAllSongs", musicStartDelay);
+                SoundManager.Instance.FadeInAllSongLayers(activeOnly:true);
                 hasLevelStarted = true;
             }
         
@@ -102,7 +103,12 @@ public class LevelManager : MonoBehaviour
 
         hasLevelStarted = false;
         timeInSongLoop = 0;
+        if(FindObjectOfType<LaneContainer>().wasLaneAdded)
+            LaneContainer.activeLanes.RemoveAt(LaneContainer.activeLanes.Count()-1);
+        foreach(NoteName lane in LaneContainer.beatIndexes.Keys.ToList())
+            LaneContainer.beatIndexes[lane] = 0;
         
+        ScenesManager.previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
     }
 }

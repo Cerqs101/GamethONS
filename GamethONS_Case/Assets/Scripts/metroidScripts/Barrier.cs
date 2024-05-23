@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +7,11 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    private int initialEncounterAmount;
-    [SerializeField] private int limitEncounterAmout;
+    [NonSerialized] public int initialEncounterAmount;
+    [SerializeField] public int minimunEncounterAmount;
+
+    [SerializeField] private int minimunLaneAmount = 0;
+
 
     void Start()
     {
@@ -23,11 +27,16 @@ public class Barrier : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player")
-            if(FindObjectsByType<Encounter>(FindObjectsSortMode.None).Count() <= initialEncounterAmount - limitEncounterAmout)
+        {
+            if(FindObjectsByType<Encounter>(FindObjectsSortMode.None).Count() <= initialEncounterAmount - minimunEncounterAmount
+            && FindObjectsByType<LaneWindow>(FindObjectsSortMode.None).Count() >= minimunLaneAmount)
                 Destroy(this.gameObject);
-            else
-                if(GetComponent<DialogInitializer>() != null)
-                    GetComponent<DialogInitializer>().InitializeDialog();
 
+            else if(GetComponent<DialogInitializer>() != null)
+                if(FindObjectsByType<LaneWindow>(FindObjectsSortMode.None).Count() < minimunLaneAmount)
+                    GetComponent<DialogInitializer>().InitializeDialog(1);
+                else if(FindObjectsByType<Encounter>(FindObjectsSortMode.None).Count() > initialEncounterAmount - minimunEncounterAmount)
+                    GetComponent<DialogInitializer>().InitializeDialog();
+        }
     }
 }
