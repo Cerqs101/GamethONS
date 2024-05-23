@@ -12,6 +12,7 @@ public class ScriptGalinha : MonoBehaviour
     public ScriptLogic logic;
     public Rigidbody2D corpoRigido;
     public float velocidade = 2.0f;
+    [SerializeField] public Animator animator;
 
     // Start is called before the first frame update
     void Start()

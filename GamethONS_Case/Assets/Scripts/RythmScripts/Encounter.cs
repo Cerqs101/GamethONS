@@ -9,11 +9,13 @@ public class Encounter : MonoBehaviour
     [SerializeField] private LaneWindow rhythmWindow;
     [SerializeField] public ScriptPortaisFases portalFimDeFase;
     [SerializeField] private LaneWindow laneWindow;
+    [SerializeField] public Animator animator;
 
     [SerializeField] public float measuresInEncounter = 4f;
     [NonSerialized] public double secondsInEncounter;
     public static int hits = 0;
     public static int misses = 0;
+    private bool acabou = false;
     [NonSerialized] public bool isHappening = false;
     public static Encounter instance;
 
@@ -35,7 +37,7 @@ public class Encounter : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && acabou == false)
             StartCoroutine(RunEncounter());
     }
 
@@ -101,7 +103,8 @@ public class Encounter : MonoBehaviour
             portalFimDeFase.gameObject.SetActive(true);
         }
 
-        Destroy(this.gameObject);
+        animator.SetBool("Acabou", true);
+        acabou = true;
     }
 
 
