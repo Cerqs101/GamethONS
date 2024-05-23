@@ -152,8 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59da69dfef036e46abf09f7fe0eafbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 3168378165726108165, guid: bfae54c361730f6478ed0af8dbc72667, type: 3}
   fase: 0
+  ehPortalFimDeFase: 0
   trigger: 0
+  habilidadeQueDa: 0
 --- !u!70 &4020801396897116455
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

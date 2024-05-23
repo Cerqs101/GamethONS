@@ -278,13 +278,14 @@ public class Player : MonoBehaviour
         
     }
 
-    public void GetPowerUp(PowerUps powerUp)
+    public void GetDash()
     {
+        _hasDash = true;
     }
 
-    [Serializable]
-    public enum PowerUps
+    public void GetWallJump()
     {
+        _hasWallJump = true;
     }
 
 
@@ -298,5 +299,13 @@ public class Player : MonoBehaviour
     {
         canMove = false;
         rb.velocity = new Vector2(0,0);
+    }
+
+    [Serializable]
+    public enum Habilidades
+    {
+        None,
+        WallJump,
+        Dash
     }
 }

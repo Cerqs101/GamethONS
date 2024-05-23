@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class ScriptPortaisFases : MonoBehaviour
 {
+    [SerializeField] private Player player;
+    
     public int fase = 0;
     public bool ehPortalFimDeFase = false;
     public bool trigger = false;
-
+    public Player.Habilidades habilidadeQueDa = Player.Habilidades.None;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,18 @@ public class ScriptPortaisFases : MonoBehaviour
                     break;
                 case 4:
                     SceneManager.LoadScene("Score", LoadSceneMode.Additive);
+                    break;
+            }
+
+            switch (habilidadeQueDa)
+            {
+                case Player.Habilidades.WallJump:
+                    player.GetWallJump();
+                    break;
+                case Player.Habilidades.Dash:
+                    player.GetDash();
+                    break;
+                case Player.Habilidades.None: default:
                     break;
             }
 

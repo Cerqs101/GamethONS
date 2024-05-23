@@ -2771,6 +2771,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 468045516}
     - target: {fileID: 96045996650464312, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
+      propertyPath: habilidadeQueDa
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 96045996650464312, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
       propertyPath: ehPortalFimDeFase
       value: 1
       objectReference: {fileID: 0}
@@ -3466,7 +3470,7 @@ Transform:
   m_GameObject: {fileID: 1063138352}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.712704, y: -32.161472, z: -9.841077}
+  m_LocalPosition: {x: -27.232159, y: -32.177296, z: -9.841077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
