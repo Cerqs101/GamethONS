@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public AudioSource firstSongLayer;
     [SerializeField] private float songStartingTime = 0f;
     [SerializeField] private float fadeInDuration = 1f;
-    [SerializeField] private bool playFirstSongLayerOnAwake = true;
+    [SerializeField] public bool playFirstSongLayerOnAwake = true;
     
     private static int currentSongLayer = 0;
     
@@ -26,7 +26,10 @@ public class SoundManager : MonoBehaviour
         // Instance = this;
         
         if(Instance != null)
+        {
+            playFirstSongLayerOnAwake = true;
             Destroy(gameObject);
+        }
         else
         {
             Instance = this;
