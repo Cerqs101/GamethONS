@@ -1446,7 +1446,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1111417487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &507334254
 PrefabInstance:
@@ -1839,6 +1839,10 @@ PrefabInstance:
       propertyPath: laneWindow
       value: 
       objectReference: {fileID: 38076734}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: songLayerName
+      value: Noise
+      objectReference: {fileID: 0}
     - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: measuresInEncounter
       value: 12
@@ -2292,7 +2296,7 @@ Transform:
   m_GameObject: {fileID: 904406798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.912878, y: -8.01441, z: -10.552246}
+  m_LocalPosition: {x: -18.381361, y: -8.01441, z: -10.552246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4110,6 +4114,7 @@ Transform:
   - {fileID: 1800783158}
   - {fileID: 1972592154}
   - {fileID: 1985401071}
+  - {fileID: 494702477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1125359042
@@ -21965,4 +21970,3 @@ SceneRoots:
   - {fileID: 1302484222}
   - {fileID: 1819328913}
   - {fileID: 1685274058}
-  - {fileID: 494702477}

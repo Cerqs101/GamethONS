@@ -5,8 +5,8 @@ using System;
 
 public class Encounter : MonoBehaviour
 {
-    [SerializeField] public AudioSource songLayer;
-    [SerializeField] private LaneWindow rhythmWindow;
+    [SerializeField] private string songLayerName;
+    private AudioSource songLayer;
     [SerializeField] public ScriptPortaisFases portalFimDeFase;
     [SerializeField] private LaneWindow laneWindow;
     [SerializeField] public Animator animator;
@@ -17,14 +17,16 @@ public class Encounter : MonoBehaviour
     public static int misses = 0;
     private bool acabou = false;
     [NonSerialized] public bool isHappening = false;
-    public static Encounter instance;
 
 
 
     void Start()
     {
-        instance = this;
         secondsInEncounter = measuresInEncounter * LevelManager.Instance.measureDuration;
+
+        foreach(AudioSource song in FindObjectsByType<AudioSource>(FindObjectsSortMode.None))
+            if(song.gameObject.name.ToLower() == songLayerName.ToLower())
+                songLayer = song;
     }
 
 
@@ -87,10 +89,11 @@ public class Encounter : MonoBehaviour
         ScoreManager.Instance.levelCompletedEncounters++;
         ScoreManager.Instance.UpdateOverallAccuray(accuracy);
 
-        Debug.Log(ScoreManager.Instance.levelAccuracy);
-
         if(songLayer != null)
+        {
             SoundManager.Instance.StartSongLayer(songLayer);
+            Debug.Log("FadeIn Layer");
+        }
         if(laneWindow != null)
         {
             laneWindow.gameObject.SetActive(true);

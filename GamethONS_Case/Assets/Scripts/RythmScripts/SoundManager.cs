@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
         
         if(Instance != null)
         {
+            SetTimeToAllSongLayers((float)(LevelManager.timeInSongLoop - LevelManager.Instance.musicStartDelay));
             playFirstSongLayerOnAwake = true;
             Destroy(gameObject);
         }
@@ -79,7 +80,7 @@ public class SoundManager : MonoBehaviour
     {
         if(songLayer == firstSongLayer)
             foreach(AudioSource song in allSongLayers)
-                StartCoroutine(FadeOut(song));
+                StartCoroutine(FadeOut(song, 0.1f));
         StartCoroutine(FadeIn(songLayer, fadeInDuration));
     }
 

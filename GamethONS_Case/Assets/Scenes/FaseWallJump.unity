@@ -2763,6 +2763,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1679549418}
     m_Modifications:
     - target: {fileID: 96045996650464312, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
+      propertyPath: fase
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 96045996650464312, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
       propertyPath: finalBoss
       value: 
       objectReference: {fileID: 468045516}
@@ -3462,7 +3466,7 @@ Transform:
   m_GameObject: {fileID: 1063138352}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.701488, y: -32.161404, z: -9.841077}
+  m_LocalPosition: {x: -24.712704, y: -32.161472, z: -9.841077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3869,6 +3873,10 @@ PrefabInstance:
       propertyPath: rhythmWindow
       value: 
       objectReference: {fileID: 301288468}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: songLayerName
+      value: Pulse01
+      objectReference: {fileID: 0}
     - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: portalFimDeFase
       value: 
@@ -4524,8 +4532,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527194058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.901827, y: 19.06312, z: 0.12772919}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -38.78847, y: -6.4664745, z: -0.023622796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4537,7 +4545,7 @@ Transform:
   - {fileID: 312142178}
   - {fileID: 554869448}
   - {fileID: 173173116}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1679549418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535728859
 GameObject:
@@ -4772,6 +4780,8 @@ Transform:
   - {fileID: 864572222}
   - {fileID: 1410290557}
   - {fileID: 1158613630}
+  - {fileID: 1856189296}
+  - {fileID: 1527194059}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1696863885
@@ -48724,7 +48734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogBlockIndex: 9
+  dialogBlockIndex: 0
   destroyAfterActivated: 0
   audioSource: {fileID: 0}
   video: {fileID: 0}
@@ -48751,11 +48761,11 @@ Transform:
   m_GameObject: {fileID: 1856189291}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 100.36, y: 39.1, z: 0.54702425}
+  m_LocalPosition: {x: 58.6697, y: 13.570404, z: 0.39567226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1679549418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857286621
 GameObject:
@@ -49576,10 +49586,8 @@ SceneRoots:
   - {fileID: 1769802486}
   - {fileID: 854990700}
   - {fileID: 183902721}
-  - {fileID: 1527194059}
   - {fileID: 572422259}
   - {fileID: 421643285}
   - {fileID: 1679549418}
   - {fileID: 500006702}
   - {fileID: 193390166}
-  - {fileID: 1856189296}
