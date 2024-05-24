@@ -112,6 +112,20 @@ public class LevelManager : MonoBehaviour
             SoundManager.activeSongLayers.RemoveAt(SoundManager.activeSongLayers.Count() - 1);
             SoundManager.wasSongLayerAdded = false;
         }
+        Debug.Log(FindObjectOfType<Player>()._gotAPowerUp);
+        if(FindObjectOfType<Player>()._gotAPowerUp)
+        {
+            Debug.Log(SceneManager.GetActiveScene().name);
+            switch(SceneManager.GetActiveScene().name)
+            {
+                case "Fase1":           
+                    FindObjectOfType<Player>().RemoveWallJump();
+                    break;
+                case "FaseWallJump":    
+                    FindObjectOfType<Player>().RemoveDash();
+                    break;
+            }
+        }
         
         ScenesManager.previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("Game Over", LoadSceneMode.Single);

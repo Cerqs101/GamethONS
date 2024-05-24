@@ -19,7 +19,7 @@ public class Encounter : MonoBehaviour
     [NonSerialized] public bool isHappening = false;
 
     public Player.Habilidades habilidadeQueDa = Player.Habilidades.None;
-    [SerializeField] private Player player;
+    private Player player;
     
 
     void Start()
@@ -29,6 +29,8 @@ public class Encounter : MonoBehaviour
         foreach(AudioSource song in FindObjectsByType<AudioSource>(FindObjectsSortMode.None))
             if(song.gameObject.name.ToLower() == songLayerName.ToLower())
                 songLayer = song;
+
+        player = FindObjectOfType<Player>();
     }
 
 
@@ -91,14 +93,14 @@ public class Encounter : MonoBehaviour
         ScoreManager.Instance.levelCompletedEncounters++;
         ScoreManager.Instance.UpdateOverallAccuray(accuracy);
 
-        if(songLayer != null)
+        if(songLayer != null && songLayer.volume < 0.99f)
         {
             Debug.Log("SongLayer");
             SoundManager.Instance.StartSongLayer(songLayer);
             SoundManager.activeSongLayers.Add(songLayer);
             SoundManager.wasSongLayerAdded = true;
         }
-        if(laneWindow != null)
+        if(laneWindow != null && !laneWindow.gameObject.activeInHierarchy)
         {
             laneWindow.gameObject.SetActive(true);
             LaneContainer.activeLanes.Add(laneWindow.GetComponentInChildren<HitObject>().keyToPress);

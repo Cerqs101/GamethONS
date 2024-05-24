@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
     private static bool _hasDash; // Player possui a habilidade dash
     private static bool _has2Jump = true; // Player possui a habilidade pulo duplo
     private static bool _hasWallJump; // Player possui a habilidade pulo na parede
+    public bool _gotAPowerUp;
     
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -67,34 +68,35 @@ public class Player : MonoBehaviour
     private void Start()
     {
         vidaAtual = vidaMax;
+        _gotAPowerUp = false;
     }
 
     private void Update()
     {
-        #region Teste de manter coiso entre cenas
+        // #region Teste de manter coiso entre cenas
             
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            _hasDash = !_hasDash;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _has2Jump = !_has2Jump;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            _hasWallJump = !_hasWallJump;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Teste Fase");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("FaseWallJump");
-        }
+        // if (Input.GetKeyDown(KeyCode.Alpha1))
+        // {
+        //     _hasDash = !_hasDash;
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha2))
+        // {
+        //     _has2Jump = !_has2Jump;
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha3))
+        // {
+        //     _hasWallJump = !_hasWallJump;
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha4))
+        // {
+        //     UnityEngine.SceneManagement.SceneManager.LoadScene("Teste Fase");
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha5))
+        // {
+        //     UnityEngine.SceneManagement.SceneManager.LoadScene("FaseWallJump");
+        // }
         
-        #endregion
+        // #endregion
         
         if(IsAlive && canMove)
             Movement();
@@ -280,14 +282,33 @@ public class Player : MonoBehaviour
 
     public void GetDash()
     {
-        _hasDash = true;
+        if(!_hasDash)
+        {
+            _hasDash = true;
+            _gotAPowerUp = true;
+        }
+    }
+
+    public void RemoveDash()
+    {
+        _hasDash = false;
     }
 
     public void GetWallJump()
     {
-        _hasWallJump = true;
+        if(!_hasWallJump)
+        {
+            _hasWallJump = true;
+            _gotAPowerUp = true;
+            Debug.Log(_gotAPowerUp);
+        }
     }
 
+    public void RemoveWallJump()
+    {
+        if(_hasWallJump)
+            _hasWallJump = false;
+    }
 
     public void Morrer()
     {
