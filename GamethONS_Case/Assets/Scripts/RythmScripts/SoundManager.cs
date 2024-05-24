@@ -7,9 +7,10 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [NonSerialized] public List<AudioSource> allSongLayers = new List<AudioSource>();
-    [NonSerialized] public List<AudioSource> activeSongLayers = new List<AudioSource>();
+    public static List<AudioSource> activeSongLayers = new List<AudioSource>();
+    public static bool wasSongLayerAdded = false;
     [SerializeField] public AudioSource firstSongLayer;
+    [NonSerialized] public static List<AudioSource> allSongLayers = new List<AudioSource>();
     [SerializeField] private float songStartingTime = 0f;
     [SerializeField] private float fadeInDuration = 1f;
     [SerializeField] public bool playFirstSongLayerOnAwake = true;
@@ -21,32 +22,43 @@ public class SoundManager : MonoBehaviour
     // private static float commonSongAndBeatDisalingment;
 
 
-    void Start()
+    void Awake()
     {
         // Instance = this;
         
         if(Instance != null)
         {
-            SetTimeToAllSongLayers((float)(LevelManager.timeInSongLoop - LevelManager.Instance.musicStartDelay));
+            // SetTimeToAllSongLayers((float)(LevelManager.timeInSongLoop - LevelManager.Instance.musicStartDelay));
             playFirstSongLayerOnAwake = true;
+            
             Destroy(gameObject);
         }
         else
         {
             Instance = this;
             DontDestroyOnLoad(transform.gameObject);
+            
+            allSongLayers.Add(firstSongLayer);
+            activeSongLayers.Add(firstSongLayer);
+                
+            foreach(AudioSource songLayer in GetComponentsInChildren<AudioSource>(true))
+                allSongLayers.Add(songLayer);
+                
+            for(int i = currentSongLayer; i < allSongLayers.Count(); i++)
+                allSongLayers[i].volume = 0;
+
+            if(playFirstSongLayerOnAwake)
+                StartCoroutine(FadeIn(firstSongLayer));
+            
+            // foreach(AudioSource audio in allSongLayers)
+            //     Debug.Log(audio);
+            // Debug.Log("----");
+            // foreach(AudioSource audio in activeSongLayers)
+            //     Debug.Log(audio);
         }
 
-        allSongLayers.Add(firstSongLayer);
-        activeSongLayers.Add(firstSongLayer);
 
-        foreach(AudioSource songLayer in GetComponentsInChildren<AudioSource>(true))
-                allSongLayers.Add(songLayer);
 
-        for(int i = currentSongLayer; i < allSongLayers.Count(); i++)
-            allSongLayers[i].volume = 0;
-        if(playFirstSongLayerOnAwake)
-            StartCoroutine(FadeIn(firstSongLayer));
 
         // Invoke("PlayAllSongs", LevelManager.Instance.musicStartDelay);
         // SetTimeToAllSongLayers((float)(LevelManager.timeInSongLoop - LevelManager.Instance.musicStartDelay));
@@ -88,21 +100,21 @@ public class SoundManager : MonoBehaviour
     public static double GetAudioTime(AudioSource audio = null){
         // return (double) instance.music.timeSamples / instance.music.clip.frequency;
         if(audio == null)
-            audio = Instance.allSongLayers[0];
+            audio = allSongLayers[0];
         return audio.time;
     }
 
 
     public static void SetTimeToAllSongLayers(float time)
     {
-        foreach(AudioSource songLayer in Instance.allSongLayers)
+        foreach(AudioSource songLayer in allSongLayers)
             songLayer.time = time + Instance.songStartingTime;
     }
 
     public static double GetAudioLenght(AudioSource audio = null)
     { 
         if(audio == null)
-            audio = Instance.allSongLayers[0];
+            audio = allSongLayers[0];
         return audio.clip.length;
     }
 

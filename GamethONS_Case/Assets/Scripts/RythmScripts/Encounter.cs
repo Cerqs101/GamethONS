@@ -9,7 +9,7 @@ public class Encounter : MonoBehaviour
     private AudioSource songLayer;
     [SerializeField] public ScriptPortaisFases portalFimDeFase;
     [SerializeField] private LaneWindow laneWindow;
-    [SerializeField] public Animator animator;
+    // [SerializeField] public Animator animator;
 
     [SerializeField] public float measuresInEncounter = 4f;
     [NonSerialized] public double secondsInEncounter;
@@ -93,8 +93,10 @@ public class Encounter : MonoBehaviour
 
         if(songLayer != null)
         {
+            Debug.Log("SongLayer");
             SoundManager.Instance.StartSongLayer(songLayer);
-            Debug.Log("FadeIn Layer");
+            SoundManager.activeSongLayers.Add(songLayer);
+            SoundManager.wasSongLayerAdded = true;
         }
         if(laneWindow != null)
         {
@@ -107,9 +109,6 @@ public class Encounter : MonoBehaviour
         {
             portalFimDeFase.gameObject.SetActive(true);
         }
-
-        animator.SetBool("Acabou", true);
-        acabou = true;
         
         switch (habilidadeQueDa)
         {
@@ -122,7 +121,10 @@ public class Encounter : MonoBehaviour
             case Player.Habilidades.None: default:
                 break;
         }
-
+        
+        // animator.SetBool("Acabou", true);
+        // acabou = true;
+        Destroy(this.gameObject);
     }
 
 

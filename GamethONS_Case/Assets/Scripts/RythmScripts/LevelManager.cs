@@ -104,8 +104,14 @@ public class LevelManager : MonoBehaviour
 
         hasLevelStarted = false;
         timeInSongLoop = 0;
+
         if(FindObjectOfType<LaneContainer>().wasLaneAdded)
             LaneContainer.activeLanes.RemoveAt(LaneContainer.activeLanes.Count()-1);
+        if(SoundManager.wasSongLayerAdded)
+        {
+            SoundManager.activeSongLayers.RemoveAt(SoundManager.activeSongLayers.Count() - 1);
+            SoundManager.wasSongLayerAdded = false;
+        }
         
         ScenesManager.previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
