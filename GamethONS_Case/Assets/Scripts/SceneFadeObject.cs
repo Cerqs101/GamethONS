@@ -12,6 +12,9 @@ public class SceneFadeObject : MonoBehaviour
     private float waitPerLoop;
     private Color32 opacityReduction;
 
+    private Coroutine currentFade;
+    private bool isFading = false;
+
     public static SceneFadeObject instance;
 
 
@@ -25,10 +28,10 @@ public class SceneFadeObject : MonoBehaviour
         if(fadeOnStart)
         {
             image.color = new Color32(0,0,0,255);
-            StartCoroutine(FadeOut());
+            Fade("out");
         }
         else    
-            image.color = new Color32(0,0,0,255);
+            image.color = new Color32(0,0,0,0);
     }
 
     // Update is called once per frame
@@ -37,23 +40,43 @@ public class SceneFadeObject : MonoBehaviour
     }
 
 
+    public void Fade(string mode)
+    {
+        if(isFading && currentFade != null)
+            StopCoroutine(currentFade);
+
+        if(mode == "in")
+            currentFade = StartCoroutine(FadeIn());
+        else if(mode == "out")
+            currentFade = StartCoroutine(FadeOut());
+        else
+            return;
+    
+        isFading = true;
+    }
+
+
     public IEnumerator FadeOut()
     {
+        isFading = true;
         while(image.color.a > 0)
         {
             image.color -= opacityReduction;
             yield return new WaitForSecondsRealtime(waitPerLoop);
         }
+        isFading = false;
     }
 
 
     public IEnumerator FadeIn()
     {
+        isFading = true;
         while(image.color.a < 255)
         {
             image.color += opacityReduction;
             yield return new WaitForSecondsRealtime(waitPerLoop);
         }
+        isFading = false;
     }
 
 
