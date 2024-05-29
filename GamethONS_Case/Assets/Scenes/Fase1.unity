@@ -1904,6 +1904,26 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Size.x
+      value: 7.3876762
+      objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Size.y
+      value: 3.8303552
+      objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Offset.x
+      value: 2.9660778
+      objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.0401776
+      objectReference: {fileID: 0}
     - target: {fileID: 721517628132694441, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: m_Name
       value: NOISE
@@ -2647,7 +2667,7 @@ Transform:
   m_GameObject: {fileID: 904406798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.900913, y: -7.6844068, z: -10.552246}
+  m_LocalPosition: {x: -20.91135, y: -7.6844068, z: -10.552246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4145,7 +4165,7 @@ Transform:
   m_GameObject: {fileID: 1075694468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.74, y: 5.9991, z: 0}
+  m_LocalPosition: {x: 61.82, y: 5.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
