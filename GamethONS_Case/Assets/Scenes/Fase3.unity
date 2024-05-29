@@ -11714,6 +11714,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5490305938657324204, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+      propertyPath: keyToPress
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490305938657324204, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: keyToPress2
       value: 122
       objectReference: {fileID: 0}
