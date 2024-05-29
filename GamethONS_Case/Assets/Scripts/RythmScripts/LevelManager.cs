@@ -99,7 +99,7 @@ public class LevelManager : MonoBehaviour
     {
         float waitTime = 5f;
         SoundManager.Instance.FadeOutAllSongLayers(waitTime);
-        StartCoroutine(FindObjectOfType<SceneFadeObject>().FadeIn());
+        FindObjectOfType<SceneFadeObject>().Fade("in");
         yield return new WaitForSecondsRealtime(waitTime);
 
         hasLevelStarted = false;

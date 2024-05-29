@@ -96,7 +96,7 @@ public class ScenesManager : MonoBehaviour
         if(fade)
         {
             SceneFadeObject sceneFadeObject = SceneFadeObject.instance;
-            StartCoroutine(sceneFadeObject.FadeIn());
+            sceneFadeObject.Fade("in");
             yield return new WaitForSecondsRealtime(sceneFadeObject.waitTime);
         }
         previousScene = SceneManager.GetActiveScene().name;
