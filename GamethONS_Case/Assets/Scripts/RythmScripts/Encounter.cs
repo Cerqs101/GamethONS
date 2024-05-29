@@ -85,13 +85,19 @@ public class Encounter : MonoBehaviour
 
     public void SolveEncounter()
     {
-        float accuracy = (float)hits / (hits + misses);
+        float accuracy;
+        if((hits + misses) != 0)
+        {
+            accuracy = (float)hits / (hits + misses);
+            ScoreManager.Instance.UpdateOverallAccuray(accuracy);
+        }
+        else
+            accuracy = LevelManager.Instance.midAccuracyThreshold;
 
         LevelManager.Instance.AcurracyConsequences(accuracy);
 
         ScoreManager.Instance.levelHits += hits;
         ScoreManager.Instance.levelCompletedEncounters++;
-        ScoreManager.Instance.UpdateOverallAccuray(accuracy);
 
         if(songLayer != null && songLayer.volume < 0.99f)
         {

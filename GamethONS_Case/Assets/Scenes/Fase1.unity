@@ -21579,6 +21579,10 @@ PrefabInstance:
       propertyPath: keyToPress
       value: 122
       objectReference: {fileID: 0}
+    - target: {fileID: 5490305938657324204, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+      propertyPath: noteRestriction
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6366096555479995706, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_Name
       value: Hit Red
