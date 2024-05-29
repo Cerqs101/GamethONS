@@ -15,7 +15,7 @@ public class Encounter : MonoBehaviour
     [NonSerialized] public double secondsInEncounter;
     public static int hits = 0;
     public static int misses = 0;
-    private bool acabou = false;
+    // private bool acabou = false;
     [NonSerialized] public bool isHappening = false;
 
     public Player.Habilidades habilidadeQueDa = Player.Habilidades.None;
@@ -43,7 +43,7 @@ public class Encounter : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && acabou == false)
+        if (collision.gameObject.tag == "Player" /*&& acabou == false*/)
             StartCoroutine(RunEncounter());
     }
 
@@ -126,7 +126,9 @@ public class Encounter : MonoBehaviour
         
         // animator.SetBool("Acabou", true);
         // acabou = true;
-        Destroy(this.gameObject);
+        Destroy(GetComponent<Rigidbody2D>());
+        Destroy(GetComponentInChildren<BoxCollider2D>());
+        Destroy(this);
     }
 
 
