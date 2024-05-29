@@ -4,7 +4,7 @@ Bem vindo ao mundo, meu querido robozinho!
 Eu sou seu inventor, é um prazer conhecê-lo!
 Você é um rapazinho muito importante, mas ainda tem muito o que aprender sobre si e sobre o mundo...
 ...Então sem mais delongas, avance para a direita para começar o seu treinamento!
-Para se mexer, use as teclas de seta no seu teclado.
+Para se mexer, use as teclas de seta [<] [>] no seu teclado.
 Não se preocupe comigo, vou ficar por aqui.
 Mas pode ficar tranquilo, você tem um rádio imbutido. Vou falar com você de longe!
 Vamos, vá para direita!
@@ -17,26 +17,28 @@ Para fazer isso, aperte a tecla [Z] ou [Espaço].
 Ufa, que bom que deu tudo certo.
 É importante você saber que existem outras coisas que podem te machucar além de água.
 Então fique de olho em qualquer coisa que parece perigosa.
-Mas.. caramba, olha lá! tem ainda água lá pra frente. 
-Só pular não vai ser suficiente.
-Por sorte, você também consegue se propulcionar no ar, mas só uma vez.
+Mas.. caramba, olha lá! Tem ainda mais água lá pra frente! 
+Apenas um pulo não vai ser suficiente.
+Por sorte, você também consegue se propulcionar no ar.
 Basta apertar qualquer uma das teclas de pular, [Z] ou [Espaço], enquanto não tocar no chão.
+Mas cuidado, assim que se propulcionar uma vez, você precisa enconstar no chão para poder fazer isso novamente.
 Experimente!
 
 Muito bem.
-Agora que você sabe como se mexer sem se machucar, vamos falar do seu propósito.
+Agora que você sabe como se mexer sem se machucar, vamos falar do seu propósito:
 Adicionar usinas para o Sistema Interligado Nacional e concertar os periféricos pelo caminho.
-Esse é um sistema de coordenação e controle da energia que sustenta o Brasil.
+O SIN é um sistema de coordenação e controle da energia que sustenta o Brasil.
 Ele é fundamental para a distribuição de eletricidade para o país, e você faz parte dessa missão.
 É como se você estivesse participando, conduzindo e melhorando uma orquestra gigantesca! Uma orquestra elétrica!
 Uma que ajuda as pessoas, que ilumina a vida delas!
-Quando mexer no SIN, você vai estar tanto "consertando" quanto "concertando".
+Quando mexer nesse sistema, você vai estar tanto "consertando" quanto "concertando".
 Nessa região, por enquanto, temos apenas uma usina. Ande um pouco e você já deve conseguir ouvir o som dela!
 
 Está ouvindo? Esse é o ritmo dessa usina, e temos que levar ele em consideração quando formos mexer no SIN.
-Toda vez que você mexer no SIN, você verá uma tela com usinas com cargas elétricas saindo dele e coletores dessa energia.
-Você deve, seguindo o ritmo do SIN, coordenar energia das usinas através dos coletores.
-Aperte [X] quando cargas chegarem nos coletores. Isso vai te ajudar a seguir o ritmo do SIN.
+Toda vez que você mexer no SIN, você verá uma tela com usinas no lado direito, de onde cargas elétricas saem.
+Na esquerda estarão estações de controle dessa energia.
+Você deve, seguindo o ritmo do SIN, coordenar energia das usinas através das estações.
+Aperte [X] quando cargas chegarem nas estações. Isso vai te ajudar a seguir o ritmo do SIN.
 Olha só, ali na frente tem um concerto para você fazer. Experimente!
 
 Excelente!
@@ -44,11 +46,11 @@ Você percebeu uma barra colorida subindo e descendo enquanto você consertava?
 Essa é a segurança do seu conserto.
 O resultado do seu conserto depende da sua performance como maestro elétrico.
 Se você seguir quase perfeitamente o ritmo do SIN, sua barra fica verde e você ganha um pouco de eletricidade para sustentar suas energias, ganhando vida.
-Entretanto, se você for muito mal isso pode gerar alguns danos para você.
+Entretanto, ir muito mal pode gerar alguns danos para você.
 Alguma coisa pode explodir, e você pode acabar com um fusível queimado!
 Nesses casos, sua barra fica vermelha e você perde vida!
 Também existe a possibilidade de você realizar a tarefa sem se machucar, mas sem ir bem o bastante para ganhar vida.
-Nesse caso, nada acontece com você e sua barra é azul!
+Nesse caso, sua barra é azul e nada acontece!
 Então lembre-se, busque sempre deixar a barra verde. Azul está tudo bem, e vermelho é perigo!
 Vamos, faça mais alguns consertos. Com bastante cuidado pra não se machucar!
 
