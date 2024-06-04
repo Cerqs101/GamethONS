@@ -433,6 +433,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
+--- !u!1 &55086958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2835445778111205665, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+  m_PrefabInstance: {fileID: 397183073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &58041861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,6 +1091,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1102881647}
   - {fileID: 1144838319}
   - {fileID: 432681950}
   - {fileID: 588496214}
@@ -1641,11 +1647,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 156433086044647496, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.0000305
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 385295550742702811, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1596118867}
+    - target: {fileID: 385295550742702811, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitSoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 636904673796990182, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_Pivot.x
@@ -1730,10 +1740,10 @@ PrefabInstance:
     - target: {fileID: 2204000833561944772, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1596118867}
     - target: {fileID: 2204000833561944772, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 2601440891192321540, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1755,17 +1765,53 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4903950848268867093, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903950848268867093, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1048579384}
+    - target: {fileID: 4903950848268867093, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeactivateScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903950848268867093, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScenesManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903950848268867093, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 55086958}
+    - target: {fileID: 4903950848268867093, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5024028993563329934, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1596118867}
+    - target: {fileID: 5024028993563329934, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1048579384}
+    - target: {fileID: 5024028993563329934, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnactivateUi
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024028993563329934, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: goToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5455964530232028321, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1048579384}
     - target: {fileID: 5455964530232028321, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: ActivateScreen
       objectReference: {fileID: 0}
     - target: {fileID: 7113050851362511810, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_Name
@@ -1774,10 +1820,18 @@ PrefabInstance:
     - target: {fileID: 8117729517568425298, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1596118867}
+    - target: {fileID: 8117729517568425298, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ControlVolume
       objectReference: {fileID: 0}
     - target: {fileID: 8703387099609292671, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1596118867}
+    - target: {fileID: 8703387099609292671, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnterSoundManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1912,6 +1966,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &451152420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4317511022265850080, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+  m_PrefabInstance: {fileID: 397183073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &460889978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2854,7 +2913,7 @@ Transform:
   m_GameObject: {fileID: 904406798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -152.6218, y: -2.375671, z: -6.023918}
+  m_LocalPosition: {x: -154.0892, y: -2.375671, z: -6.023918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2925,7 +2984,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1102881647}
   - {fileID: 211836720}
   m_Father: {fileID: 1927928378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3922,9 +3980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd263df8c38e30a4fa14b1598e359ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inicio: {fileID: 0}
-  creditos: {fileID: 0}
-  opcoes: {fileID: 0}
+  inicio: {fileID: 451152420}
 --- !u!1001 &1094571383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4016,7 +4072,7 @@ RectTransform:
   - {fileID: 1831901228}
   - {fileID: 2107726351}
   - {fileID: 1134885415}
-  m_Father: {fileID: 909832318}
+  m_Father: {fileID: 211836720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -4161,7 +4217,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1000
+  m_SortingOrder: 998
   m_TargetDisplay: 0
 --- !u!4 &1107180955 stripped
 Transform:
@@ -15577,8 +15633,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 909832318}
   - {fileID: 1103645639}
+  - {fileID: 909832318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1930706059
