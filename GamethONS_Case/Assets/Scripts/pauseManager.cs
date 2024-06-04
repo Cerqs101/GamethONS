@@ -65,7 +65,7 @@ public class pauseManager : MonoBehaviour
         Time.timeScale = 1;
     }
     public void UnactivateUi(){
-        //pauseAudio.SetFloat("MasterAudio",-80);
+        SoundManager.Instance.FadeOutAllSongLayers();
         uiCanvas.SetActive(false);
     }
 }
