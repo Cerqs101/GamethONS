@@ -58,11 +58,19 @@ public class ScoreManager : MonoBehaviour
     public void condicionalScoreSave(Scene scene, LoadSceneMode mode)
     {
         string lastSceneLoaded = ScenesManager.previousScene;
-        if(lastSceneLoaded == "Fase1")
-            level01Score = currentLevelScore;
-        else if(lastSceneLoaded == "FaseWallJump")
-            level02Score = currentLevelScore;
-        else if(lastSceneLoaded == "Fase3")
-            level03Score = currentLevelScore;
+        if(lastSceneLoaded == "Fase1"){
+            level01Score = currentLevelScore;}
+        else {if(lastSceneLoaded == "FaseWallJump"){
+            level02Score = currentLevelScore;}
+        else {if(lastSceneLoaded == "Fase3"){
+            level03Score = currentLevelScore;}
+        else{
+            return;}}}
+        Debug.Log(currentLevelScore);
+        currentLevelScore = 0;
+        Debug.Log(currentLevelScore);
+        Debug.Log(level01Score);
+        Debug.Log(level02Score);
+        Debug.Log(level03Score);
     }
 }
