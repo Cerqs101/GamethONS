@@ -276,7 +276,7 @@ public class Player : MonoBehaviour
         vidaAtual = Mathf.Clamp(vidaAtual, 0, vidaMax);
         Debug.Log("Chegamo aqui" + dano);   
         if( vidaAtual <= 0)
-            Morrer();
+            Die();
         
     }
 
@@ -310,8 +310,9 @@ public class Player : MonoBehaviour
             _hasWallJump = false;
     }
 
-    public void Morrer()
+    public void Die()
     {
+        StopMovemnt();
         IsAlive = false;
         StartCoroutine(LevelManager.Instance.EndGame());
     }

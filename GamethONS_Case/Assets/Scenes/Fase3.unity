@@ -365,6 +365,18 @@ PrefabInstance:
       value: FINAL
       objectReference: {fileID: 0}
     - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: laneWindow
+      value: 
+      objectReference: {fileID: 550686500}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: songLayerName
+      value: Pulse01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: portalFimDeFase
+      value: 
+      objectReference: {fileID: 568624820}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: measuresInEncounter
       value: 12
       objectReference: {fileID: 0}
@@ -9836,7 +9848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &550686499
 Transform:
   m_ObjectHideFlags: 0
@@ -9978,11 +9990,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortaisFases (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7271034037463427827, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
+--- !u!114 &568624820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 96045996650464312, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
+  m_PrefabInstance: {fileID: 568624819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59da69dfef036e46abf09f7fe0eafbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &582345977
 GameObject:
   m_ObjectHideFlags: 0
@@ -10104,7 +10131,7 @@ Transform:
   m_GameObject: {fileID: 582345977}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.465935, y: -6.759575, z: -10.018093}
+  m_LocalPosition: {x: -35.99854, y: -6.759575, z: -10.018093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10127,7 +10154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &592445965
 Transform:
   m_ObjectHideFlags: 0
@@ -12801,7 +12828,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 998
+  m_SortingOrder: 1000
   m_TargetDisplay: 0
 --- !u!1 &1546421258
 GameObject:

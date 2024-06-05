@@ -2461,7 +2461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogBlockIndex: 9
+  dialogBlockIndex: 1
   destroyAfterActivated: 0
   audioSource: {fileID: 0}
   video: {fileID: 0}
@@ -3311,6 +3311,10 @@ PrefabInstance:
       propertyPath: habilidadeQueDa
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: portalFimDeFase
+      value: 
+      objectReference: {fileID: 1048518847}
     - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: measuresInEncounter
       value: 12
@@ -4544,7 +4548,7 @@ Transform:
   m_GameObject: {fileID: 904406798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.916674, y: -7.6844068, z: -10.552246}
+  m_LocalPosition: {x: -19.449278, y: -7.6844068, z: -10.552246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6036,6 +6040,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1724116598456743008, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
   m_PrefabInstance: {fileID: 1014822252}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1048518847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 96045996650464312, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
+  m_PrefabInstance: {fileID: 1014822252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59da69dfef036e46abf09f7fe0eafbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1055050991 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 636904673796990182, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
@@ -23376,7 +23391,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 998
+  m_SortingOrder: 1000
   m_TargetDisplay: 0
 --- !u!1001 &1723111950
 PrefabInstance:
