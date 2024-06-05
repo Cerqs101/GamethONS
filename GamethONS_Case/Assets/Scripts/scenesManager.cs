@@ -58,7 +58,7 @@ public class ScenesManager : MonoBehaviour
     }
     public void goToMenu(){
         StartCoroutine(PlayScene("Menu Principal", true));
-        //SceneManager.LoadScene("Menu Principal");
+        SoundManager.Instance.FadeOutAllSongLayers();
     }
 
 

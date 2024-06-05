@@ -13,7 +13,6 @@ public class pauseManager : MonoBehaviour
     public GameObject optionsCanvas;
     public Slider volumeSlider;
     public AudioMixer pauseAudio;
-    public GameObject uiCanvas;
 
     void Start()
     {
@@ -63,9 +62,5 @@ public class pauseManager : MonoBehaviour
     public void Resume(){
         pauseCanvas.SetActive(false);
         Time.timeScale = 1;
-    }
-    public void UnactivateUi(){
-        SoundManager.Instance.FadeOutAllSongLayers();
-        uiCanvas.SetActive(false);
     }
 }
