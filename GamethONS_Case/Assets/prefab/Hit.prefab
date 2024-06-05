@@ -197,9 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65be9d3cf8964d4449225d3c67876398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSprite: {fileID: 21300000, guid: f96042e96881ec642b76073aa2435dd0, type: 3}
-  missSprite: {fileID: 21300000, guid: b20bc07c35bc78b4692e6c7b2351cd77, type: 3}
-  passSprite: {fileID: 21300000, guid: a428fa5c5837f24469ca34755ade56c3, type: 3}
+  hitSprite: {fileID: 21300000, guid: 3ddeedf4de4b0c746b97e4d7e802f478, type: 3}
+  missSprite: {fileID: 21300000, guid: 04ee6d9c59755bd48bb436ffb0418c84, type: 3}
+  passSprite: {fileID: 21300000, guid: 002efb6c8bbe15849939573371710c81, type: 3}
   pressedColor:
     serializedVersion: 2
     rgba: 4291348680
