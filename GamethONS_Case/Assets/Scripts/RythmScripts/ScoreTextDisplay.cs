@@ -13,13 +13,13 @@ public class ScoreTextDisplay : MonoBehaviour
         text = GetComponent<TextMeshPro>();
 
         switch(levelNumber){
-            case 1: setValueToDisplay(ScoreManager.level01Score);
+            case 1: SetValueToDisplay(ScoreManager.level01HighScore);
                     break;
-            case 2: setValueToDisplay(ScoreManager.level02Score);
+            case 2: SetValueToDisplay(ScoreManager.level02HighScore);
                     break;
-            case 3: setValueToDisplay(ScoreManager.level03Score);
+            case 3: SetValueToDisplay(ScoreManager.level03HighScore);
                     break;
-            default: setValueToDisplay(0);
+            default: SetValueToDisplay(0);
                     break;
         }
     }
@@ -30,7 +30,7 @@ public class ScoreTextDisplay : MonoBehaviour
         
     }
 
-    void setValueToDisplay(int value){
+    void SetValueToDisplay(int value){
         if(value <= 0)
             text.text = "";
         else

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,9 +20,9 @@ public class ScoreManager : MonoBehaviour
 
     public static int totalScore = 0;
     public static int currentLevelScore = 0;
-    public static int level01Score = 0;
-    public static int level02Score = 0;
-    public static int level03Score = 0;
+    public static int level01HighScore = 0;
+    public static int level02HighScore = 0;
+    public static int level03HighScore = 0;
 
 
 
@@ -34,18 +35,24 @@ public class ScoreManager : MonoBehaviour
     
     void Update()
     {
-        currentLevelScore = (int)Mathf.Round(((float)levelRecoveredHealth*500f + (float)levelHits*100f) * (float)levelAccuracy * ((float)levelCompletedEncounters/((float)totalEncountersInAllLevels/2f)));
+        currentLevelScore = CalculateScore();
         // Debug.Log(currentLevelScore);
     }
 
 
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += condicionalScoreSave;
+    public int CalculateScore(){
+        return (int)Mathf.Round(((float)levelRecoveredHealth*500f + (float)levelHits*100f) * (float)levelAccuracy * ((float)levelCompletedEncounters/((float)totalEncountersInAllLevels/2f)));
     }
+
+
+    // void OnEnable()
+    // {
+    //     // SceneManager.sceneLoaded += condicionalScoreSave;
+    // }
     void OnDisable()
     {
-        SceneManager.sceneLoaded -= condicionalScoreSave;
+        // SceneManager.sceneLoaded -= condicionalScoreSave;
+        condicionalScoreSave();
     }
 
 
@@ -55,22 +62,17 @@ public class ScoreManager : MonoBehaviour
     }
 
 
-    public void condicionalScoreSave(Scene scene, LoadSceneMode mode)
+    public void condicionalScoreSave(/*Scene scene, LoadSceneMode mode*/)
     {
         string lastSceneLoaded = ScenesManager.previousScene;
-        if(lastSceneLoaded == "Fase1"){
-            level01Score = currentLevelScore;}
-        else {if(lastSceneLoaded == "FaseWallJump"){
-            level02Score = currentLevelScore;}
-        else {if(lastSceneLoaded == "Fase3"){
-            level03Score = currentLevelScore;}
-        else{
-            return;}}}
-        Debug.Log(currentLevelScore);
+        if(lastSceneLoaded == "Fase1")
+            level01HighScore = Math.Max(CalculateScore(), level01HighScore);
+        else if(lastSceneLoaded == "FaseWallJump")
+            level02HighScore = Math.Max(CalculateScore(), level02HighScore);
+        else if(lastSceneLoaded == "Fase3")
+            level03HighScore = Math.Max(CalculateScore(), level03HighScore);
+        else
+            return;
         currentLevelScore = 0;
-        Debug.Log(currentLevelScore);
-        Debug.Log(level01Score);
-        Debug.Log(level02Score);
-        Debug.Log(level03Score);
     }
 }

@@ -49,19 +49,7 @@ public class SoundManager : MonoBehaviour
 
             if(playFirstSongLayerOnAwake)
                 StartCoroutine(FadeIn(firstSongLayer));
-            
-            // foreach(AudioSource audio in allSongLayers)
-            //     Debug.Log(audio);
-            // Debug.Log("----");
-            // foreach(AudioSource audio in activeSongLayers)
-            //     Debug.Log(audio);
         }
-
-
-
-
-        // Invoke("PlayAllSongs", LevelManager.Instance.musicStartDelay);
-        // SetTimeToAllSongLayers((float)(LevelManager.timeInSongLoop - LevelManager.Instance.musicStartDelay));
     }
 
 

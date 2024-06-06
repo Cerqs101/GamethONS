@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,7 +9,8 @@ public class ScriptPortaisFases : MonoBehaviour
 {
     public int fase = 0;
     public bool ehPortalFimDeFase = false;
-    public bool trigger = false;
+    [NonSerialized] public bool trigger = false;
+    [NonSerialized] private bool hasPlayerEntered = false;
     
     // Start is called before the first frame update
     void Start()
@@ -29,10 +31,10 @@ public class ScriptPortaisFases : MonoBehaviour
 
     private void OnTriggerStay2D(UnityEngine.Collider2D collision)
     {
-        Debug.Log("A");
-        if(trigger == true) 
+        // Debug.Log("A");
+        if(trigger == true && !hasPlayerEntered) 
         {
-            Debug.Log("B");
+            // Debug.Log("B");
             switch (fase)
             {
                 case 0:
@@ -49,18 +51,17 @@ public class ScriptPortaisFases : MonoBehaviour
                     PlayScene("Fase3");
                     break;
                 case 4:
-                    SceneManager.LoadScene("Score", LoadSceneMode.Additive);
+                    PlayScene("Score", loadSceneMode:LoadSceneMode.Additive);
                     break;
             }
-            
             trigger = false;
         }
 
     }
 
-    private void PlayScene(string cena)
+    private void PlayScene(string cena, LoadSceneMode loadSceneMode=LoadSceneMode.Single)
     {
-        Debug.Log("D");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(cena, LoadSceneMode.Single);
+        hasPlayerEntered = true;
+        StartCoroutine(ScenesManager.instance.PlayScene(cena, fade:true, loadSceneMode));
     }
 }
