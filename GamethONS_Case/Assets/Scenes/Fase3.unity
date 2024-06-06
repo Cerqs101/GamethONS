@@ -373,6 +373,10 @@ PrefabInstance:
       value: Pulse01
       objectReference: {fileID: 0}
     - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: habilidadeQueDa
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: portalFimDeFase
       value: 
       objectReference: {fileID: 568624820}
@@ -9992,7 +9996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7271034037463427827, guid: 04305fe070c03f94cb73be1e38766c0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10131,7 +10135,7 @@ Transform:
   m_GameObject: {fileID: 582345977}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.46011, y: -6.759575, z: -10.018093}
+  m_LocalPosition: {x: -35.975666, y: -6.759575, z: -10.018093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13038,7 +13042,6 @@ MonoBehaviour:
   optionsCanvas: {fileID: 1943518924}
   volumeSlider: {fileID: 621241924}
   pauseAudio: {fileID: 24100000, guid: 42aeffa225138694485dd4f65b376f5a, type: 2}
-  uiCanvas: {fileID: 1504079206}
 --- !u!1001 &1699316753
 PrefabInstance:
   m_ObjectHideFlags: 0
