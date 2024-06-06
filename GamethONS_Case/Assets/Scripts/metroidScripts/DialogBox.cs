@@ -24,9 +24,7 @@ public class DialogBox : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        // textObject = textBox.GetComponentInChildren<TextMeshPro>();
 
-        // if(textFile != null)
         string[] textBlocks = textFile.text.Split("\n\r\n");
         foreach(string textBlock in textBlocks)
             textMatrix.Add(textBlock.Split("\n"));

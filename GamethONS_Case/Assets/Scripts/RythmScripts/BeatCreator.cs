@@ -7,8 +7,6 @@ using System.IO;
 using UnityEngine.Networking;
 using System;
 using System.Linq;
-// using Melanchall.DryWetMidi.Interaction.TempoMap;
-// using Melanchall.DryWetMidi.MusicTheory;
 
 public class BeatCreator : MonoBehaviour
 {
@@ -19,12 +17,10 @@ public class BeatCreator : MonoBehaviour
 
     [SerializeField] private GameObject beatPrefab;
     [SerializeField] public HitObject hit;
-    private SpriteRenderer spriteRenderer;
 
 
     void Start()
     {
-        // instance = this;
         Vector3 beatToHitDistance = new Vector3(xDistanceToHit, 0f, 0f);
         transform.position = hit.transform.position + beatToHitDistance;
 

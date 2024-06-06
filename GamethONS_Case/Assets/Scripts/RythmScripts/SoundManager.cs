@@ -19,16 +19,12 @@ public class SoundManager : MonoBehaviour
     
     public static SoundManager Instance;
 
-    // private static float commonSongAndBeatDisalingment;
 
 
     void Awake()
     {
-        // Instance = this;
-        
         if(Instance != null)
         {
-            // SetTimeToAllSongLayers((float)(LevelManager.timeInSongLoop - LevelManager.Instance.musicStartDelay));
             playFirstSongLayerOnAwake = true;
             
             Destroy(gameObject);
@@ -57,9 +53,6 @@ public class SoundManager : MonoBehaviour
     {
         double timeInSongLoop = LevelManager.timeInSongLoop;
 
-        // commonSongAndBeatDisalingment *= 0.7f;
-        // commonSongAndBeatDisalingment += ((float)timeInSongLoop - firstSongLayer.time)*0.3f;
-
         if(firstSongLayer.isPlaying && timeInSongLoop > LevelManager.Instance.musicStartDelay
         && Mathf.Round((float)timeInSongLoop - firstSongLayer.time) != Mathf.Round(songStartingTime + LevelManager.Instance.musicStartDelay))
             SetTimeToAllSongLayers((float)(timeInSongLoop - LevelManager.Instance.musicStartDelay));
@@ -86,7 +79,6 @@ public class SoundManager : MonoBehaviour
 
 
     public static double GetAudioTime(AudioSource audio = null){
-        // return (double) instance.music.timeSamples / instance.music.clip.frequency;
         if(audio == null)
             audio = allSongLayers[0];
         return audio.time;
@@ -120,12 +112,10 @@ public class SoundManager : MonoBehaviour
 
 
     public void PlayNoteHitSfx(){
-        // Debug.Log("Hell YEAH");
     }
 
 
     public void PlayNoteMissSfx(){
-        // Debug.Log("O MAYY GAAA");
     }
 
     public IEnumerator FadeIn(AudioSource songLayer, float waitTime=1f)

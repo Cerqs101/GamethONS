@@ -32,8 +32,6 @@ public class LevelManager : MonoBehaviour
 
     private Player player;
     public static LevelManager Instance;
-    // public static MidiFile midiFile;
-    // [SerializeField] public string midiFilePath;
 
 
 
@@ -41,10 +39,8 @@ public class LevelManager : MonoBehaviour
     {
         Instance = this;
 
-        // bea = midiFile.GetTempoMap().GetTempoAtTime(???); // <-- para tentar fazer no futuro futuro
         musicStartDelay = (BeatCreator.xDistanceToHit / (bpm * 3 / 60f)) - hitDelay;
         measureDuration = beatsPerMeasure * 1 * 60 / bpm;            // measureDuration = timeSignture * numberOfmeasures * 60seconds / Bpm;
-        // midiFile = ReadMidiFileFromDisc();
         player = FindFirstObjectByType<Player>();
 
         if(timeInSongLoop == 0)
@@ -112,10 +108,8 @@ public class LevelManager : MonoBehaviour
             SoundManager.activeSongLayers.RemoveAt(SoundManager.activeSongLayers.Count() - 1);
             SoundManager.wasSongLayerAdded = false;
         }
-        Debug.Log(FindObjectOfType<Player>()._gotAPowerUp);
         if(FindObjectOfType<Player>()._gotAPowerUp)
         {
-            Debug.Log(SceneManager.GetActiveScene().name);
             switch(SceneManager.GetActiveScene().name)
             {
                 case "Fase1":           

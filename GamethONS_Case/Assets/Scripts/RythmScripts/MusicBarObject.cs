@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MusicBarObject : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]public Color32 errorColor = new Color32(207,38,53,255);
     [SerializeField]public Color32 goodColor = new Color32(39,115,185,255);
     [SerializeField]public Color32 perfectColor = new Color32(54,207,38,255);

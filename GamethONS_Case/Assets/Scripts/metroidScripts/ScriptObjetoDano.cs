@@ -21,10 +21,8 @@ public class ScriptObjetoDano : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("a");
         if(other.gameObject.tag == "Player"){
             player.AplicaDano(dano);
-            Debug.Log("Dano!!");
         }
     }
 }

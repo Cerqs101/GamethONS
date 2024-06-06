@@ -33,7 +33,6 @@ public class ScriptObjetoQueQuebra : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 calculaRespawn();
-                Debug.Log("Destruiu!!");
             }
         }
 
@@ -61,6 +60,5 @@ public class ScriptObjetoQueQuebra : MonoBehaviour
     {
         tempoPraRespawn = timer + tempoMaxRespawn;
         isActive = false;
-        Debug.Log("Inativo");
     }
 }

@@ -17,9 +17,6 @@ public class DialogInitializer : MonoBehaviour
         dialogBox = FindObjectOfType<DialogBox>();
         if(audioSource != null)
             SoundManager.Instance.addToSongLayers(audioSource);
-
-        // if(audioSource != null)
-        //     SoundManager.
     }
 
     // Update is called once per frame

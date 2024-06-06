@@ -36,7 +36,6 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         currentLevelScore = CalculateScore();
-        // Debug.Log(currentLevelScore);
     }
 
 
@@ -44,14 +43,8 @@ public class ScoreManager : MonoBehaviour
         return (int)Mathf.Round(((float)levelRecoveredHealth*500f + (float)levelHits*100f) * (float)levelAccuracy * ((float)levelCompletedEncounters/((float)totalEncountersInAllLevels/2f)));
     }
 
-
-    // void OnEnable()
-    // {
-    //     // SceneManager.sceneLoaded += condicionalScoreSave;
-    // }
     void OnDisable()
     {
-        // SceneManager.sceneLoaded -= condicionalScoreSave;
         condicionalScoreSave();
     }
 
@@ -62,7 +55,7 @@ public class ScoreManager : MonoBehaviour
     }
 
 
-    public void condicionalScoreSave(/*Scene scene, LoadSceneMode mode*/)
+    public void condicionalScoreSave()
     {
         string lastSceneLoaded = ScenesManager.previousScene;
         if(lastSceneLoaded == "Fase1")

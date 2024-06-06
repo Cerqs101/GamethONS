@@ -31,17 +31,14 @@ public class ScriptPortaisFases : MonoBehaviour
 
     private void OnTriggerStay2D(UnityEngine.Collider2D collision)
     {
-        // Debug.Log("A");
         if(trigger == true && !hasPlayerEntered) 
         {
-            // Debug.Log("B");
             switch (fase)
             {
                 case 0:
                     PlayScene("HubCentral");
                     break;
                 case 1:
-                    Debug.Log("C");
                     PlayScene("Fase1");
                     break;
                 case 2:

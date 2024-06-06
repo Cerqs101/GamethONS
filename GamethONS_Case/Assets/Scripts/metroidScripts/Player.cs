@@ -274,7 +274,6 @@ public class Player : MonoBehaviour
     {
         vidaAtual -= dano;
         vidaAtual = Mathf.Clamp(vidaAtual, 0, vidaMax);
-        Debug.Log("Chegamo aqui" + dano);   
         if( vidaAtual <= 0)
             Die();
         
@@ -300,7 +299,6 @@ public class Player : MonoBehaviour
         {
             _hasWallJump = true;
             _gotAPowerUp = true;
-            Debug.Log(_gotAPowerUp);
         }
     }
 

@@ -78,13 +78,4 @@ public class SceneFadeObject : MonoBehaviour
         }
         isFading = false;
     }
-
-
-    // public IEnumerator Fade(string type)
-    // {
-    //     while(spriteRenderer.color != new Color32(255,255,255,255))
-    //     {
-    //         spriteRenderer.color += opacityReduction;
-    //         yield return new WaitForSecondsRealtime(waitPerLoop);
-    // }
 }

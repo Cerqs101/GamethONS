@@ -15,7 +15,7 @@ public class Encounter : MonoBehaviour
     [NonSerialized] public double secondsInEncounter;
     public static int hits = 0;
     public static int misses = 0;
-    // private bool acabou = false;
+    
     [NonSerialized] public bool isHappening = false;
 
     public Player.Habilidades habilidadeQueDa = Player.Habilidades.None;
@@ -43,7 +43,7 @@ public class Encounter : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" /*&& acabou == false*/)
+        if (collision.gameObject.tag == "Player")
             StartCoroutine(RunEncounter());
     }
 
@@ -101,7 +101,6 @@ public class Encounter : MonoBehaviour
 
         if(songLayer != null && songLayer.volume < 0.99f)
         {
-            Debug.Log("SongLayer");
             SoundManager.Instance.StartSongLayer(songLayer);
             SoundManager.activeSongLayers.Add(songLayer);
             SoundManager.wasSongLayerAdded = true;
@@ -114,9 +113,7 @@ public class Encounter : MonoBehaviour
         }
 
         if (portalFimDeFase != null && measuresInEncounter == 12f)
-        {
             portalFimDeFase.gameObject.SetActive(true);
-        }
         
         switch (habilidadeQueDa)
         {
@@ -131,7 +128,6 @@ public class Encounter : MonoBehaviour
         }
         
         // animator.SetBool("Acabou", true);
-        // acabou = true;
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponentInChildren<BoxCollider2D>());
         Destroy(this);
