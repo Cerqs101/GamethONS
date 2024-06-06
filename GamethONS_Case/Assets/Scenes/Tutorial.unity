@@ -851,7 +851,7 @@ MonoBehaviour:
   dialogBlockIndex: 4
   destroyAfterActivated: 1
   audioSource: {fileID: 1489408533}
-  video: {fileID: 8400000, guid: 5e28d050019b0074492ca8c38caf13f1, type: 2}
+  video: {fileID: 8400000, guid: 9337d676bae4e8440a49139be5ebdb89, type: 2}
 --- !u!1001 &173455886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1091,6 +1091,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1134885415}
   - {fileID: 1102881647}
   - {fileID: 1144838319}
   - {fileID: 432681950}
@@ -2913,7 +2914,7 @@ Transform:
   m_GameObject: {fileID: 904406798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -152.6218, y: -2.375671, z: -6.023918}
+  m_LocalPosition: {x: -152.59892, y: -2.375671, z: -6.023918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4071,7 +4072,6 @@ RectTransform:
   - {fileID: 1332462732}
   - {fileID: 1831901228}
   - {fileID: 2107726351}
-  - {fileID: 1134885415}
   m_Father: {fileID: 211836720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -4300,7 +4300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 5e28d050019b0074492ca8c38caf13f1, type: 2}
+  m_Texture: {fileID: 8400000, guid: 9337d676bae4e8440a49139be5ebdb89, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4327,12 +4327,12 @@ RectTransform:
   m_LocalScale: {x: 1.7204301, y: 1.7204301, z: 1.7204301}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1102881647}
+  m_Father: {fileID: 211836720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.645264, y: 557.2796}
-  m_SizeDelta: {x: 488.4186, y: 297.3931}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -15, y: -312}
+  m_SizeDelta: {x: 379.48853, y: 231.06671}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1144838318
 GameObject:
@@ -5942,7 +5942,6 @@ MonoBehaviour:
   optionsCanvas: {fileID: 605943830}
   volumeSlider: {fileID: 619655630}
   pauseAudio: {fileID: 24100000, guid: 42aeffa225138694485dd4f65b376f5a, type: 2}
-  uiCanvas: {fileID: 211836719}
 --- !u!1 &1617280819
 GameObject:
   m_ObjectHideFlags: 0
@@ -16325,11 +16324,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043586627}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 01e077fe888d99e41a66adfdcfb41101, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b3da408d6d7d4684f92419673270fbc3, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 5e28d050019b0074492ca8c38caf13f1, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 9337d676bae4e8440a49139be5ebdb89, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
