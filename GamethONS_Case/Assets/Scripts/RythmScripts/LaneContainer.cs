@@ -6,11 +6,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Melanchall.DryWetMidi.Core;
 using System.Linq;
+using System.IO;
+using UnityEngine.Windows;
 
 public class LaneContainer : MonoBehaviour
 {
     public static Dictionary<NoteName, int> beatIndexes = new Dictionary<NoteName, int>();
     public static MidiFile midiFile;
+    [SerializeField] public MidiFile MidiFileTest;
     [SerializeField] public string midiFilePath;
     public static List<KeyCode> activeLanes = new List<KeyCode>();
     public bool wasLaneAdded = false;
@@ -19,6 +22,8 @@ public class LaneContainer : MonoBehaviour
     {
         foreach(NoteName lane in beatIndexes.Keys.ToList())
             beatIndexes[lane] = 0;
+        
+        // MidiFileTest.
     }
 
     void Start()
@@ -38,7 +43,7 @@ public class LaneContainer : MonoBehaviour
 
     private MidiFile ReadMidiFileFromDisc()
     {
-        return MidiFile.Read(Application.dataPath + "/" + midiFilePath);
+        return MidiFile.Read(Application.streamingAssetsPath + "/" + midiFilePath);
     }
 
 

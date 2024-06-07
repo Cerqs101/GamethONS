@@ -3138,7 +3138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5c314417bae7e4eabba49abf632b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  midiFilePath: ./Music/Track01/LayeredTrack01.mid
+  midiFilePath: ./midis/LayeredTrack01.mid
   wasLaneAdded: 0
 --- !u!1 &858126146
 GameObject:
@@ -3722,7 +3722,7 @@ Transform:
   m_GameObject: {fileID: 1063138352}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.395737, y: -32.185127, z: -9.841077}
+  m_LocalPosition: {x: -24.906778, y: -32.178795, z: -9.841077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
