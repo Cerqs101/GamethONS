@@ -8,7 +8,7 @@ public class pauseManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject pauseCanvas;
-    [System.NonSerialized]public bool paused = false;
+    [System.NonSerialized] public bool paused = false;
     public GameObject volumeCanvas;
     public GameObject optionsCanvas;
     public Slider volumeSlider;
@@ -22,29 +22,12 @@ public class pauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pause();
-    }
-    public void Pause(){ 
-            
         bool isEncounterHappening = LevelManager.isEncounterHappening;
-
         if(Input.GetKeyDown(KeyCode.Escape) && !isEncounterHappening){
-            if(Time.timeScale == 1){
-                Time.timeScale = 0;
-                //Time.unscaledTime = 0;
-                pauseCanvas.SetActive(true);
-                optionsCanvas.SetActive(true);
-                volumeCanvas.SetActive(false);
-                paused = true;
-
-
-            }
-            else if(Time.timeScale == 0){
-                Time.timeScale = 1;
-                //Time.unscaledTime = 1;
-                pauseCanvas.SetActive(false);
-                paused = true;
-            }
+            if(Time.timeScale == 1)
+                PauseGame();
+            else if(Time.timeScale == 0)
+                UnpauseGame();
         }
     }
     
@@ -62,5 +45,21 @@ public class pauseManager : MonoBehaviour
     public void Resume(){
         pauseCanvas.SetActive(false);
         Time.timeScale = 1;
+    }
+
+
+    public void PauseGame(){
+        Time.timeScale = 0;
+        pauseCanvas.SetActive(true);
+        optionsCanvas.SetActive(true);
+        volumeCanvas.SetActive(false);
+        paused = true;
+    }
+
+
+    public void UnpauseGame(){
+        Time.timeScale = 1;
+        pauseCanvas.SetActive(false);
+        paused = true;
     }
 }

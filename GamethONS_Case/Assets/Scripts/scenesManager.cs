@@ -71,6 +71,10 @@ public class ScenesManager : MonoBehaviour
             sceneFadeObject.Fade("in");
             yield return new WaitForSecondsRealtime(sceneFadeObject.waitTime);
         }
+
+        if(FindObjectOfType<pauseManager>() != null)        
+            FindObjectOfType<pauseManager>().UnpauseGame();
+
         previousScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(scene, loadSceneMode);
     }
