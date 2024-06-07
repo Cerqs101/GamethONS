@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Opcoes.unity
     guid: 8026fdec9190cab4cb0b603877d804d9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Testes.unity
     guid: 1b50b5d4eb180f64d885c7eaf3e6abb8
   - enabled: 1
