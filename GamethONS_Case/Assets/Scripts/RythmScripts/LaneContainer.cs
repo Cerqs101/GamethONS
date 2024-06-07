@@ -8,6 +8,7 @@ using Melanchall.DryWetMidi.Core;
 using System.Linq;
 using System.IO;
 using UnityEngine.Windows;
+using UnityEngine.Networking;
 
 public class LaneContainer : MonoBehaviour
 {
@@ -37,7 +38,26 @@ public class LaneContainer : MonoBehaviour
             if(activeLanes.Contains(lane.transform.GetComponentInChildren<HitObject>().keyToPress))
                 lane.gameObject.SetActive(true);
 
-        midiFile = ReadMidiFileFromDisc();
+        if(Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https;//"))
+            ReadMidiFileFromWeb();
+        else
+            midiFile = ReadMidiFileFromDisc();
+    }
+
+
+    private IEnumerator ReadMidiFileFromWeb()
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + midiFilePath))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.ConnectionError && www.result != UnityWebRequest.Result.ProtocolError)
+            {
+                byte[] results = www.downloadHandler.data;
+                using (var stream = new MemoryStream(results))
+                    midiFile = MidiFile.Read(stream);
+            }
+        }
     }
     
 
@@ -49,7 +69,6 @@ public class LaneContainer : MonoBehaviour
 
     public Melanchall.DryWetMidi.Interaction.Note[] GetDataFromMidi()
     {
-        midiFile = FindObjectOfType<LaneContainer>().ReadMidiFileFromDisc();
         ICollection<Melanchall.DryWetMidi.Interaction.Note> notes = midiFile.GetNotes();
         Melanchall.DryWetMidi.Interaction.Note[] array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
         notes.CopyTo(array, 0);
