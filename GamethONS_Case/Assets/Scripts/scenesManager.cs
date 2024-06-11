@@ -48,8 +48,21 @@ public class ScenesManager : MonoBehaviour
     }
 
     public void GoToTutorial(){
-        StartCoroutine(PlayScene("Tutorial", true));
-        StartCoroutine(MusicController.FadeOut(FindObjectOfType<AudioSource>()));
+        if(SaveSystem.Instance.GetTutorial()!= 1){
+
+            SaveSystem.Instance.SetTutorial(1);
+            StartCoroutine(PlayScene("Tutorial", true));
+            StartCoroutine(MusicController.FadeOut(FindObjectOfType<AudioSource>()));
+            SaveSystem.Instance.SetHighScore("Fase1",0);
+            SaveSystem.Instance.SetHighScore("Fase2",0);
+            SaveSystem.Instance.SetHighScore("Fase2",0);
+        }
+        else{
+            GoToMainHub();
+ 
+        }
+
+
     }
 
     public void GoToMainHub()
