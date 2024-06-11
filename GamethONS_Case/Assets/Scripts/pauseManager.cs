@@ -17,7 +17,7 @@ public class pauseManager : MonoBehaviour
     void Start()
     {
         pauseCanvas.SetActive(false);
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
 
     // Update is called once per frame
