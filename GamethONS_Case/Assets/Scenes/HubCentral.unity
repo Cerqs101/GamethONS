@@ -316,6 +316,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2077639789}
     m_Modifications:
+    - target: {fileID: 156433086044647496, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -13.0000305
+      objectReference: {fileID: 0}
     - target: {fileID: 385295550742702811, guid: fe5ea9b912981de45a656ad4321f1e0c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2824,7 +2828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5c314417bae7e4eabba49abf632b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  midiFilePath: ./Music/Track01/LayeredTrack01.mid
+  midiFilePath: ./midis/LayeredTrack01.mid
   wasLaneAdded: 0
 --- !u!4 &1081151764
 Transform:
@@ -3756,7 +3760,7 @@ Transform:
   m_GameObject: {fileID: 1428235693}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.795927, y: -29.798214, z: -10.328245}
+  m_LocalPosition: {x: -15.536372, y: -29.798214, z: -10.328245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
