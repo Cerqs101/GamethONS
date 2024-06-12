@@ -15,9 +15,9 @@ public class ScoreTextDisplay : MonoBehaviour
         switch(levelNumber){
             case 1: SetValueToDisplay(SaveSystem.Instance.GetHighScore("Fase1"));//ScoreManager.level01HighScore);
                     break;
-            case 2: SetValueToDisplay(SaveSystem.Instance.GetHighScore("Fase1"));//ScoreManager.level02HighScore);
+            case 2: SetValueToDisplay(SaveSystem.Instance.GetHighScore("Fase2"));//ScoreManager.level02HighScore);
                     break;
-            case 3: SetValueToDisplay(SaveSystem.Instance.GetHighScore("Fase1"));//ScoreManager.level03HighScore);
+            case 3: SetValueToDisplay(SaveSystem.Instance.GetHighScore("Fase3"));//ScoreManager.level03HighScore);
                     break;
             default: SetValueToDisplay(0);
                     break;

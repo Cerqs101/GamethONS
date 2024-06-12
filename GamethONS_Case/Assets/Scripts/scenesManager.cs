@@ -14,7 +14,12 @@ public class ScenesManager : MonoBehaviour
     private void Start()
     {
         instance = this;
+        
     }
+    void Update(){
+        //Debug.Log(PlayerPrefs.GetInt("Fase1"));
+    }
+
 
 
     public void EndGame()
