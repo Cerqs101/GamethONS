@@ -38,7 +38,6 @@ public class LaneContainer : MonoBehaviour
             if (activeLanes.Contains(lane.transform.GetComponentInChildren<HitObject>().keyToPress))
                 lane.gameObject.SetActive(true);
 
-                
         ReadMidiFile();
     }
 

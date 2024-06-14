@@ -72,7 +72,6 @@ public class HitObject : MonoBehaviour
 
     public void Hit()
     {
-        SoundManager.Instance.PlayNoteHitSfx();
         Encounter.hits++;
         hitDisplay.SetTemporarySprite(hitSprite);
     }
@@ -86,7 +85,6 @@ public class HitObject : MonoBehaviour
         else
             sprite = missSprite;
 
-        SoundManager.Instance.PlayNoteMissSfx();
         Encounter.misses++;
         hitDisplay.SetTemporarySprite(sprite);
     }
