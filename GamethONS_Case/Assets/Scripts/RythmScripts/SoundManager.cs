@@ -111,13 +111,6 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    public void PlayNoteHitSfx(){
-    }
-
-
-    public void PlayNoteMissSfx(){
-    }
-
     public IEnumerator FadeIn(AudioSource songLayer, float waitTime=1f)
     {
         float intensity = 0.01f;
