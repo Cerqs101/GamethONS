@@ -81,32 +81,7 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
-    {
-        #region Teste de manter coiso entre cenas
-            
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            _hasDash = !_hasDash;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            _has2Jump = !_has2Jump;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            _hasWallJump = !_hasWallJump;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Teste Fase");
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("FaseWallJump");
-        }
-        
-        #endregion
-        
+    {        
         if(IsAlive && canMove)
             Movement();
     }
