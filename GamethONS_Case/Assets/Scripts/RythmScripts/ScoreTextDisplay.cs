@@ -13,21 +13,15 @@ public class ScoreTextDisplay : MonoBehaviour
         text = GetComponent<TextMeshPro>();
 
         switch(levelNumber){
-            case 1: SetValueToDisplay(SaveSystem.Instance.GetHighScore("Fase1"));//ScoreManager.level01HighScore);
+            case 1: SetValueToDisplay(SaveSystem.GetHighScore("Fase1"));//ScoreManager.level01HighScore);
                     break;
-            case 2: SetValueToDisplay(SaveSystem.Instance.GetHighScore("Fase2"));//ScoreManager.level02HighScore);
+            case 2: SetValueToDisplay(SaveSystem.GetHighScore("Fase2"));//ScoreManager.level02HighScore);
                     break;
-            case 3: SetValueToDisplay(SaveSystem.Instance.GetHighScore("Fase3"));//ScoreManager.level03HighScore);
+            case 3: SetValueToDisplay(SaveSystem.GetHighScore("Fase3"));//ScoreManager.level03HighScore);
                     break;
             default: SetValueToDisplay(0);
                     break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void SetValueToDisplay(int value){

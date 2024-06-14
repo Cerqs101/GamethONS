@@ -13,22 +13,22 @@ public class SaveSystem : MonoBehaviour
         Debug.Log(GetHighScore("Fase1"));
     }
     
-    public void SetTutorial(int state){ 
+    public static void SetTutorial(int state){ 
         PlayerPrefs.SetInt("Tutorial",state);
     }
 
-    public void SetHighScore(string fase,int score){
+    public static void SetHighScore(string fase,int score){
         PlayerPrefs.SetInt(fase,score);
     }
 
-    public int GetTutorial(){
+    public static int GetTutorial(){
         return PlayerPrefs.GetInt("Tutorial");
     }
 
-    public int GetHighScore(string fase){
+    public static int GetHighScore(string fase){
         return PlayerPrefs.GetInt(fase);
     }
-     public void SetUpgrade(string upgrade, bool state){
+     public static void SetUpgrade(string upgrade, bool state){
         int i;
         if(state == true){
             i = 1;
@@ -38,7 +38,7 @@ public class SaveSystem : MonoBehaviour
         }
         PlayerPrefs.SetInt(upgrade,i);
      }
-     public bool CheckUpgrade(string upgrade){
+     public static bool CheckUpgrade(string upgrade){
        int i = PlayerPrefs.GetInt(upgrade);
        if(i == 1){
         return true;
@@ -46,5 +46,14 @@ public class SaveSystem : MonoBehaviour
        else{
         return false;
        }
+     }
+
+     public static void ResetAll()
+     {
+            SetHighScore("Fase1",0);
+            SetHighScore("Fase2",0);
+            SetHighScore("Fase2",0);
+            SetUpgrade("Dash",false);
+            SetUpgrade("WallJump",false);
      }
 }

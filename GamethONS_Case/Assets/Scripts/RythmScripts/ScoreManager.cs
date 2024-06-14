@@ -60,15 +60,15 @@ public class ScoreManager : MonoBehaviour
         string lastSceneLoaded = ScenesManager.previousScene;
         if(lastSceneLoaded == "Fase1"){
             //level01HighScore = Math.Max(CalculateScore(), level01HighScore);
-            SaveSystem.Instance.SetHighScore("Fase1", Math.Max(CalculateScore(), SaveSystem.Instance.GetHighScore("Fase1")));
+            SaveSystem.SetHighScore("Fase1", Math.Max(CalculateScore(), SaveSystem.GetHighScore("Fase1")));
         }
         else if(lastSceneLoaded == "FaseWallJump"){
             //level02HighScore = Math.Max(CalculateScore(), level02HighScore);
-            SaveSystem.Instance.SetHighScore("Fase2",Math.Max(CalculateScore(), SaveSystem.Instance.GetHighScore("Fase2")));
+            SaveSystem.SetHighScore("Fase2",Math.Max(CalculateScore(), SaveSystem.GetHighScore("Fase2")));
         }
         else if(lastSceneLoaded == "Fase3"){
             level03HighScore = Math.Max(CalculateScore(), level03HighScore);
-            SaveSystem.Instance.SetHighScore("Fase3", Math.Max(CalculateScore(), SaveSystem.Instance.GetHighScore("Fase3")));
+            SaveSystem.SetHighScore("Fase3", Math.Max(CalculateScore(), SaveSystem.GetHighScore("Fase3")));
         }
         else
             return;

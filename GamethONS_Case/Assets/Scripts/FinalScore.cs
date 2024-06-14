@@ -11,9 +11,9 @@ public class FinalScore : MonoBehaviour
     [SerializeField] private TextMeshProUGUI acertosFase1;
     [SerializeField] private TextMeshProUGUI acertosFase2;
     [SerializeField] private TextMeshProUGUI acertosFase3;
-    private int fase1acertos = SaveSystem.Instance.GetHighScore("Fase1"); //ScoreManager.level01HighScore.ToString();
-    private int fase2acertos = SaveSystem.Instance.GetHighScore("Fase2");//ScoreManager.level02HighScore.ToString();
-    private int fase3acertos = SaveSystem.Instance.GetHighScore("Fase3");//ScoreManager.level03HighScore.ToString();
+    private int fase1acertos = SaveSystem.GetHighScore("Fase1"); //ScoreManager.level01HighScore.ToString();
+    private int fase2acertos = SaveSystem.GetHighScore("Fase2");//ScoreManager.level02HighScore.ToString();
+    private int fase3acertos = SaveSystem.GetHighScore("Fase3");//ScoreManager.level03HighScore.ToString();
 
 
     void Start()
