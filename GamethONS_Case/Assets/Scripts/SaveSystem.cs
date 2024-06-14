@@ -5,7 +5,7 @@ using UnityEngine;
 public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem Instance;
-    
+
     void Start(){
         Instance = this;
         //PlayerPrefs.DeleteAll();

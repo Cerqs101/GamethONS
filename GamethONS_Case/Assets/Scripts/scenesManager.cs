@@ -61,6 +61,8 @@ public class ScenesManager : MonoBehaviour
             SaveSystem.Instance.SetHighScore("Fase1",0);
             SaveSystem.Instance.SetHighScore("Fase2",0);
             SaveSystem.Instance.SetHighScore("Fase2",0);
+            SaveSystem.Instance.SetUpgrade("Dash",false);
+            SaveSystem.Instance.SetUpgrade("WallJump",false);
         }
         else{
             GoToMainHub();
