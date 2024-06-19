@@ -85,6 +85,8 @@ public class Encounter : MonoBehaviour
 
     public void SolveEncounter()
     {
+        LevelManager.ResyncBeatsToAudio();
+
         ScoreManager.Instance.levelHits += hits;
         ScoreManager.Instance.levelCompletedEncounters++;
 

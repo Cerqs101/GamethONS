@@ -68,6 +68,16 @@ public class LevelManager : MonoBehaviour
                 LaneContainer.beatIndexes[lane] = 0;
             timeInSongLoop = musicStartDelay;
         }
+
+        AudioSource firstSongLayer = SoundManager.Instance.firstSongLayer;
+        if(firstSongLayer.isPlaying && timeInSongLoop > Instance.musicStartDelay
+        && Mathf.Round((float)timeInSongLoop - firstSongLayer.time) != Mathf.Round(SoundManager.Instance.songStartingTime + Instance.musicStartDelay))
+            ResyncBeatsToAudio();
+    }
+
+
+    public static void ResyncBeatsToAudio(){
+            timeInSongLoop = SoundManager.Instance.firstSongLayer.time + Instance.musicStartDelay;
     }
 
 

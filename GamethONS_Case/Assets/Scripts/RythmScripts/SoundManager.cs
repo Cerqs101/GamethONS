@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     public static bool wasSongLayerAdded = false;
     [SerializeField] public AudioSource firstSongLayer;
     [NonSerialized] public static List<AudioSource> allSongLayers = new List<AudioSource>();
-    [SerializeField] private float songStartingTime = 0f;
+    [SerializeField] public float songStartingTime = 0f;
     [SerializeField] private float fadeInDuration = 1f;
     [SerializeField] public bool playFirstSongLayerOnAwake = true;
     
@@ -51,11 +51,10 @@ public class SoundManager : MonoBehaviour
 
     void Update()
     {
-        double timeInSongLoop = LevelManager.timeInSongLoop;
+        // double timeInSongLoop = LevelManager.timeInSongLoop;
 
-        if(firstSongLayer.isPlaying && timeInSongLoop > LevelManager.Instance.musicStartDelay
-        && Mathf.Round((float)timeInSongLoop - firstSongLayer.time) != Mathf.Round(songStartingTime + LevelManager.Instance.musicStartDelay))
-            SetTimeToAllSongLayers((float)(timeInSongLoop - LevelManager.Instance.musicStartDelay));
+
+            // SetTimeToAllSongLayers((float)(timeInSongLoop - LevelManager.Instance.musicStartDelay));
     }
 
 
