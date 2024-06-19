@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
          vidaAtual = vidaMax;
         _gotAPowerUp = false;
 
-        SaveSystem.SetUpgrade("Walljump",true);
+        //SaveSystem.SetUpgrade("Walljump",true);
         if(SaveSystem.CheckUpgrade("WallJump") == true){
             GetWallJump();
         }
@@ -267,7 +267,7 @@ public class Player : MonoBehaviour
     {
         if(!_hasDash)
         {
-            SaveSystem.SetUpgrade("Dash",true);
+            //SaveSystem.SetUpgrade("Dash",true);
             _hasDash = true;
             _gotAPowerUp = true;
         }
@@ -283,7 +283,7 @@ public class Player : MonoBehaviour
     {
         if(!_hasWallJump)
         {
-            SaveSystem.SetUpgrade("WallJump",true);
+            //SaveSystem.SetUpgrade("WallJump",true);
             _hasWallJump = true;
             _gotAPowerUp = true;
         }

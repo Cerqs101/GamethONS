@@ -33,6 +33,14 @@ public class ScriptPortaisFases : MonoBehaviour
     {
         if(trigger == true && !hasPlayerEntered) 
         {
+            if(ehPortalFimDeFase){
+                if(SceneManager.GetActiveScene().name == "Fase1"){
+                    SaveSystem.SetUpgrade("WallJump",true);
+                }
+                else if(SceneManager.GetActiveScene().name == "FaseWallJump"){
+                    SaveSystem.SetUpgrade("Dash",true);
+                }
+            }
             switch (fase)
             {
                 case 0:

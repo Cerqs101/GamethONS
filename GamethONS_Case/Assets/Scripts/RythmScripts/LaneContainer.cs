@@ -29,6 +29,12 @@ public class LaneContainer : MonoBehaviour
 
     void Start()
     {
+        if(SaveSystem.CheckUpgrade("WallJump")){
+            activeLanes.Add(KeyCode.Z);
+        }
+        if(SaveSystem.CheckUpgrade("Dash")){
+            activeLanes.Add(KeyCode.C);
+        }
 
         foreach (BeatCreator beatCreator in transform.GetComponentsInChildren<BeatCreator>(true))
             if (!beatIndexes.Keys.ToList().Contains(beatCreator.hit.noteRestriction))

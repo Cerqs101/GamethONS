@@ -31,14 +31,24 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
+
             Instance = this;
             DontDestroyOnLoad(transform.gameObject);
             
             allSongLayers.Add(firstSongLayer);
             activeSongLayers.Add(firstSongLayer);
                 
-            foreach(AudioSource songLayer in GetComponentsInChildren<AudioSource>(true))
+            foreach(AudioSource songLayer in GetComponentsInChildren<AudioSource>(true)){
+
                 allSongLayers.Add(songLayer);
+                if(SaveSystem.CheckUpgrade("WallJump") && songLayer.clip.name.ToLower() == "noise"){
+                    activeSongLayers.Add(songLayer);
+                }
+
+                if(SaveSystem.CheckUpgrade("Dash") && songLayer.clip.name.ToLower() == "pulse01"){
+                    activeSongLayers.Add(songLayer);
+                }
+            }
                 
             for(int i = currentSongLayer; i < allSongLayers.Count(); i++)
                 allSongLayers[i].volume = 0;
