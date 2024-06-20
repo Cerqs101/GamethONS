@@ -11,6 +11,7 @@ using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
     public int vidaMax = 10;
     public int vidaAtual;
     
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
     private static bool _hasWallJump; // Player possui a habilidade pulo na parede
     public bool _gotAPowerUp;
     
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
@@ -65,9 +66,11 @@ public class Player : MonoBehaviour
     [SerializeField] private TrailRenderer trailRenderer;
     
     
-    private void Start()
+    private void Awake()
     {
-         vidaAtual = vidaMax;
+        Instance = this;
+
+        vidaAtual = vidaMax;
         _gotAPowerUp = false;
 
         //SaveSystem.SetUpgrade("Walljump",true);
