@@ -8,9 +8,8 @@ public class SaveSystem : MonoBehaviour
 
     void Start(){
         Instance = this;
-        //PlayerPrefs.DeleteAll();
-        //SetHighScore("Fase1",100);
         Debug.Log(GetHighScore("Fase1"));
+        ResetAll();
     }
     
     public static void SetTutorial(int state){ 
@@ -55,5 +54,6 @@ public class SaveSystem : MonoBehaviour
             SetHighScore("Fase2",0);
             SetUpgrade("Dash",false);
             SetUpgrade("WallJump",false);
+            SetUpgrade("Zerou",false);
      }
 }

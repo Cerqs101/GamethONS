@@ -72,9 +72,14 @@ public class ScenesManager : MonoBehaviour
     {
         StartCoroutine(PlayScene("HubCentral", true));
     }
+
     public void goToMenu(){
         StartCoroutine(PlayScene("Menu Principal", true));
         SoundManager.Instance.FadeOutAllSongLayers();
+    }
+
+    public void goToFinalScene(){
+        StartCoroutine(PlayScene("Tela Final",true));
     }
 
 

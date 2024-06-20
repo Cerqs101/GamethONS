@@ -15,7 +15,7 @@ public class FinalScore : MonoBehaviour
     private int fase2acertos = SaveSystem.GetHighScore("Fase2");//ScoreManager.level02HighScore.ToString();
     private int fase3acertos = SaveSystem.GetHighScore("Fase3");//ScoreManager.level03HighScore.ToString();
 
-
+    
     void Start()
     {
         totalDeAcertos.text = (fase1acertos+fase2acertos+fase3acertos).ToString();

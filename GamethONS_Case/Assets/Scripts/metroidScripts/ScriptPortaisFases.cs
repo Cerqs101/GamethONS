@@ -40,6 +40,10 @@ public class ScriptPortaisFases : MonoBehaviour
                 else if(SceneManager.GetActiveScene().name == "FaseWallJump"){
                     SaveSystem.SetUpgrade("Dash",true);
                 }
+                if(SceneManager.GetActiveScene().name =="Fase3"){
+                    SaveSystem.SetUpgrade("Zerou",true);
+                    PlayScene("Tela Final");
+                }
             }
             switch (fase)
             {
