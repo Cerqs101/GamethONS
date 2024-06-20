@@ -34,11 +34,11 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float playerXVelocity = Player.Instance.rb.velocity.x;
+        float cameraXSpeed = cam.velocity.x;
 
-        if(Mathf.Abs(playerXVelocity) > 0)
+        if(Mathf.Abs(cameraXSpeed) > 0)
         {
-            float dislocation = playerXVelocity * baseSpeed * Time.deltaTime * -1;
+            float dislocation = cameraXSpeed * baseSpeed * Time.deltaTime * -1;
             SetXPosition(transform.position.x + dislocation);
         }
 
