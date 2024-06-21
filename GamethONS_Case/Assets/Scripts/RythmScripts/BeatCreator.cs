@@ -1,19 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
-using System.IO;
-using UnityEngine.Networking;
 using System;
-using System.Linq;
 
-public class BeatCreator : MonoBehaviour
+public class BeatCreator : RhythmMonoBehaviour
 {
     [SerializeField] public static float xDistanceToHit = 8;
-    [NonSerialized] public List<double> timeStamps = new List<double>(); // in seconds
-    [NonSerialized] public int spawnIndex = 0;
-    private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
 
     [SerializeField] private GameObject beatPrefab;
     [SerializeField] public HitObject hit;
@@ -32,33 +24,24 @@ public class BeatCreator : MonoBehaviour
 
     void Update()
     {
+        
         spawnIndex = LaneContainer.beatIndexes[noteRestriction];
-        if (spawnIndex < timeStamps.Count)
-            if (LevelManager.timeInSongLoop >= timeStamps[spawnIndex])
-            {
-                if (LevelManager.noteGeneration)
-                {
-                    GameObject newBeat = Instantiate(beatPrefab, transform.position, new Quaternion(0, 0, 0, 0), transform);
-                    newBeat.GetComponent<BeatObject>().noteName = noteRestriction;
-                }
-                LaneContainer.beatIndexes[noteRestriction]++;
-            }
+        
+        PerformInEveryBeat(CreateBeat);
+
+        LaneContainer.beatIndexes[noteRestriction] = spawnIndex;
     }
 
 
-    private void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] notes)
-    {
-        foreach (var note in notes)
-        {
-            if (note.NoteName == noteRestriction)
-            {
-                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, LaneContainer.midiFile.GetTempoMap());
-                timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
-            }
+    private void CreateBeat(){
+        
+        if (LevelManager.noteGeneration){
+            GameObject newBeat = Instantiate(beatPrefab, transform.position, new Quaternion(0, 0, 0, 0), transform);
+            newBeat.GetComponent<BeatObject>().noteName = noteRestriction;
         }
     }
 
-    public int histInEncounter(){
+    public int beatsInEncounter(){
         Encounter encounter = Encounter.GetCurrentEncounter();
         double songLegth = SoundManager.GetAudioLenght();
 
@@ -67,18 +50,8 @@ public class BeatCreator : MonoBehaviour
             songLoopsInEncounter +=1;
 
         int qtdBeats = 0;
-        qtdBeats += songLoopsInEncounter*hitsInInterval(0, songLegth);
-        qtdBeats += hitsInInterval(LevelManager.timeInSongLoop, LevelManager.timeInSongLoop + encounter.secondsInEncounter - (songLoopsInEncounter*songLegth));
-        return qtdBeats;
-    }
-
-
-    private int hitsInInterval(double start, double end)
-    {
-        int qtdBeats = 0;
-        foreach(double stamp in timeStamps)    
-            if(stamp >= start && stamp <= end)
-                qtdBeats++;
+        qtdBeats += songLoopsInEncounter*beatsInInterval(0, songLegth);
+        qtdBeats += beatsInInterval(LevelManager.timeInSongLoop, LevelManager.timeInSongLoop + encounter.secondsInEncounter - (songLoopsInEncounter*songLegth));
         return qtdBeats;
     }
 }

@@ -66,6 +66,8 @@ public class LevelManager : MonoBehaviour
         {   
             foreach(NoteName lane in LaneContainer.beatIndexes.Keys.ToList())
                 LaneContainer.beatIndexes[lane] = 0;
+            foreach(RhythmicAnimation animation in FindObjectsByType<RhythmicAnimation>(FindObjectsSortMode.None))
+                animation.spawnIndex = 0;
             timeInSongLoop = musicStartDelay;
         }
 

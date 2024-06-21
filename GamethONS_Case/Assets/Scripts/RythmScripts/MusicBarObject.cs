@@ -48,7 +48,7 @@ public class MusicBarObject : MonoBehaviour
     {
         BeatCreator[] lanes = FindObjectsByType<BeatCreator>(FindObjectsSortMode.None);
         foreach (BeatCreator lane in lanes)
-            slider.maxValue += lane.histInEncounter() * 2;
+            slider.maxValue += lane.beatsInEncounter() * 2;
     }
 
 
