@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Parallax : MonoBehaviour
 {
@@ -13,19 +14,30 @@ public class Parallax : MonoBehaviour
 
     private Camera cam;
     private SpriteRenderer spriteRenderer;
+    private TilemapRenderer tilemapRenderer;
 
 
     // Start is called before the first frame update
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        objectWidth = spriteRenderer.bounds.max.x - spriteRenderer.bounds.min.x;
+        if(GetComponent<SpriteRenderer>() != null){
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            objectWidth = spriteRenderer.bounds.max.x - spriteRenderer.bounds.min.x;
+
+            if(baseSpeed == 0f)
+                baseSpeed = 0.75f/((float)spriteRenderer.sortingOrder*-1f);
+        }
+        else if(GetComponent<TilemapRenderer>() != null){
+            tilemapRenderer = GetComponent<TilemapRenderer>();
+            objectWidth = tilemapRenderer.bounds.max.x - tilemapRenderer.bounds.min.x;
+
+            if(baseSpeed == 0f)
+                baseSpeed = 0.75f/((float)tilemapRenderer.sortingOrder*-1f);
+        }
         
         cam = FindObjectOfType<Camera>();
-        camWidth = cam.aspect * cam.orthographicSize*2;
+        camWidth = cam.aspect * cam.orthographicSize*2f;
 
-        if(baseSpeed == 0f)
-            baseSpeed = 0.5f/((float)spriteRenderer.sortingOrder*-1f);
 
         amountOfBrothers = transform.parent.transform.GetComponentsInChildren<Parallax>().Count()-1;
     }
