@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 
 public class Parallax : MonoBehaviour
 {
+    [SerializeField] private bool repeatOnScroll = true;
     [SerializeField] private float baseSpeed = 0f;
     private float camWidth;
     private float objectWidth;
@@ -48,14 +49,20 @@ public class Parallax : MonoBehaviour
     {
         float cameraXSpeed = cam.velocity.x;
 
-        if(Mathf.Abs(cameraXSpeed) > 0)
+        if(Mathf.Abs(cameraXSpeed) > 0f)
         {
             float dislocation = cameraXSpeed * baseSpeed * Time.deltaTime * -1;
             SetXPosition(transform.position.x + dislocation);
         }
 
+        if(repeatOnScroll)
+            InfinteScoll();
+    }
+
+    void InfinteScoll(){
         float currentObjectX  = transform.position.x;
         float currentCamX = cam.transform.position.x;
+
         if(currentObjectX - (objectWidth*((float)amountOfBrothers+1)) >= currentCamX - camWidth)
             PutOnLeftEdgeOfLine();
         else if(currentObjectX + (objectWidth*((float)amountOfBrothers+1)) <= currentCamX + camWidth)
