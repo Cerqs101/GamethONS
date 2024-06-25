@@ -5,6 +5,7 @@ using UnityEngine;
 public class RhythmicAnimation : RhythmMonoBehaviour
 {
     private Animation animationClip;
+    [SerializeField] private AnimationClip Idle;
     private Animator animator;
     private int beatsInSong = 0;
 
@@ -41,7 +42,7 @@ public class RhythmicAnimation : RhythmMonoBehaviour
         {
             animationClip.Stop(animationClip.clip.name);
             animationClip.Rewind(animationClip.clip.name);
-            animator.Play("idle", 0, 0.0f);
+            animator.Play(Idle.name, 0, 0.0f);
         }
         animator.Play(animationClip.clip.name, 0, 0.0f);
     }
