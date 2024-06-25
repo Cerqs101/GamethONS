@@ -76,10 +76,9 @@ MonoBehaviour:
   songLayerName: 
   portalFimDeFase: {fileID: 0}
   laneWindow: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 5368720092836783480}
   measuresInEncounter: 4
   habilidadeQueDa: 0
-  player: {fileID: 3168378165726108165, guid: bfae54c361730f6478ed0af8dbc72667, type: 3}
 --- !u!1 &5645853827116806954
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class Encounter : MonoBehaviour
     private AudioSource songLayer;
     [SerializeField] public ScriptPortaisFases portalFimDeFase;
     [SerializeField] private LaneWindow laneWindow;
-    // [SerializeField] public Animator animator;
+    [SerializeField] public Animator animator;
 
     [SerializeField] public float measuresInEncounter = 4f;
     [NonSerialized] public double secondsInEncounter;
@@ -129,7 +129,7 @@ public class Encounter : MonoBehaviour
                 break;
         }
         
-        // animator.SetBool("Acabou", true);
+        animator.SetBool("Acabou", true);
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponentInChildren<BoxCollider2D>());
         Destroy(this);
