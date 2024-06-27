@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteRestriction: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 1379158834}
 --- !u!212 &20177791
@@ -294,7 +295,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 200
   m_Sprite: {fileID: 21300000, guid: be93169ee541621468d915b759a05837, type: 3}
   m_Color: {r: 0.16862746, g: 0.6156863, b: 0.9607843, a: 1}
   m_FlipX: 0
@@ -510,7 +511,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: be93169ee541621468d915b759a05837, type: 3}
     - target: {fileID: 8510189986523455368, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1046,7 +1047,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: be93169ee541621468d915b759a05837, type: 3}
     - target: {fileID: 8510189986523455368, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1401,6 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &267892296
 SpriteRenderer:
@@ -2346,6 +2348,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Size.x
+      value: 7.8119946
+      objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Size.y
+      value: 3.1486926
+      objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Offset.x
+      value: 3.4472742
+      objectReference: {fileID: 0}
+    - target: {fileID: 290547389102350133, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.97660446
+      objectReference: {fileID: 0}
     - target: {fileID: 721517628132694441, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: m_Name
       value: PULSE02
@@ -2361,6 +2379,14 @@ PrefabInstance:
     - target: {fileID: 1402797160470089330, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: measuresInEncounter
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848935202759267656, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848935202759267656, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7649796221366203537, guid: 4e693d8a636ab4f48aeb07546d2bdb85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2511,6 +2537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &633285806
 SpriteRenderer:
@@ -2609,6 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteRestriction: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 2009525158}
 --- !u!212 &635728312
@@ -2651,7 +2679,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 200
   m_Sprite: {fileID: 21300000, guid: be93169ee541621468d915b759a05837, type: 3}
   m_Color: {r: 0.017707825, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -3050,6 +3078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &861643588
 SpriteRenderer:
@@ -3148,6 +3177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteRestriction: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 1298916853}
 --- !u!212 &866656949
@@ -3190,7 +3220,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 200
   m_Sprite: {fileID: 21300000, guid: be93169ee541621468d915b759a05837, type: 3}
   m_Color: {r: 0.9245283, g: 0.21368816, b: 0.21368816, a: 1}
   m_FlipX: 0
@@ -3247,6 +3277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &867601057
 SpriteRenderer:
@@ -3392,7 +3423,7 @@ Transform:
   m_GameObject: {fileID: 904406798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -151.99576, y: -2.375671, z: -6.023918}
+  m_LocalPosition: {x: -151.92984, y: -2.375671, z: -6.023918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4382,6 +4413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &955890724
 SpriteRenderer:
@@ -5282,7 +5314,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.13421366, g: 0.1051531, b: 0.16037738, a: 1}
   m_FlipX: 0
@@ -5698,6 +5730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &1249885824
 SpriteRenderer:
@@ -5796,6 +5829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &1293561817
 SpriteRenderer:
@@ -6420,7 +6454,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.13421366, g: 0.1051531, b: 0.16037738, a: 1}
   m_FlipX: 0
@@ -6740,7 +6774,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.13421366, g: 0.1051531, b: 0.16037738, a: 1}
   m_FlipX: 0
@@ -16205,7 +16239,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.13421366, g: 0.1051531, b: 0.16037738, a: 1}
   m_FlipX: 0
@@ -16262,6 +16296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c6c89f561620f41b51589186e5f69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteRestriction: 0
   beatPrefab: {fileID: 9123869895241608418, guid: 1149a9818c837904eaabb905031f0927, type: 3}
   hit: {fileID: 647697632}
 --- !u!212 &1715501137
@@ -16304,7 +16339,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 200
   m_Sprite: {fileID: 21300000, guid: be93169ee541621468d915b759a05837, type: 3}
   m_Color: {r: 0.16862746, g: 0.6156863, b: 0.9607843, a: 1}
   m_FlipX: 0
@@ -16361,6 +16396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &1760323774
 SpriteRenderer:
@@ -16504,7 +16540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8510189986523455368, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17146,6 +17182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatOnScroll: 1
   baseSpeed: 0
 --- !u!212 &1941403906
 SpriteRenderer:
@@ -17297,7 +17334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8510189986523455368, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
