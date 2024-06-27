@@ -30,6 +30,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public float highAccuracyThreshold = 0.9f;
     [SerializeField] public float midAccuracyThreshold = 0.7f;
 
+    private float lastRecordedSongtime = 0f;
+
     private Player player;
     public static LevelManager Instance;
 
@@ -50,9 +52,6 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if(hasLevelStarted)
-            timeInSongLoop += Time.unscaledDeltaTime;
-
         if(!hasLevelStarted)
             if(Input.anyKeyDown)
             {
@@ -61,25 +60,29 @@ public class LevelManager : MonoBehaviour
                     SoundManager.Instance.FadeInAllSongLayers(activeOnly:true);
                 hasLevelStarted = true;
             }
-        
-        if(timeInSongLoop >= SoundManager.GetAudioLenght() + musicStartDelay)
-        {   
-            foreach(NoteName lane in LaneContainer.beatIndexes.Keys.ToList())
-                LaneContainer.beatIndexes[lane] = 0;
-            foreach(RhythmicAnimation animation in FindObjectsByType<RhythmicAnimation>(FindObjectsSortMode.None))
-                animation.spawnIndex = 0;
-            timeInSongLoop = musicStartDelay;
-        }
 
-        AudioSource firstSongLayer = SoundManager.Instance.firstSongLayer;
-        if(firstSongLayer.isPlaying && timeInSongLoop > Instance.musicStartDelay
-        && Mathf.Round((float)timeInSongLoop - firstSongLayer.time) != Mathf.Round(SoundManager.Instance.songStartingTime + Instance.musicStartDelay))
-            ResyncBeatsToAudio();
+        if(timeInSongLoop >= SoundManager.GetAudioLenght() + Instance.musicStartDelay || timeInSongLoop - (Instance.musicStartDelay*2) > SoundManager.Instance.firstSongLayer.time)
+            RestartSpawnIndexes();
+        ResyncBeatsToAudio();
+
+        if(hasLevelStarted)
+            timeInSongLoop += Time.unscaledDeltaTime;
     }
 
 
-    public static void ResyncBeatsToAudio(){
-            timeInSongLoop = SoundManager.Instance.firstSongLayer.time + Instance.musicStartDelay;
+    public static void ResyncBeatsToAudio()
+    {
+        timeInSongLoop = SoundManager.Instance.firstSongLayer.time + Instance.musicStartDelay;
+    }
+
+
+    public static void RestartSpawnIndexes()
+    {
+        foreach(NoteName lane in LaneContainer.beatIndexes.Keys.ToList())
+            LaneContainer.beatIndexes[lane] = 0;
+        foreach(RhythmicAnimation animation in FindObjectsByType<RhythmicAnimation>(FindObjectsSortMode.None))
+            animation.spawnIndex = 0;
+        timeInSongLoop = Instance.musicStartDelay;
     }
 
 

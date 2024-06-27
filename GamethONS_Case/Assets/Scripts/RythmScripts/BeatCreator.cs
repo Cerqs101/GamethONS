@@ -24,17 +24,13 @@ public class BeatCreator : RhythmMonoBehaviour
 
     void Update()
     {
-        
         spawnIndex = LaneContainer.beatIndexes[noteRestriction];
-        
         PerformInEveryBeat(CreateBeat);
-
         LaneContainer.beatIndexes[noteRestriction] = spawnIndex;
     }
 
 
     private void CreateBeat(){
-        
         if (LevelManager.noteGeneration){
             GameObject newBeat = Instantiate(beatPrefab, transform.position, new Quaternion(0, 0, 0, 0), transform);
             newBeat.GetComponent<BeatObject>().noteName = noteRestriction;

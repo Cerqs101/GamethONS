@@ -85,8 +85,6 @@ public class Encounter : MonoBehaviour
 
     public void SolveEncounter()
     {
-        LevelManager.ResyncBeatsToAudio();
-
         ScoreManager.Instance.levelHits += hits;
         ScoreManager.Instance.levelCompletedEncounters++;
 
@@ -128,6 +126,8 @@ public class Encounter : MonoBehaviour
             case Player.Habilidades.None: default:
                 break;
         }
+        
+        LevelManager.ResyncBeatsToAudio();
         
         animator.SetBool("Acabou", true);
         Destroy(GetComponent<Rigidbody2D>());

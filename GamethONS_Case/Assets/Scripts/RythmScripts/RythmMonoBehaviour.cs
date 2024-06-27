@@ -17,20 +17,26 @@ public class RhythmMonoBehaviour : MonoBehaviour
                 callBack();
                 spawnIndex++;
             }
+        // SpawnIndexRestarter();
     }
 
 
-    public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] notes)
+    // public void SpawnIndexRestarter(){
+    //     if(spawnIndex >= timeStamps.Count-2)
+    //         spawnIndex = 0;
+    // }
+
+
+    public void SetTimeStamps(Note[] notes)
     {
         foreach (var note in notes)
-        {
             if (note.NoteName == noteRestriction)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, LaneContainer.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
             }
-        }
     }
+
 
     public int beatsInInterval(double start, double end)
     {
