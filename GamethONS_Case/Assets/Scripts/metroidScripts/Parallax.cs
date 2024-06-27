@@ -26,14 +26,14 @@ public class Parallax : MonoBehaviour
             objectWidth = spriteRenderer.bounds.max.x - spriteRenderer.bounds.min.x;
 
             if(baseSpeed == 0f)
-                baseSpeed = 0.75f/((float)spriteRenderer.sortingOrder*-1f);
+                baseSpeed = 50f/((float)spriteRenderer.sortingOrder*-1f);
         }
         else if(GetComponent<TilemapRenderer>() != null){
             tilemapRenderer = GetComponent<TilemapRenderer>();
             objectWidth = tilemapRenderer.bounds.max.x - tilemapRenderer.bounds.min.x;
 
             if(baseSpeed == 0f)
-                baseSpeed = 0.75f/((float)tilemapRenderer.sortingOrder*-1f);
+                baseSpeed = 50f/((float)tilemapRenderer.sortingOrder*-1f);
         }
         
         cam = FindObjectOfType<Camera>();
@@ -49,10 +49,10 @@ public class Parallax : MonoBehaviour
     {
         float cameraXSpeed = cam.velocity.x;
 
-        if(Mathf.Abs(cameraXSpeed) > 0f)
+        if(cameraXSpeed != 0f && Mathf.Abs(cameraXSpeed) > Mathf.Abs(baseSpeed))
         {
-            float dislocation = cameraXSpeed * baseSpeed * Time.deltaTime * -1;
-            SetXPosition(transform.position.x + dislocation);
+            float speedOffset = (cameraXSpeed - baseSpeed*(cameraXSpeed/Mathf.Abs(cameraXSpeed))) * Time.deltaTime ; 
+            SetXPosition(transform.position.x + speedOffset);
         }
 
         if(repeatOnScroll)
