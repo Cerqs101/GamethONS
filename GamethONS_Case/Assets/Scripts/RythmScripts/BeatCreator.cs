@@ -40,14 +40,18 @@ public class BeatCreator : RhythmMonoBehaviour
     public int beatsInEncounter(){
         Encounter encounter = Encounter.GetCurrentEncounter();
         double songLegth = SoundManager.GetAudioLenght();
+        int qtdBeats = 0;
+
+        if(LevelManager.timeInSongLoop + encounter.secondsInEncounter > songLegth){
+            qtdBeats += beatsInInterval(LevelManager.timeInSongLoop, songLegth);
+            qtdBeats += beatsInInterval(0, encounter.secondsInEncounter - (songLegth - LevelManager.timeInSongLoop));
+        }
+        else    
+            qtdBeats += beatsInInterval(LevelManager.timeInSongLoop, LevelManager.timeInSongLoop + encounter.secondsInEncounter);
 
         int songLoopsInEncounter = (int) Mathf.Floor((float) (encounter.secondsInEncounter/songLegth));
-        if(LevelManager.timeInSongLoop + encounter.secondsInEncounter > songLegth)
-            songLoopsInEncounter +=1;
-
-        int qtdBeats = 0;
         qtdBeats += songLoopsInEncounter*beatsInInterval(0, songLegth);
-        qtdBeats += beatsInInterval(LevelManager.timeInSongLoop, LevelManager.timeInSongLoop + encounter.secondsInEncounter - (songLoopsInEncounter*songLegth));
+
         return qtdBeats;
     }
 }
