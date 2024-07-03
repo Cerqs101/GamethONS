@@ -1608,40 +1608,6 @@ Transform:
   - {fileID: 1185104987}
   m_Father: {fileID: 1495754867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &370647833
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 370647834}
-  m_Layer: 0
-  m_Name: torres
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &370647834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370647833}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.87218, y: -7.2, z: 0.14524806}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2004446724}
-  - {fileID: 707525814}
-  - {fileID: 1132307383}
-  m_Father: {fileID: 1601158967}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371816673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,7 +2223,8 @@ Transform:
   m_LocalPosition: {x: -0.84217834, y: -4.2533846, z: -0.012083054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2004446724}
   m_Father: {fileID: 945406591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &511338328
@@ -3074,7 +3041,8 @@ Transform:
   m_LocalPosition: {x: 26.241817, y: -4.2533846, z: -0.012083054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1132307383}
   m_Father: {fileID: 945406591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &566974108
@@ -3589,7 +3557,6 @@ GameObject:
   m_Component:
   - component: {fileID: 707525814}
   - component: {fileID: 707525816}
-  - component: {fileID: 707525815}
   m_Layer: 0
   m_Name: Camada 2
   m_TagString: Untagged
@@ -3606,27 +3573,13 @@ Transform:
   m_GameObject: {fileID: 707525813}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.12002, y: 3.13, z: -0.012083054}
+  m_LocalPosition: {x: -1.2426395, y: 8.4405, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1790195552}
-  m_Father: {fileID: 370647834}
+  m_Father: {fileID: 866433574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &707525815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707525813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repeatOnScroll: 1
-  baseSpeed: 0
 --- !u!212 &707525816
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3667,7 +3620,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: cb15ec3e482e0c846a70f575b991b0f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4200,7 +4153,8 @@ Transform:
   m_LocalPosition: {x: -27.87738, y: -4.2533846, z: -0.012083054}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 707525814}
   m_Father: {fileID: 945406591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &866433575
@@ -6322,7 +6276,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1132307383}
   - component: {fileID: 1132307385}
-  - component: {fileID: 1132307384}
   m_Layer: 0
   m_Name: Camada 3
   m_TagString: Untagged
@@ -6339,27 +6292,13 @@ Transform:
   m_GameObject: {fileID: 1132307382}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.480003, y: 3.13, z: -0.012083054}
+  m_LocalPosition: {x: 0.23818207, y: 8.4405, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1233696407}
-  m_Father: {fileID: 370647834}
+  m_Father: {fileID: 566974107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1132307384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132307382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repeatOnScroll: 1
-  baseSpeed: 0
 --- !u!212 &1132307385
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6400,7 +6339,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: cb15ec3e482e0c846a70f575b991b0f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7769,7 +7708,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 945406591}
-  - {fileID: 370647834}
   m_Father: {fileID: 1198647849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633707191
@@ -25061,7 +24999,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2004446724}
   - component: {fileID: 2004446726}
-  - component: {fileID: 2004446725}
   m_Layer: 0
   m_Name: Camada 1
   m_TagString: Untagged
@@ -25078,27 +25015,13 @@ Transform:
   m_GameObject: {fileID: 2004446723}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.32, y: 3.13, z: -0.012083054}
+  m_LocalPosition: {x: -0.47782135, y: 8.4405, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1853179544}
-  m_Father: {fileID: 370647834}
+  m_Father: {fileID: 511338327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2004446725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004446723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f855e8f22afeac4c8c05077af1a3409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repeatOnScroll: 1
-  baseSpeed: 0
 --- !u!212 &2004446726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25139,7 +25062,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: cb15ec3e482e0c846a70f575b991b0f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
