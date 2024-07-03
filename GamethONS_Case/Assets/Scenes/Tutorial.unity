@@ -499,7 +499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
-      value: 11
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -1035,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
-      value: 11
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -16536,7 +16536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
-      value: 11
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 8510189986523455368, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
@@ -17326,7 +17326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_SortingOrder
-      value: 11
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 6966397349450691957, guid: d45a54ffcb41ee24d880fb08b4fa665e, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -17374,6 +17374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1909450186}
   dano: 2
+  waitCoolDown: 1
 --- !u!61 &1957691090
 BoxCollider2D:
   m_ObjectHideFlags: 0
