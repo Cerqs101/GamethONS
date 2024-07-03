@@ -98,7 +98,7 @@ public class LevelManager : MonoBehaviour
 
         int deltaHealthInt = (int) Mathf.Round(deltaHealth);
         
-        player.AplicaDano(deltaHealthInt * -1);
+        player.AplicaDano(deltaHealthInt * -1, false);
         FindObjectOfType<ScriptLogic>().subtraiVida();
 
         if(deltaHealthInt > 0)

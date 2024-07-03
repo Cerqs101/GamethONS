@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     public static Player Instance;
     public int vidaMax = 10;
     public int vidaAtual;
+
+    [SerializeField] private float damageCoolDown = 3f;
+    private float damageTimer;
     
     private const float Speed = 8f;
     private const float JumpPower = 16f;
@@ -81,10 +84,13 @@ public class Player : MonoBehaviour
             GetDash();
         }
 
+        damageTimer = damageCoolDown;
     }
 
     private void Update()
-    {        
+    {      
+        damageTimer += Time.deltaTime;
+
         if(IsAlive && canMove)
             Movement();
     }
@@ -257,13 +263,18 @@ public class Player : MonoBehaviour
         _canDash = true;
     }
     
-    public void AplicaDano(int dano)
+    public void AplicaDano(int dano, bool waitCoolDown=true)
     {
+        if(waitCoolDown && damageTimer < damageCoolDown)
+            return;
+            
         vidaAtual -= dano;
         vidaAtual = Mathf.Clamp(vidaAtual, 0, vidaMax);
+
+        damageTimer = 0;
+
         if( vidaAtual <= 0)
             Die();
-        
     }
 
     public void GetDash()

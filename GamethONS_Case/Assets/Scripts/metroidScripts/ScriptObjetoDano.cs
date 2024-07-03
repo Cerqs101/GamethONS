@@ -6,6 +6,7 @@ public class ScriptObjetoDano : MonoBehaviour
 {
     public Player player;
     public int dano = 2;
+    [SerializeField] private bool waitCoolDown = true;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +20,9 @@ public class ScriptObjetoDano : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player"){
-            player.AplicaDano(dano);
-        }
+        if(other.gameObject.tag == "Player")
+            player.AplicaDano(dano, waitCoolDown);
     }
 }
