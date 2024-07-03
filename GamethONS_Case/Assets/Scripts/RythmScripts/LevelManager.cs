@@ -55,7 +55,8 @@ public class LevelManager : MonoBehaviour
         if(!hasLevelStarted)
             if(Input.anyKeyDown)
             {
-                SoundManager.Instance.Invoke("PlayAllSongs", musicStartDelay);
+                if(!SoundManager.Instance.firstSongLayer.isPlaying)
+                    SoundManager.Instance.Invoke("PlayAllSongs", musicStartDelay);
                 if(SoundManager.Instance.playFirstSongLayerOnAwake)
                     SoundManager.Instance.FadeInAllSongLayers(activeOnly:true);
                 hasLevelStarted = true;
