@@ -8,8 +8,7 @@ public class SaveSystem : MonoBehaviour
 
     void Start(){
         Instance = this;
-        Debug.Log(GetHighScore("Fase1"));
-        ResetAll();
+        // ResetAll();
     }
     
     public static void SetTutorial(int state){ 
@@ -49,11 +48,11 @@ public class SaveSystem : MonoBehaviour
 
      public static void ResetAll()
      {
-            SetHighScore("Fase1",0);
-            SetHighScore("Fase2",0);
-            SetHighScore("Fase2",0);
-            SetUpgrade("Dash",false);
-            SetUpgrade("WallJump",false);
-            SetUpgrade("Zerou",false);
+        SetHighScore("Fase1",0);
+        SetHighScore("Fase2",0);
+        SetHighScore("Fase2",0);
+        SetUpgrade("Dash",false);
+        SetUpgrade("WallJump",false);
+        SetUpgrade("Zerou",false);
      }
 }

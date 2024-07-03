@@ -17,9 +17,8 @@ public class ScenesManager : MonoBehaviour
         
     }
     void Update(){
-        //Debug.Log(PlayerPrefs.GetInt("Fase1"));
+        
     }
-
 
 
     public void EndGame()
@@ -54,23 +53,19 @@ public class ScenesManager : MonoBehaviour
 
     public void GoToTutorial(){
         if(SaveSystem.GetTutorial()!= 1){
-
             SaveSystem.ResetAll();
             SaveSystem.SetTutorial(1);
             StartCoroutine(PlayScene("Tutorial", true));
             StartCoroutine(MusicController.FadeOut(FindObjectOfType<AudioSource>()));
         }
-        else{
+        else
             GoToMainHub();
- 
-        }
-
-
     }
 
     public void GoToMainHub()
     {
         StartCoroutine(PlayScene("HubCentral", true));
+        LevelManager.hasLevelStarted = false;
     }
 
     public void goToMenu(){

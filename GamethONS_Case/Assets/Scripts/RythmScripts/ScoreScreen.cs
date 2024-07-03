@@ -13,6 +13,8 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtConcertos;
 
     [SerializeField] private TextMeshProUGUI txtPontuacao;
+
+
     void Awake()
     {
         txtAcertos.text = ScoreManager.Instance.levelHits.ToString();

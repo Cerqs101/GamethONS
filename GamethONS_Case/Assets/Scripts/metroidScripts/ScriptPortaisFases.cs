@@ -43,6 +43,7 @@ public class ScriptPortaisFases : MonoBehaviour
                 if(SceneManager.GetActiveScene().name =="Fase3"){
                     SaveSystem.SetUpgrade("Zerou",true);
                     PlayScene("Tela Final");
+                    return;
                 }
             }
             switch (fase)
