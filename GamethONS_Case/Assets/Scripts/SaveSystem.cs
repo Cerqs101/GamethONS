@@ -54,5 +54,6 @@ public class SaveSystem : MonoBehaviour
         SetUpgrade("Dash",false);
         SetUpgrade("WallJump",false);
         SetUpgrade("Zerou",false);
+        SetUpgrade("Tutorial", false);
      }
 }
