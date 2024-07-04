@@ -5,3 +5,21 @@ Talvez seja melhor fazer pelo menos metade deles...
 Você lembra a voz de seu criador...
 "Conserte a usina, meu robozinho, por favor!"
 É, é melhor fazer isso mesmo.
+
+Usina consertada!
+Agora você pode deslizar e pular nas paredes.
+Para coordenar as energias da nova barra, aperte [Z].
+
+Usinar consertada!
+Agora você pode apertar [shift] para executa um Dash!
+Para coordenar as energias da nova barra, aperte [C].
+
+Oh, bravo autômato musical!
+Tenho muito orgulho de você.
+Essa é a última usina da região. Tu completastes tua missão.
+Entretanto, por mais que seu trabalho tenha acabado, 
+o fim dessa música ainda está longe do nosso horizonte.
+O sistema deve continuar.
+E tu terás mais instrumentos para reger no futuro.
+Mas, por agora, pode descanse. O Operador irá cuidar disso tudo.
+Obrigado por tudo. Não é mais que um até logo.

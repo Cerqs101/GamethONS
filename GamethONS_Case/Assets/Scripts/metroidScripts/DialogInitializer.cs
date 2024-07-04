@@ -7,6 +7,7 @@ public class DialogInitializer : MonoBehaviour
 {
     [SerializeField] private int dialogBlockIndex;
     [SerializeField] private bool destroyAfterActivated = true;
+    [SerializeField] private bool triggerWhenEnter = true;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Texture video;
@@ -28,7 +29,7 @@ public class DialogInitializer : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (triggerWhenEnter && other.tag == "Player")
             InitializeDialog();
     }
 

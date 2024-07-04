@@ -16,7 +16,7 @@ public class HitDisplay : MonoBehaviour
     }
 
 
-    public void SetTemporarySprite(Sprite sprite, float waitTime=1f)
+    public void SetTemporarySprite(Sprite sprite, float waitTime=0.01f)
     {
         ChangeSprite(sprite);
         isFadingOut = true;

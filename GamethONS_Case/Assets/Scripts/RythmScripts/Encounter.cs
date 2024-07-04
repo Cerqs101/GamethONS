@@ -10,6 +10,7 @@ public class Encounter : MonoBehaviour
     [SerializeField] public ScriptPortaisFases portalFimDeFase;
     [SerializeField] private LaneWindow laneWindow;
     [SerializeField] public Animator animator;
+    private DialogInitializer dialog;
 
     [SerializeField] public float measuresInEncounter = 4f;
     [NonSerialized] public double secondsInEncounter;
@@ -31,6 +32,7 @@ public class Encounter : MonoBehaviour
                 songLayer = song;
 
         player = FindObjectOfType<Player>();
+        dialog = GetComponent<DialogInitializer>();
     }
 
 
@@ -132,6 +134,9 @@ public class Encounter : MonoBehaviour
         
         if(animator != null)
             animator.SetBool("Acabou", true);
+
+        if(dialog != null)
+            dialog.InitializeDialog();
 
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponentInChildren<BoxCollider2D>());
