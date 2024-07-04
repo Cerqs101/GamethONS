@@ -20,7 +20,11 @@ public class MusicController : MonoBehaviour
 
     }
     public void changeVolume(){
-        audioVolume.SetFloat("MasterAudio",audioSlider.value);
+        float newVolume = audioSlider.value;
+        if(newVolume <= audioSlider.minValue)
+            audioVolume.SetFloat("MasterAudio", -9999f);
+        else
+            audioVolume.SetFloat("MasterAudio",audioSlider.value);
     }
 
     public static IEnumerator FadeOut(AudioSource songLayer, float waitTime=1f)
