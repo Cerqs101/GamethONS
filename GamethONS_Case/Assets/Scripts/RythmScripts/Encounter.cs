@@ -101,6 +101,7 @@ public class Encounter : MonoBehaviour
 
         if(songLayer != null && songLayer.volume < 0.99f)
         {
+            Debug.Log("SongLayer");
             SoundManager.Instance.StartSongLayer(songLayer);
             SoundManager.activeSongLayers.Add(songLayer);
             SoundManager.wasSongLayerAdded = true;
@@ -129,7 +130,9 @@ public class Encounter : MonoBehaviour
         
         LevelManager.ResyncBeatsToAudio();
         
-        animator.SetBool("Acabou", true);
+        if(animator != null)
+            animator.SetBool("Acabou", true);
+
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponentInChildren<BoxCollider2D>());
         Destroy(this);
