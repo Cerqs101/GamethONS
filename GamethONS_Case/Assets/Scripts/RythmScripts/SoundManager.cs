@@ -31,7 +31,6 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-
             Instance = this;
             DontDestroyOnLoad(transform.gameObject);
             
@@ -39,13 +38,12 @@ public class SoundManager : MonoBehaviour
             activeSongLayers.Add(firstSongLayer);
                 
             foreach(AudioSource songLayer in GetComponentsInChildren<AudioSource>(true)){
-
                 allSongLayers.Add(songLayer);
-                if(SaveSystem.CheckUpgrade("WallJump") && songLayer.clip.name.ToLower() == "noise"){
+                if(SaveSystem.CheckUpgrade("WallJump") && songLayer.clip.name.ToLower() == "track01_noise"){
                     activeSongLayers.Add(songLayer);
                 }
 
-                if(SaveSystem.CheckUpgrade("Dash") && songLayer.clip.name.ToLower() == "pulse01"){
+                if(SaveSystem.CheckUpgrade("Dash") && songLayer.clip.name.ToLower() == "track01_pulse01"){
                     activeSongLayers.Add(songLayer);
                 }
             }
@@ -63,8 +61,7 @@ public class SoundManager : MonoBehaviour
     {
         // double timeInSongLoop = LevelManager.timeInSongLoop;
 
-
-            // SetTimeToAllSongLayers((float)(timeInSongLoop - LevelManager.Instance.musicStartDelay));
+        // SetTimeToAllSongLayers((float)(timeInSongLoop - LevelManager.Instance.musicStartDelay));
     }
 
 
