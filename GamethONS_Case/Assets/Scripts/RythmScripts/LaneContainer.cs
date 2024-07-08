@@ -50,7 +50,7 @@ public class LaneContainer : MonoBehaviour
 
     private void ReadMidiFile()
     {
-        if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https;//"))
+        if (Application.streamingAssetsPath.StartsWith("http") || Application.streamingAssetsPath.StartsWith("https"))
             ReadMidiFileFromWeb();
         else
             midiFile = ReadMidiFileFromDisc();
