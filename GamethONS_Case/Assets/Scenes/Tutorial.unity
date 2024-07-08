@@ -399,6 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 6
   destroyAfterActivated: 1
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!1001 &43897453
@@ -615,6 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 7
   destroyAfterActivated: 1
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!1 &74188260
@@ -709,8 +711,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 5
   destroyAfterActivated: 1
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
-  video: {fileID: 8400000, guid: 5e28d050019b0074492ca8c38caf13f1, type: 2}
+  video: {fileID: 0}
 --- !u!1001 &91325046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -935,8 +938,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 4
   destroyAfterActivated: 1
+  triggerWhenEnter: 1
   audioSource: {fileID: 1489408533}
-  video: {fileID: 8400000, guid: 9337d676bae4e8440a49139be5ebdb89, type: 2}
+  video: {fileID: 0}
 --- !u!1001 &173455886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1146,6 +1150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 3
   destroyAfterActivated: 1
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!1 &211836719
@@ -1280,6 +1285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 2
   destroyAfterActivated: 1
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!1 &228832333
@@ -1603,6 +1609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 8
   destroyAfterActivated: 1
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!1001 &308536738
@@ -1806,6 +1813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 10
   destroyAfterActivated: 0
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!114 &390050986
@@ -2942,6 +2950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 9
   destroyAfterActivated: 0
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!114 &848452461
@@ -3439,7 +3448,7 @@ Transform:
   m_GameObject: {fileID: 904406798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -151.92984, y: -6.9756694, z: -6.023918}
+  m_LocalPosition: {x: -152.28279, y: -6.9756694, z: -6.023918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6494,6 +6503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 9
   destroyAfterActivated: 0
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!114 &1231016135
@@ -6907,6 +6917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 1
   destroyAfterActivated: 1
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!1 &1332462731
@@ -7068,7 +7079,7 @@ Transform:
   m_GameObject: {fileID: 1363011031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.467287, y: 4.78, z: 1.2113557}
+  m_LocalPosition: {x: -9.467287, y: 6.22, z: 1.2113557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7727,7 +7738,7 @@ Transform:
   m_GameObject: {fileID: 1545738566}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.467287, y: 6.6482487, z: 1.2113557}
+  m_LocalPosition: {x: -9.467287, y: 5.8182487, z: 1.2113557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7797,7 +7808,7 @@ Transform:
   m_GameObject: {fileID: 1571478997}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.467287, y: 3.66, z: 1.2113557}
+  m_LocalPosition: {x: -9.467287, y: 3.7400002, z: 1.2113557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8075,6 +8086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 9
   destroyAfterActivated: 0
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!114 &1617280824
@@ -17800,6 +17812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBlockIndex: 11
   destroyAfterActivated: 0
+  triggerWhenEnter: 1
   audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!114 &1813766041
