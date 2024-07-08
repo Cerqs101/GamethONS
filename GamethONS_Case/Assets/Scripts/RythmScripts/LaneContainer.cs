@@ -51,7 +51,7 @@ public class LaneContainer : MonoBehaviour
     private void ReadMidiFile()
     {
         if (Application.streamingAssetsPath.StartsWith("http") || Application.streamingAssetsPath.StartsWith("https"))
-            ReadMidiFileFromWeb();
+            StartCoroutine(ReadMidiFileFromWeb());
         else
             midiFile = ReadMidiFileFromDisc();
     }
@@ -63,11 +63,16 @@ public class LaneContainer : MonoBehaviour
         {
             yield return www.SendWebRequest();
 
-            if (www.result != UnityWebRequest.Result.ConnectionError && www.result != UnityWebRequest.Result.ProtocolError)
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+                Debug.LogError(www.error);
+            else
             {
                 byte[] results = www.downloadHandler.data;
                 using (var stream = new MemoryStream(results))
+                {
                     midiFile = MidiFile.Read(stream);
+                    GetDataFromMidi();
+                }
             }
         }
     }
