@@ -132,7 +132,7 @@ public class SoundManager : MonoBehaviour
     {
         float intensity = 0.01f;
         float waitPerLoop = waitTime*intensity;
-        while(songLayer.volume > 0)
+        while(songLayer.volume > 0.01f)
         {
             songLayer.volume -= intensity;
             yield return new WaitForSecondsRealtime(waitPerLoop);

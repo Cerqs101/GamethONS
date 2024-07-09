@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 6
   destroyAfterActivated: 1
   triggerWhenEnter: 1
@@ -614,6 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 7
   destroyAfterActivated: 1
   triggerWhenEnter: 1
@@ -709,6 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 5
   destroyAfterActivated: 1
   triggerWhenEnter: 1
@@ -936,10 +939,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: Metronome 158BPM
   dialogBlockIndex: 4
   destroyAfterActivated: 1
   triggerWhenEnter: 1
-  audioSource: {fileID: 1489408533}
+  audioSource: {fileID: 0}
   video: {fileID: 0}
 --- !u!1001 &173455886
 PrefabInstance:
@@ -1148,6 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 3
   destroyAfterActivated: 1
   triggerWhenEnter: 1
@@ -1283,6 +1288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 2
   destroyAfterActivated: 1
   triggerWhenEnter: 1
@@ -1607,6 +1613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 8
   destroyAfterActivated: 1
   triggerWhenEnter: 1
@@ -1811,6 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 10
   destroyAfterActivated: 0
   triggerWhenEnter: 1
@@ -2948,6 +2956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 9
   destroyAfterActivated: 0
   triggerWhenEnter: 1
@@ -3448,7 +3457,7 @@ Transform:
   m_GameObject: {fileID: 904406798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -152.4015, y: -6.9756694, z: -6.023918}
+  m_LocalPosition: {x: -151.82448, y: -7.2140727, z: -6.023918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6501,6 +6510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 9
   destroyAfterActivated: 0
   triggerWhenEnter: 1
@@ -6915,6 +6925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 1
   destroyAfterActivated: 1
   triggerWhenEnter: 1
@@ -7880,8 +7891,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 190.20137, y: 29.855755}
       - {x: -13, y: 30}
-      - {x: -13, y: -8.5}
-      - {x: 190.13873, y: -9.750139}
+      - {x: -14.322193, y: -5.525072}
+      - {x: 189.1471, y: -5.45302}
   m_UseDelaunayMesh: 0
 --- !u!4 &1584471260
 Transform:
@@ -8084,6 +8095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 9
   destroyAfterActivated: 0
   triggerWhenEnter: 1
@@ -17810,6 +17822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9508a5fe53909e4d8d8458009e14a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songLayerName: 
   dialogBlockIndex: 11
   destroyAfterActivated: 0
   triggerWhenEnter: 1
@@ -18915,7 +18928,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4934470724181628250, guid: ea963984d0b929d44be1ba083d9938c9, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8029803886545460700, guid: ea963984d0b929d44be1ba083d9938c9, type: 3}
       insertIndex: -1
