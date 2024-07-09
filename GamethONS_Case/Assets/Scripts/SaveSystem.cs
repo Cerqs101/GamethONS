@@ -8,7 +8,7 @@ public class SaveSystem : MonoBehaviour
 
     void Start(){
         Instance = this;
-        ResetAll();
+        // ResetAll();
     }
     
     public static void SetTutorial(int state){ 

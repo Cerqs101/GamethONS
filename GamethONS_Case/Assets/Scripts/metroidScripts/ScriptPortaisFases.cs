@@ -49,7 +49,7 @@ public class ScriptPortaisFases : MonoBehaviour
             switch (fase)
             {
                 case 0:
-                    PlayScene("HubCentral");
+                    ScenesManager.instance.GoToMainHub();
                     break;
                 case 1:
                     PlayScene("Fase1");

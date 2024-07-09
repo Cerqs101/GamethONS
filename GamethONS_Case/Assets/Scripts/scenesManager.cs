@@ -54,7 +54,6 @@ public class ScenesManager : MonoBehaviour
     public void GoToTutorial(){
         if(SaveSystem.GetTutorial()!= 1){
             SaveSystem.ResetAll();
-            SaveSystem.SetTutorial(1);
             StartCoroutine(PlayScene("Tutorial", true));
             StartCoroutine(MusicController.FadeOut(FindObjectOfType<AudioSource>()));
         }
@@ -64,13 +63,15 @@ public class ScenesManager : MonoBehaviour
 
     public void GoToMainHub()
     {
-        StartCoroutine(PlayScene("HubCentral", true));
+        SaveSystem.SetTutorial(1);
         LevelManager.hasLevelStarted = false;
+        StartCoroutine(PlayScene("HubCentral", true));
     }
 
     public void goToMenu(){
-        StartCoroutine(PlayScene("Menu Principal", true));
+        LevelManager.hasLevelStarted = false;
         SoundManager.Instance.FadeOutAllSongLayers();
+        StartCoroutine(PlayScene("Menu Principal", true));
     }
 
     public void goToFinalScene(){
