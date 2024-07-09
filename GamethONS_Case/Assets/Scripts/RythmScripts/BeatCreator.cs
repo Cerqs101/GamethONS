@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Melanchall.DryWetMidi.Interaction;
 using System;
+using System.Linq;
 
 public class BeatCreator : RhythmMonoBehaviour
 {
@@ -18,12 +19,13 @@ public class BeatCreator : RhythmMonoBehaviour
 
         noteRestriction = hit.noteRestriction;
 
-        SetTimeStamps(FindObjectOfType<LaneContainer>().GetDataFromMidi());
     }
 
 
     void Update()
     {
+        if(!timeStamps.Any() && LaneContainer.midiFile != null)
+            SetTimeStamps(FindObjectOfType<LaneContainer>().GetDataFromMidi());
         spawnIndex = LaneContainer.beatIndexes[noteRestriction];
         PerformInEveryBeat(CreateBeat);
         LaneContainer.beatIndexes[noteRestriction] = spawnIndex;

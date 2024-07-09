@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RhythmicAnimation : RhythmMonoBehaviour
@@ -22,6 +23,9 @@ public class RhythmicAnimation : RhythmMonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!timeStamps.Any() && LaneContainer.midiFile != null)
+            SetTimeStamps(FindObjectOfType<LaneContainer>().GetDataFromMidi());
+            
         PerformInEveryBeat(PlayAnimation);
     }
 

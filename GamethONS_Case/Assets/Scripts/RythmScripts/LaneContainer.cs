@@ -69,10 +69,7 @@ public class LaneContainer : MonoBehaviour
             {
                 byte[] results = www.downloadHandler.data;
                 using (var stream = new MemoryStream(results))
-                {
                     midiFile = MidiFile.Read(stream);
-                    GetDataFromMidi();
-                }
             }
         }
     }
