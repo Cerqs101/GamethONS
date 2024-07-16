@@ -6,7 +6,7 @@ Você é um rapazinho muito importante, mas ainda tem muito o que aprender sobre
 ...Então sem mais delongas, avance para a direita para começar o seu treinamento!
 Para se mexer, use as teclas de seta [<] [>] no seu teclado.
 Não se preocupe comigo, vou ficar por aqui.
-Mas pode ficar tranquilo, você tem um rádio imbutido. Vou falar com você de longe!
+Mas pode ficar tranquilo, você tem um rádio embutido. Vou falar com você de longe!
 Vamos, vá para direita!
 
 Cuidado!
@@ -19,14 +19,14 @@ Ufa, que bom que deu tudo certo.
 Então fique de olho em qualquer coisa que parece perigosa.
 Mas.. caramba, olha lá! Tem ainda mais água lá pra frente! 
 Apenas um pulo não vai ser suficiente.
-Por sorte, você também consegue se propulcionar no ar.
+Por sorte, você também consegue se propulsionar no ar.
 Basta apertar qualquer uma das teclas de pular, [Z] ou [Espaço], enquanto não tocar no chão.
-Mas cuidado, assim que se propulcionar uma vez, você precisa encostar no chão para poder fazer isso novamente.
+Mas cuidado, assim que se propulsionar uma vez, você precisa encostar no chão para poder fazer isso novamente.
 Experimente!
 
 Muito bem.
 Agora que você sabe como se mexer sem se machucar, vamos falar do seu propósito:
-Adicionar usinas para o Sistema Interligado Nacional e concertar os periféricos pelo caminho.
+Adicionar usinas para o Sistema Interligado Nacional e consertar os periféricos pelo caminho.
 O SIN é um sistema de coordenação e controle da energia que sustenta o Brasil.
 Ele é fundamental para a distribuição de eletricidade para o país, e você faz parte dessa missão.
 É como se você estivesse participando, conduzindo e melhorando uma orquestra gigantesca! Uma orquestra elétrica!
@@ -39,7 +39,7 @@ Toda vez que você mexer no SIN, você verá uma tela com usinas no lado direito
 Na esquerda estarão estações de controle dessa energia.
 Você deve, seguindo o ritmo do SIN, coordenar energia das usinas através das estações.
 Aperte [X] quando cargas chegarem nas estações. Isso vai te ajudar a seguir o ritmo do SIN.
-Olha só, ali na frente tem um concerto para você fazer. Experimente!
+Olha só, ali na frente tem um conserto para você fazer. Experimente!
 
 Excelente!
 Você percebeu uma barra colorida subindo e descendo enquanto você consertava?

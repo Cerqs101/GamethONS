@@ -18,7 +18,7 @@ public class ScoreScreen : MonoBehaviour
     void Awake()
     {
         txtAcertos.text = ScoreManager.Instance.levelHits.ToString();
-        txtPrecisao.text = ScoreManager.Instance.levelAccuracy.ToString();
+        txtPrecisao.text = (Mathf.Round(ScoreManager.Instance.levelAccuracy*100*100)/100).ToString() + "%";
         txtBonusVida.text = ScoreManager.Instance.levelRecoveredHealth.ToString();
         txtConcertos.text = ScoreManager.Instance.levelCompletedEncounters.ToString() + " / " + ScoreManager.Instance.totalEncountersInAllLevels;
         

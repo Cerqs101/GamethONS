@@ -515,8 +515,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -149, y: 305}
-  m_SizeDelta: {x: 761.1016, y: 131.281}
+  m_AnchoredPosition: {x: -161.78117, y: 305}
+  m_SizeDelta: {x: 786.664, y: 131.281}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &381164451
 MonoBehaviour:
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bravissmo!!
+  m_text: Bravissimo!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af425651fb6505e4698d0b251d420cbb, type: 2}
   m_sharedMaterial: {fileID: -5530907911031708186, guid: af425651fb6505e4698d0b251d420cbb, type: 2}
